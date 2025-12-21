@@ -289,7 +289,7 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
                     className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-white font-bold uppercase tracking-widest text-sm flex items-center gap-2 translate-y-4 group-hover:translate-y-0">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-white font-bold uppercase tracking-widest text-sm flex items-center gap-2 translate-y-4 group-hover:translate-y-0 whitespace-nowrap">
                      Bekijk Case <ArrowUpRight size={16} />
                   </div>
                 </motion.div>
@@ -713,11 +713,20 @@ const ProjectShowcase: React.FC = () => {
 
   return (
     <section ref={containerRef} id="work" className="bg-white relative border-t border-black">
-      <div className="container mx-auto px-4 sm:px-8 pt-32 pb-12">
-           <h2 className="text-[12vw] leading-[0.8] font-black tracking-tighter uppercase mb-24 text-black select-none pointer-events-none">
-             Selected<br />
-             <span className="text-transparent" style={{ WebkitTextStroke: '1px black' }}>Work</span>
-           </h2>
+      <div className="container mx-auto px-4 sm:px-8 pt-24 pb-8">
+           <motion.div
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+           >
+             <h2 className="text-6xl md:text-9xl font-black tracking-tighter uppercase mb-4 text-black">
+               Selected <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">Work</span>
+             </h2>
+             <p className="text-xl md:text-2xl font-medium text-gray-500 leading-relaxed">
+                Een selectie van mijn favoriete projecten van de afgelopen jaren
+             </p>
+           </motion.div>
       </div>
 
       <div className="flex flex-col gap-0 pb-[20vh]">
