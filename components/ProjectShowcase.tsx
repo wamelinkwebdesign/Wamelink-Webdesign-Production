@@ -291,11 +291,16 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
                   style={{ scale: imageScale }}
                   className="w-full h-full relative"
                 >
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
+                  <picture className="w-full h-full block">
+                    {project.bento?.mobile && (
+                       <source media="(max-width: 768px)" srcSet={project.bento.mobile} />
+                    )}
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white/20 backdrop-blur-md px-6 py-3 rounded-full text-white font-bold uppercase tracking-widest text-sm flex items-center gap-2 translate-y-4 group-hover:translate-y-0 whitespace-nowrap">
                      Bekijk Case <ArrowUpRight size={16} />
@@ -370,42 +375,93 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
       <motion.div 
         layoutId={`card-container-${project.id}`}
         style={{ backgroundColor: project.color, color: project.textColor }}
-        className="relative w-full h-[90vh] md:h-screen flex flex-col justify-between p-6 md:p-12"
+        className="relative w-full h-[50vh] md:h-[80vh] flex flex-col justify-between p-0 md:p-12"
       >
-         {/* Meta */}
-         <div className="flex justify-between items-center">
-            <motion.div layoutId={`card-meta-${project.id}`} className="flex flex-col md:flex-row gap-4 md:gap-12 opacity-80">
-               <div className="flex flex-col">
-                 <span className="text-[10px] uppercase tracking-widest opacity-60" style={headingStyle}>Jaar</span>
-                 <span className="text-lg font-bold" style={headingStyle}>{project.year}</span>
-               </div>
-               <div className="flex flex-col">
-                 <span className="text-[10px] uppercase tracking-widest opacity-60" style={headingStyle}>Diensten</span>
-                 <span className="text-lg font-bold" style={headingStyle}>{project.tags.join(', ')}</span>
-               </div>
-            </motion.div>
+         
+         {/* MOBILE LAYOUT */}
+         <div className="md:hidden flex flex-col h-full pt-20 px-6 pb-8 relative z-10">
+             {/* Title Top Left - Removed layoutId to ensure visibility */}
+             <div className="flex-1 flex flex-col justify-start">
+                 <motion.h1 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                    className="text-[12vw] font-black uppercase leading-[0.85] tracking-tighter text-left break-words"
+                    style={headingStyle}
+                 >
+                    {project.title.split(' ').map((word, i) => (
+                        <span key={i} className="block">{word}</span>
+                    ))}
+                 </motion.h1>
+             </div>
+
+             {/* 2 Columns: Year & Services */}
+             <div className="grid grid-cols-2 gap-8 w-full mt-auto">
+                 {/* Year */}
+                 <div className="flex flex-col justify-end">
+                    <span className="text-[10px] uppercase tracking-widest opacity-60 block mb-2" style={headingStyle}>Jaar</span>
+                    <span className="text-xl font-bold" style={headingStyle}>{project.year}</span>
+                 </div>
+                 {/* Services Pills */}
+                 <div className="flex flex-col justify-end">
+                    <span className="text-[10px] uppercase tracking-widest opacity-60 block mb-2" style={headingStyle}>Diensten</span>
+                    <div className="flex flex-wrap gap-2">
+                       {project.tags.map((tag, i) => (
+                          <span key={i} className="px-3 py-1.5 bg-black/10 backdrop-blur-sm border border-black/5 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap">
+                            {tag}
+                          </span>
+                       ))}
+                    </div>
+                 </div>
+             </div>
          </div>
 
-         {/* Title */}
-         <div className="flex-1 flex items-center justify-center py-12">
-            <motion.div layoutId={`card-title-${project.id}`} className="text-center w-full">
-              <h1 
-                className="text-[10vw] font-black uppercase leading-[0.8] tracking-tighter break-words"
-                style={headingStyle}
-              >
-                {project.title}
-              </h1>
-            </motion.div>
+         {/* DESKTOP LAYOUT - Updated to match Mobile concept */}
+         <div className="hidden md:flex flex-col h-full p-12 relative z-10">
+             
+             {/* Title Top Left */}
+             <div className="flex-1 pt-12">
+                 <motion.h1 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2, duration: 0.5 }}
+                    className="text-[7vw] font-black uppercase leading-[0.85] tracking-tighter text-left break-words max-w-[80%]"
+                    style={headingStyle}
+                 >
+                    {project.title.split(' ').map((word, i) => (
+                        <span key={i} className="block">{word}</span>
+                    ))}
+                 </motion.h1>
+             </div>
+
+             {/* Bottom Info Grid */}
+             <div className="grid grid-cols-12 gap-8 items-end w-full border-t border-black/10 pt-8 mt-auto">
+                 
+                 {/* Year */}
+                 <div className="col-span-2">
+                    <span className="text-xs uppercase tracking-widest opacity-60 block mb-4" style={headingStyle}>Jaar</span>
+                    <span className="text-3xl font-bold" style={headingStyle}>{project.year}</span>
+                 </div>
+
+                 {/* Services Pills */}
+                 <div className="col-span-6">
+                    <span className="text-xs uppercase tracking-widest opacity-60 block mb-4" style={headingStyle}>Diensten</span>
+                    <div className="flex flex-wrap gap-3">
+                       {project.tags.map((tag, i) => (
+                          <span key={i} className="px-5 py-2 bg-black/10 backdrop-blur-md border border-black/5 rounded-full text-sm font-bold uppercase tracking-wider whitespace-nowrap shadow-sm hover:bg-black/20 transition-colors">
+                            {tag}
+                          </span>
+                       ))}
+                    </div>
+                 </div>
+
+                 {/* Scroll Hint */}
+                 <div className="col-span-4 flex justify-end pb-2">
+                    <ArrowDown className="animate-bounce opacity-50" size={40} />
+                 </div>
+             </div>
          </div>
 
-         <motion.div 
-           initial={{ opacity: 0, y: 20 }}
-           animate={{ opacity: 1, y: 0 }}
-           transition={{ delay: 0.5 }}
-           className="w-full flex justify-center pb-8"
-         >
-            <ArrowDown className="animate-bounce opacity-50" size={32} />
-         </motion.div>
       </motion.div>
 
       {/* 2. MAIN CONTENT SECTION (White Background) */}
