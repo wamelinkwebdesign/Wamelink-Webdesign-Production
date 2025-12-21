@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -7,9 +7,14 @@ import ProjectShowcase from './components/ProjectShowcase';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import Terms from './components/Terms';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import Lenis from 'lenis';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const App: React.FC = () => {
+  const [view, setView] = useState<'home' | 'terms' | 'privacy'>('home');
+
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
@@ -40,15 +45,38 @@ const App: React.FC = () => {
   return (
     <div className="antialiased text-black bg-white selection:bg-[#ffcf00] selection:text-black">
       <CustomCursor />
-      <Header />
-      <main>
-        <Hero />
-        <Marquee />
-        <Services />
-        <ProjectShowcase />
-        <CTA />
-      </main>
-      <Footer />
+      
+      <AnimatePresence mode="wait">
+        {view === 'home' && (
+          <motion.div 
+            key="home"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Header />
+            <main>
+              <Hero />
+              <Marquee />
+              <Services />
+              <ProjectShowcase />
+              <CTA />
+            </main>
+            <Footer 
+              onOpenTerms={() => setView('terms')} 
+              onOpenPrivacy={() => setView('privacy')} 
+            />
+          </motion.div>
+        )}
+        
+        {view === 'terms' && (
+          <Terms key="terms" onClose={() => setView('home')} />
+        )}
+
+        {view === 'privacy' && (
+          <PrivacyPolicy key="privacy" onClose={() => setView('home')} />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -234,21 +234,12 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
           }} 
           className="w-full h-full flex flex-col rounded-[2rem] md:rounded-[3rem] border border-black/10 overflow-hidden shadow-2xl cursor-pointer group hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] transition-shadow duration-300 relative"
         >
-          <div className="flex flex-col h-full p-6 md:p-10 relative z-10">
+          <div className="flex flex-col h-full p-8 md:p-14 lg:p-16 relative z-10">
             
             {/* Header: Layered approach for robust centering */}
             <div className="relative w-full mb-4 md:mb-6" style={{ color: project.textColor }}>
                
-               {/* Layer 1: Centered Title (Absolute) */}
-               <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 hidden md:flex">
-                 <motion.div layoutId={`card-title-${project.id}`} className="w-full text-center">
-                    <h2 className="text-[3vw] font-black uppercase tracking-tighter leading-none truncate px-24">
-                      {project.title}
-                    </h2>
-                 </motion.div>
-               </div>
-
-               {/* Layer 2: Controls (Relative, Left/Right) */}
+               {/* Controls (Relative, Left/Right) - Title Removed */}
                <div className="relative z-20 flex justify-between items-center w-full pointer-events-none">
                   {/* Left: Meta */}
                   <div className="pointer-events-auto">
@@ -267,13 +258,6 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
                       </div>
                   </div>
                </div>
-            </div>
-
-            {/* Mobile Title */}
-            <div className="md:hidden text-center mb-4" style={{ color: project.textColor }}>
-               <h2 className="text-[8vw] font-black uppercase tracking-tighter leading-[0.9]">
-                  {project.title}
-               </h2>
             </div>
 
             {/* Image */}
@@ -296,13 +280,9 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
             </div>
 
             {/* Footer */}
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 w-full relative z-20" style={{ color: project.textColor }}>
-                <p className="text-lg md:text-2xl font-medium leading-tight max-w-2xl">
-                  {project.description}
-                </p>
-
+            <div className="flex justify-end w-full relative z-20" style={{ color: project.textColor }}>
                 <div className="flex flex-wrap gap-2 justify-end w-full md:w-auto">
-                   {project.tags.map((tag, idx) => (
+                   {project.tags.slice(0, 2).map((tag, idx) => (
                      <span key={idx} className="px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-xs md:text-sm font-bold uppercase tracking-wider border border-current whitespace-nowrap">
                        {tag}
                      </span>

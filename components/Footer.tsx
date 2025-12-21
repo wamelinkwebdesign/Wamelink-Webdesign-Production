@@ -1,7 +1,12 @@
 import React from 'react';
 import MagneticButton from './MagneticButton';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenTerms?: () => void;
+  onOpenPrivacy?: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) => {
   return (
     <footer id="contact" className="py-16 md:py-24 bg-white border-t border-black">
       <div className="container mx-auto px-4 sm:px-8">
@@ -57,8 +62,8 @@ const Footer: React.FC = () => {
         <div className="border-t border-black pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 gap-4 md:gap-0">
            <p>© {new Date().getFullYear()} Wamelink Webdesign</p>
            <div className="flex gap-8">
-             <a href="#" className="hover:text-black">Algemene voorwaarden</a>
-             <a href="#" className="hover:text-black">Privacy policy</a>
+             <button onClick={onOpenTerms} className="hover:text-black transition-colors">ALGEMENE VOORWAARDEN</button>
+             <button onClick={onOpenPrivacy} className="hover:text-black transition-colors">PRIVACY POLICY</button>
            </div>
         </div>
       </div>

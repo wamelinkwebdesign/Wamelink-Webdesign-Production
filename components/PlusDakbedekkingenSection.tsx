@@ -94,10 +94,10 @@ const CaseCard: React.FC<CaseCardProps> = ({ isOpen, isModal = false, onClick, o
         ${isModal ? 'h-[85vh] md:h-auto md:aspect-auto overflow-y-auto md:overflow-hidden pointer-events-auto' : 'aspect-[4/5] md:aspect-[16/9] hover:scale-[1.02] transition-transform duration-500'}
       `}
     >
-      <div className="flex flex-col h-full p-6 md:p-10 relative">
+      <div className="flex flex-col h-full p-8 md:p-16 relative">
         
         {/* --- Header --- */}
-        <div className="absolute top-6 left-6 right-6 md:top-10 md:left-10 md:right-10 flex justify-between items-start z-30 pointer-events-none">
+        <div className="absolute top-8 left-8 right-8 md:top-16 md:left-16 md:right-16 flex justify-between items-start z-30 pointer-events-none">
           <motion.div layoutId="card-meta" className="flex items-center gap-2 md:gap-4 pointer-events-auto">
             <span className="border border-white/40 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest bg-black/10 backdrop-blur-sm">
               Case 01
@@ -122,30 +122,15 @@ const CaseCard: React.FC<CaseCardProps> = ({ isOpen, isModal = false, onClick, o
           </motion.div>
         </div>
 
-        {/* --- Title --- */}
-        {/* 
-            Title Container:
-            - isModal: Uses padding to position (scrolling content)
-            - !isModal: Uses flex-1 to fill the top space exactly, centering the title vertically.
-            We use a motion.div here with 'layout' prop to ensure the box size transition is tracked 
-            by Framer Motion, preventing layout jumps after close.
-        */}
-        <motion.div 
-          layout 
-          className={`flex flex-col items-center justify-center relative z-20 shrink-0 ${isModal ? 'py-16 md:py-24' : 'flex-1 min-h-0'}`}
-        >
-          <motion.div layoutId="card-title">
-            <h3 className="text-[8vw] md:text-[4vw] font-black uppercase leading-[0.9] tracking-tighter text-center">
-              Plus Dakbedekkingen
-            </h3>
-          </motion.div>
-        </motion.div>
+        {/* --- Title Removed --- */}
+        
+        {/* Spacer to push content down if needed, but flex-col handles it nicely if we just center or fill */}
+        <div className={`flex-1 min-h-0 ${isModal ? 'py-16' : ''}`}></div>
 
         {/* --- Browser Mockup Content --- */}
         <motion.div 
           layoutId="card-content"
-          // In modal: natural aspect ratio. In card: fixed percentage height (55% mobile, 60% desktop) to force the red bar ratio.
-          className={`relative w-full rounded-xl md:rounded-2xl overflow-hidden bg-[#111] shadow-2xl ring-1 ring-white/10 ${isModal ? 'aspect-[4/5] md:aspect-[16/9]' : 'h-[55%] md:h-[60%]'}`}
+          className={`relative w-full rounded-xl md:rounded-2xl overflow-hidden bg-[#111] shadow-2xl ring-1 ring-white/10 ${isModal ? 'aspect-[4/5] md:aspect-[16/9]' : 'h-[65%] md:h-[70%]'}`}
         >
            {/* Fake Browser Toolbar */}
            <div className="absolute top-0 left-0 w-full h-8 bg-[#1a1a1a] flex items-center px-4 gap-2 z-30 border-b border-white/5">
@@ -215,14 +200,9 @@ const CaseCard: React.FC<CaseCardProps> = ({ isOpen, isModal = false, onClick, o
         </motion.div>
 
         {/* --- Footer (Details) --- */}
-        <motion.div layoutId="card-footer" className="mt-6 md:mt-8 flex flex-col md:flex-row justify-between md:items-end gap-4 relative z-20 shrink-0">
-          <div>
-            <p className="text-sm md:text-lg font-medium opacity-90 max-w-md">
-              Specialist in duurzame dakrenovaties en zinkwerk.
-            </p>
-          </div>
+        <motion.div layoutId="card-footer" className="mt-6 md:mt-8 flex justify-end relative z-20 shrink-0">
           <div className="flex gap-2">
-            {['Development', 'Branding', 'Strategy'].map((tag) => (
+            {['Development', 'Branding'].map((tag) => (
               <span key={tag} className="px-3 py-1.5 border border-white/30 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wider backdrop-blur-sm bg-black/5">
                 {tag}
               </span>
