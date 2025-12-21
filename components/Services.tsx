@@ -16,13 +16,11 @@ const Services: React.FC = () => {
   const cardVariants: Variants = {
     hidden: { 
       opacity: 0, 
-      y: 40,
-      filter: 'blur(10px)' 
+      y: 40
     },
     visible: { 
       opacity: 1, 
       y: 0,
-      filter: 'blur(0px)',
       transition: { 
         duration: 0.8, 
         ease: [0.22, 1, 0.36, 1], // Custom "Swiss" easing
@@ -47,8 +45,8 @@ const Services: React.FC = () => {
           
           <div className="lg:col-span-4">
              <motion.div
-               initial={{ opacity: 0, x: -30, filter: 'blur(5px)' }}
-               whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+               initial={{ opacity: 0, x: -30 }}
+               whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true, amount: 0.5 }}
                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                className="sticky top-32"
@@ -72,7 +70,7 @@ const Services: React.FC = () => {
             <motion.div 
               variants={cardVariants}
               whileHover={{ scale: 0.98 }}
-              className="bg-white p-8 border border-black rounded-3xl flex flex-col justify-between hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all duration-300 cursor-hover min-h-[500px]"
+              className="bg-white p-8 border border-black rounded-3xl flex flex-col justify-between hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-300 will-change-transform cursor-hover min-h-[500px]"
             >
               <div>
                 <motion.div variants={itemVariants} className="w-16 h-16 bg-[#FFD700] rounded-full flex items-center justify-center border border-black mb-8">
@@ -107,7 +105,7 @@ const Services: React.FC = () => {
             <motion.div 
               variants={cardVariants}
               whileHover={{ scale: 0.98 }}
-              className="bg-black text-white p-8 border border-black rounded-3xl flex flex-col justify-between hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] transition-all duration-300 cursor-hover min-h-[500px]"
+              className="bg-black text-white p-8 border border-black rounded-3xl flex flex-col justify-between hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] transition-shadow duration-300 will-change-transform cursor-hover min-h-[500px]"
             >
               <div>
                 <motion.div variants={itemVariants} className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center mb-8">
