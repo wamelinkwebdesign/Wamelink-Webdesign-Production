@@ -32,7 +32,11 @@ interface ProjectData {
   testimonial?: string;
   beforeImage?: string;
   stats: ProjectStats[];
-  font?: string;
+  font?: string; // Legacy simple string
+  fonts?: {
+    heading: string;
+    body: string;
+  };
   bento?: ProjectBento;
   singleImage?: string;
 }
@@ -47,7 +51,7 @@ const projects: ProjectData[] = [
     year: '2025',
     color: '#FF5A1F', // Orange
     textColor: '#ffffff',
-    tags: ['Development', 'Branding'],
+    tags: ['Redesign', 'Development'],
     challenge: 'De bestaande website (5 jaar oud) sloot niet meer aan bij de groeiambities. De uitstraling was te kleinschalig om aannemers en vastgoedpartijen serieus aan te spreken, en de teksten misten de professionele \'wij-vorm\'.',
     solution: 'Een volledige \'rebuild\' met een strak, modern design. Door de combinatie van sterke lokale SEO in Meppel en een zakelijk uitstraling, staat er nu een platform dat direct vertrouwen wekt bij grote opdrachtgevers.',
     url: 'https://plusdakbedekkingen.nl',
@@ -58,6 +62,10 @@ const projects: ProjectData[] = [
         { label: 'LEADS', value: '2.5x' },
         { label: 'LAADSNELHEID', value: '-10s' }
     ],
+    fonts: {
+        heading: 'Outfit, sans-serif',
+        body: 'DM Sans, sans-serif'
+    },
     bento: {
         desktop: 'https://storage.googleapis.com/wamelinkwebdesign/plusdak.png',
         mobile: 'https://storage.googleapis.com/wamelinkwebdesign/plus-ios.jpg', 
@@ -125,7 +133,7 @@ const ComparisonSlider: React.FC<{ before: string; after: string }> = ({ before,
     >
       {/* After Image (Background - Right Side "NU") */}
       <img src={after} alt="After" className="absolute inset-0 w-full h-full object-cover object-left-top" />
-      <div className="absolute top-6 right-6 bg-black/60 backdrop-blur text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest z-10 pointer-events-none">
+      <div className="absolute top-6 right-6 bg-black/60 backdrop-blur text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest pointer-events-none">
         Nu
       </div>
 
@@ -332,6 +340,9 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
     };
   }, []);
 
+  const headingStyle = project.fonts ? { fontFamily: project.fonts.heading } : {};
+  const bodyStyle = project.fonts ? { fontFamily: project.fonts.body } : {};
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -339,6 +350,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] bg-white overflow-y-auto no-scrollbar"
       ref={scrollRef}
+      style={bodyStyle}
       data-lenis-prevent
     >
       {/* Fixed Close Button */}
@@ -364,12 +376,12 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
          <div className="flex justify-between items-center">
             <motion.div layoutId={`card-meta-${project.id}`} className="flex flex-col md:flex-row gap-4 md:gap-12 opacity-80">
                <div className="flex flex-col">
-                 <span className="text-[10px] uppercase tracking-widest opacity-60">Jaar</span>
-                 <span className="text-lg font-bold">{project.year}</span>
+                 <span className="text-[10px] uppercase tracking-widest opacity-60" style={headingStyle}>Jaar</span>
+                 <span className="text-lg font-bold" style={headingStyle}>{project.year}</span>
                </div>
                <div className="flex flex-col">
-                 <span className="text-[10px] uppercase tracking-widest opacity-60">Diensten</span>
-                 <span className="text-lg font-bold">{project.tags.join(', ')}</span>
+                 <span className="text-[10px] uppercase tracking-widest opacity-60" style={headingStyle}>Diensten</span>
+                 <span className="text-lg font-bold" style={headingStyle}>{project.tags.join(', ')}</span>
                </div>
             </motion.div>
          </div>
@@ -377,7 +389,10 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
          {/* Title */}
          <div className="flex-1 flex items-center justify-center py-12">
             <motion.div layoutId={`card-title-${project.id}`} className="text-center w-full">
-              <h1 className="text-[10vw] font-black uppercase leading-[0.8] tracking-tighter break-words">
+              <h1 
+                className="text-[10vw] font-black uppercase leading-[0.8] tracking-tighter break-words"
+                style={headingStyle}
+              >
                 {project.title}
               </h1>
             </motion.div>
@@ -405,7 +420,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                    whileInView={{ opacity: 1, y: 0 }}
                    viewport={{ once: true }}
                 >
-                   <h3 className="text-2xl font-black uppercase tracking-tight mb-4">De Uitdaging</h3>
+                   <h3 className="text-2xl font-black uppercase tracking-tight mb-4" style={headingStyle}>De Uitdaging</h3>
                    <div className="w-16 h-1 mb-8" style={{ backgroundColor: project.color }} />
                    <p className="text-lg md:text-xl font-medium leading-relaxed text-gray-800">
                      {project.challenge}
@@ -420,7 +435,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                    transition={{ delay: 0.2 }}
                    viewport={{ once: true }}
                 >
-                   <h3 className="text-2xl font-black uppercase tracking-tight mb-4">De Oplossing</h3>
+                   <h3 className="text-2xl font-black uppercase tracking-tight mb-4" style={headingStyle}>De Oplossing</h3>
                    <div className="w-16 h-1 mb-8" style={{ backgroundColor: project.color }} />
                    <p className="text-lg md:text-xl font-medium leading-relaxed text-gray-600">
                      {project.solution}
@@ -454,10 +469,10 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                             <div className="hidden md:block absolute left-[-3rem] top-1/2 -translate-y-1/2 h-12 w-[1px] bg-gray-200" />
                          )}
                          
-                         <div className="text-5xl md:text-6xl font-black mb-2 tracking-tighter text-black">
+                         <div className="text-5xl md:text-6xl font-black mb-2 tracking-tighter text-black" style={headingStyle}>
                             <AnimatedStat value={stat.value} />
                          </div>
-                         <div className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                         <div className="text-xs font-bold uppercase tracking-widest text-gray-400" style={headingStyle}>
                             {stat.label}
                          </div>
                       </div>
@@ -468,11 +483,11 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
               {/* CTA Button */}
               <MagneticButton>
                  {project.url ? (
-                     <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-[#FFD700] hover:text-black hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all transform hover:-translate-y-1 text-sm md:text-base">
+                     <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-[#FFD700] hover:text-black hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all transform hover:-translate-y-1 text-sm md:text-base" style={headingStyle}>
                         Bekijk Website <ArrowUpRight size={20} />
                      </a>
                  ) : (
-                     <button className="flex items-center gap-4 bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-[#FFD700] hover:text-black transition-all">
+                     <button className="flex items-center gap-4 bg-black text-white px-10 py-5 rounded-full font-bold uppercase tracking-widest hover:bg-[#FFD700] hover:text-black transition-all" style={headingStyle}>
                         Bekijk Website <ArrowUpRight size={20} />
                      </button>
                  )}
@@ -504,7 +519,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                        />
                        <div className="flex items-center gap-4">
                           <div className="h-[1px] w-12 bg-black"></div>
-                          <span className="text-xs font-bold uppercase tracking-widest opacity-50">Klant Feedback</span>
+                          <span className="text-xs font-bold uppercase tracking-widest opacity-50" style={headingStyle}>Klant Feedback</span>
                        </div>
                     </motion.div>
                  </div>
@@ -517,6 +532,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                        viewport={{ once: true }}
                        transition={{ delay: 0.2 }}
                        className="text-4xl md:text-6xl font-black leading-[1.1] tracking-tight uppercase"
+                       style={headingStyle}
                     >
                        "{project.testimonial}"
                     </motion.blockquote>
@@ -537,7 +553,6 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
             >
                <h4 className="text-xs font-bold uppercase tracking-widest opacity-40">Design Details</h4>
                <div className="h-[1px] flex-1 bg-black/10 mx-6" />
-               <div className="text-xs font-mono opacity-40">System_V1.0</div>
             </motion.div>
 
             {project.singleImage ? (
@@ -570,7 +585,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                       
                       {/* Floating Label */}
                       <div className="absolute top-8 left-8 z-20">
-                         <span className="bg-black/10 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-black flex items-center gap-2 border border-white/20">
+                         <span className="bg-black/10 backdrop-blur-md px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest text-black flex items-center gap-2 border border-white/20" style={headingStyle}>
                            <Smartphone size={12} /> Mobile View
                          </span>
                       </div>
@@ -602,7 +617,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                       >
                          {/* Header */}
                          <div className="flex justify-between items-start z-10">
-                            <span className="border border-current opacity-30 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                            <span className="border border-current opacity-30 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest flex items-center gap-2" style={headingStyle}>
                                <TypeIcon size={12} /> Typography
                             </span>
                             <span className="text-5xl font-serif italic opacity-20">Aa</span>
@@ -610,19 +625,31 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
 
                          {/* Main Content */}
                          <div className="relative z-10 mt-8">
-                            <h3 className="text-7xl font-black tracking-tighter leading-none mb-2">
-                               {project.font || 'Inter Tight'}
-                            </h3>
-                            <div className="flex gap-6 mt-6 opacity-60 text-sm font-mono">
-                               <span>Regular</span>
-                               <span>Medium</span>
-                               <span>Bold</span>
-                            </div>
+                            {project.fonts ? (
+                              <div className="flex flex-col gap-6">
+                                <div>
+                                    <span className="text-xs font-bold uppercase tracking-widest opacity-50 block mb-2">Heading</span>
+                                    <h3 className="text-5xl md:text-6xl font-black tracking-tight leading-none" style={{ fontFamily: project.fonts.heading }}>
+                                        {project.fonts.heading.split(',')[0]}
+                                    </h3>
+                                </div>
+                                <div>
+                                    <span className="text-xs font-bold uppercase tracking-widest opacity-50 block mb-2">Body</span>
+                                    <h3 className="text-3xl md:text-4xl font-medium tracking-tight leading-none" style={{ fontFamily: project.fonts.body }}>
+                                        {project.fonts.body.split(',')[0]}
+                                    </h3>
+                                </div>
+                              </div>
+                            ) : (
+                                <h3 className="text-7xl font-black tracking-tighter leading-none mb-2">
+                                {project.font || 'Inter Tight'}
+                                </h3>
+                            )}
                          </div>
 
                          {/* Background Pattern */}
                          <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.07] select-none">
-                            <p className="text-[8rem] leading-[0.8] font-black break-words w-[120%] -ml-4 -mt-4">
+                            <p className="text-[8rem] leading-[0.8] font-black break-words w-[120%] -ml-4 -mt-4" style={project.fonts ? { fontFamily: project.fonts.heading } : {}}>
                                ABCDEFGHIJKLMNOPQRSTUVWXYZ
                             </p>
                          </div>
@@ -677,11 +704,14 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
               onClick={onClose}
               className="group block w-full text-left py-24 md:py-32 relative overflow-hidden cursor-hover"
             >
-               <span className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 block group-hover:text-black transition-colors">Sluit Project</span>
+               <span className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 block group-hover:text-black transition-colors" style={headingStyle}>Sluit Project</span>
                
                {/* Hover Effect: Solid to Transparent with Stroke */}
-               <h2 className="text-[8vw] font-black uppercase tracking-tighter leading-none transition-all duration-300 group-hover:text-transparent group-hover:text-stroke-black">
-                 Terug naar Werk
+               <h2 
+                 className="text-[8vw] font-black uppercase tracking-tighter leading-none transition-all duration-300 group-hover:text-transparent group-hover:text-stroke-black"
+                 style={headingStyle}
+               >
+                 Terug
                </h2>
             </button>
          </div>
