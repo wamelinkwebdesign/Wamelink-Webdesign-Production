@@ -683,12 +683,6 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                <h2 className="text-[8vw] font-black uppercase tracking-tighter leading-none transition-all duration-300 group-hover:text-transparent group-hover:text-stroke-black">
                  Terug naar Werk
                </h2>
-               
-               <div className="absolute right-0 bottom-1/2 translate-y-1/2 p-8 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                  <div className="w-24 h-24 rounded-full bg-black text-white flex items-center justify-center">
-                    <MousePointer2 size={32} />
-                  </div>
-               </div>
             </button>
          </div>
          <style>{`
