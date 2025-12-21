@@ -18,16 +18,7 @@ const projects = [
     title: 'Personal Excellence',
     description: 'Een toonaangevend coachingbureau dat zich specialiseert in persoonlijke en professionele ontwikkeling.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/personal-excellence-nobg-s.png',
-    color: '#4c2d42',
-    textColor: '#ffffff'
-  },
-  {
-    id: '3',
-    caseId: '03',
-    title: 'Clayrety',
-    description: 'Expert in Himalaya klankschaalsessies.',
-    image: 'https://storage.googleapis.com/wamelinkwebdesign/clayrety-2.png',
-    color: '#2e98e1',
+    color: '#442139',
     textColor: '#ffffff'
   }
 ];

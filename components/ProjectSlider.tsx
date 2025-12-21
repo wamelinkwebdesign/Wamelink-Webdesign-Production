@@ -18,14 +18,6 @@ const projects = [
     description: 'Een toonaangevend coachingbureau dat zich specialiseert in persoonlijke en professionele ontwikkeling.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/personal-excellence-nobg-s.png',
     year: '2023'
-  },
-  {
-    id: '3',
-    caseId: '03',
-    title: 'Clayrety',
-    description: 'Expert in Himalaya klankschaalsessies.',
-    image: 'https://storage.googleapis.com/wamelinkwebdesign/clayrety-2.png',
-    year: '2023'
   }
 ];
 
