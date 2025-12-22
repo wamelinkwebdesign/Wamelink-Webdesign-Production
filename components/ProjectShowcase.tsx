@@ -340,10 +340,20 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+
+    // Add escape key handler
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [onClose]);
 
   const headingStyle = project.fonts ? { fontFamily: project.fonts.heading } : {};
   const bodyStyle = project.fonts ? { fontFamily: project.fonts.body } : {};
