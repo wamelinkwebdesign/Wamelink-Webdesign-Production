@@ -135,10 +135,6 @@ const Hero: React.FC = () => {
     }
   };
 
-  const handleStartProject = () => {
-    window.location.href = "mailto:dennis@wamelinkwebdesign.nl";
-  };
-
   return (
     <section className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden border-b border-black bg-white">
       
@@ -250,8 +246,8 @@ const Hero: React.FC = () => {
           <div className="w-full flex flex-col md:flex-row justify-center md:justify-between items-end gap-8 border-t border-black pt-8">
             <div className="hidden md:block">
               <MagneticButton 
-                className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors"
-                onClick={handleStartProject}
+                href="mailto:dennis@wamelinkwebdesign.nl"
+                className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center"
               >
                 Start Project
               </MagneticButton>
@@ -274,8 +270,8 @@ const Hero: React.FC = () => {
                {/* Mobile CTA */}
                <div className="mt-8 md:hidden w-full">
                 <MagneticButton 
+                  href="mailto:dennis@wamelinkwebdesign.nl"
                   className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors w-full flex justify-center"
-                  onClick={handleStartProject}
                 >
                   Start Project
                 </MagneticButton>

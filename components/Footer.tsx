@@ -16,8 +16,11 @@ const Footer: React.FC<FooterProps> = ({ onOpenTerms, onOpenPrivacy }) => {
               Let's Talk.
             </h2>
             <div className="flex flex-col gap-4 items-start w-full sm:w-auto">
-              <MagneticButton className="bg-[#ffcf00] text-black border border-black px-5 py-4 md:px-6 md:py-3 rounded-full font-bold uppercase tracking-wider text-s sm:text-sm md:text-lg hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all w-full sm:w-auto flex justify-center whitespace-nowrap overflow-hidden text-ellipsis shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none">
-                <a href="mailto:dennis@wamelinkwebdesign.nl" className="truncate w-full text-center">dennis@wamelinkwebdesign.nl</a>
+              <MagneticButton 
+                href="mailto:dennis@wamelinkwebdesign.nl"
+                className="bg-[#ffcf00] text-black border border-black px-5 py-4 md:px-6 md:py-3 rounded-full font-bold uppercase tracking-wider text-s sm:text-sm md:text-lg hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all w-full sm:w-auto flex justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none"
+              >
+                <span className="truncate w-full text-center">dennis@wamelinkwebdesign.nl</span>
               </MagneticButton>
               <span className="text-xl md:text-2xl font-bold ml-2 mt-2 md:mt-0">
                 <a 
