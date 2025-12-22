@@ -18,7 +18,10 @@ const CTA: React.FC = () => {
         </motion.h2>
 
         <div className="flex justify-center w-full px-2 sm:px-0">
-          <MagneticButton className="bg-black text-white px-8 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest hover:bg-[#ffcf00] hover:text-black transition-colors hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full sm:w-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none">
+          <MagneticButton 
+            className="bg-black text-white px-8 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest hover:bg-[#ffcf00] hover:text-black transition-colors hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full sm:w-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none"
+            onClick={() => window.location.href = "mailto:dennis@wamelinkwebdesign.nl"}
+          >
             Start Project
           </MagneticButton>
         </div>

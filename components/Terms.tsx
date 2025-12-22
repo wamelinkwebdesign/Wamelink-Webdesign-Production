@@ -39,7 +39,7 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
           {/* Left Sidebar - Title */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-8 leading-[0.9]">
+              <h1 className="text-4xl md:text-6xl font-black tracking-tighter uppercase mb-8 leading-[0.9]">
                 Algemene<br />Voorwaarden
               </h1>
               <div className="text-sm font-mono text-gray-500 mb-8">

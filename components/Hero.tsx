@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Smile, ArrowDown } from 'lucide-react';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import MagneticButton from './MagneticButton';
-import confetti from 'canvas-confetti';
 
 // --- Components ---
 
@@ -129,37 +128,15 @@ const Hero: React.FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mouseX, mouseY]);
 
-  const triggerConfetti = () => {
-    const duration = 2000;
-    const end = Date.now() + duration;
-
-    (function frame() {
-      confetti({
-        particleCount: 5,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        colors: ['#000000', '#FFD700']
-      });
-      confetti({
-        particleCount: 5,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-        colors: ['#000000', '#FFD700']
-      });
-
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    }());
-  };
-
   const scrollToServices = () => {
     const element = document.getElementById('services');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleStartProject = () => {
+    window.location.href = "mailto:dennis@wamelinkwebdesign.nl";
   };
 
   return (
@@ -274,7 +251,7 @@ const Hero: React.FC = () => {
             <div className="hidden md:block">
               <MagneticButton 
                 className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors"
-                onClick={triggerConfetti}
+                onClick={handleStartProject}
               >
                 Start Project
               </MagneticButton>
@@ -298,7 +275,7 @@ const Hero: React.FC = () => {
                <div className="mt-8 md:hidden w-full">
                 <MagneticButton 
                   className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors w-full flex justify-center"
-                  onClick={triggerConfetti}
+                  onClick={handleStartProject}
                 >
                   Start Project
                 </MagneticButton>

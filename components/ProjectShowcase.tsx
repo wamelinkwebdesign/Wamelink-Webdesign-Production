@@ -804,7 +804,7 @@ const ProjectShowcase: React.FC = () => {
                Selected <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">Work</span>
              </h2>
              <p className="text-xl md:text-2xl font-medium text-gray-500 leading-relaxed">
-                Een selectie van mijn favoriete projecten van de afgelopen jaren
+                Een selectie van mijn favoriete projecten over de afgelopen jaren.
              </p>
            </motion.div>
       </div>
