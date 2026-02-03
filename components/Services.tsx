@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import { PenTool, Code, Plus } from 'lucide-react';
+import { PenTool, Code, Plus, Smartphone } from 'lucide-react';
 
 const Services: React.FC = () => {
   const containerVariants: Variants = {
@@ -59,7 +59,7 @@ const Services: React.FC = () => {
           </div>
 
           <motion.div 
-            className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -102,7 +102,7 @@ const Services: React.FC = () => {
             </motion.div>
 
             {/* Development Card */}
-            <motion.div 
+            <motion.div
               variants={cardVariants}
               whileHover={{ scale: 0.98 }}
               className="bg-black text-white p-8 border border-black rounded-3xl flex flex-col justify-between hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] transition-shadow duration-300 will-change-transform cursor-hover min-h-[500px]"
@@ -131,7 +131,7 @@ const Services: React.FC = () => {
               </div>
               <div className="mt-8 pt-8 border-t border-white/20">
                 <motion.div variants={itemVariants} className="w-full bg-white/10 h-2 rounded-full overflow-hidden mb-4">
-                   <motion.div 
+                   <motion.div
                      className="h-full bg-[#FFD700]"
                      animate={{ width: ["0%", "100%"] }}
                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", repeatDelay: 0.5 }}
@@ -139,6 +139,41 @@ const Services: React.FC = () => {
                 </motion.div>
                 <motion.p variants={itemVariants} className="text-gray-400 text-sm leading-relaxed font-medium">
                   Ik bouw razendsnelle, stabiele websites die hoog scoren in Google, veilig meegroeien en altijd online zijn.
+                </motion.p>
+              </div>
+            </motion.div>
+
+            {/* App Development Card */}
+            <motion.div
+              variants={cardVariants}
+              whileHover={{ scale: 0.98 }}
+              className="bg-[#FFD700] p-8 border border-black rounded-3xl flex flex-col justify-between hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-shadow duration-300 will-change-transform cursor-hover min-h-[500px]"
+            >
+              <div>
+                <motion.div variants={itemVariants} className="w-16 h-16 bg-black rounded-full flex items-center justify-center border border-black mb-8">
+                  <Smartphone size={32} className="text-white" />
+                </motion.div>
+                <motion.h3 variants={itemVariants} className="text-4xl font-bold mb-2 tracking-tight">App Development</motion.h3>
+                <motion.p variants={itemVariants} className="text-lg font-bold mb-6 opacity-80">Apps die gebruikers niet vergeten.</motion.p>
+                <ul className="space-y-4">
+                  {[
+                    'Native & cross-platform apps',
+                    'Intuïtieve gebruikerservaring',
+                    'Offline-first architectuur',
+                    'Naadloze integraties'
+                  ].map((item, i) => (
+                    <motion.li key={i} variants={itemVariants} className="flex items-center gap-3 text-lg font-bold">
+                      <div className="w-6 h-6 flex-shrink-0 bg-black border border-black flex items-center justify-center text-xs">
+                        <Plus size={14} strokeWidth={4} className="text-white" />
+                      </div>
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-8 pt-8 border-t border-black/20">
+                <motion.p variants={itemVariants} className="text-black/70 text-sm leading-relaxed font-medium">
+                  Van concept tot App Store. Ik ontwikkel apps die snel, betrouwbaar en gebruiksvriendelijk zijn op elk apparaat.
                 </motion.p>
               </div>
             </motion.div>
