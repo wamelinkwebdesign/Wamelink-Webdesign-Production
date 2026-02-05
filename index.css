@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Only hide cursor on desktop where custom cursor is visible */
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+  a, button {
+    cursor: none;
+  }
+}
+
+/* Custom Swiss Grid Utilities */
+.swiss-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+/* Hide scrollbar for clean look in some containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Lenis Smooth Scroll CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}

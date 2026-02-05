@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 
-interface PrivacyPolicyProps {
-  onClose: () => void;
-}
+const PrivacyPolicy: React.FC = () => {
 
-const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onClose }) => {
-  
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -26,23 +23,23 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onClose }) => {
         <div className="text-sm font-bold uppercase tracking-widest opacity-50">
            Juridisch
         </div>
-        <MagneticButton onClick={onClose}>
-           <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#FFD700] transition-colors">
+        <MagneticButton>
+           <Link to="/" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#FFD700] transition-colors">
               <ArrowLeft size={16} /> Terug naar home
-           </button>
+           </Link>
         </MagneticButton>
       </div>
 
       <div className="container mx-auto px-4 sm:px-8 pt-32 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
+
           {/* Left Sidebar - Title */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
               <h1 className="text-5xl md:text-7xl font-black tracking-tighter uppercase mb-8 leading-[0.9]">
                 Privacy<br />Policy
               </h1>
-              
+
               <div className="p-6 bg-gray-50 rounded-2xl border border-black/5 mb-8">
                 <h4 className="font-bold uppercase tracking-widest mb-4 text-xs">Verwerkingsverantwoordelijke</h4>
                 <div className="space-y-2 text-sm leading-relaxed">
@@ -58,7 +55,7 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onClose }) => {
           {/* Right Content - Policy Text */}
           <div className="lg:col-span-8">
             <div className="prose prose-lg max-w-none">
-              
+
               <div className="mb-12">
                 <p className="text-xl font-medium leading-relaxed">
                   Wamelink Webdesign, gevestigd aan Herengracht 320 te Amsterdam, is verantwoordelijk voor de verwerking van persoonsgegevens zoals weergegeven in deze privacyverklaring.
@@ -90,7 +87,7 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onClose }) => {
               </Section>
 
               <Section title="Hoe lang we persoonsgegevens bewaren">
-                <p>Wamelink Webdesign bewaart uw persoonsgegevens niet langer dan strikt nodig is om de doelen te realiseren waarvoor uw gegevens worden verzameld. Wij hanteren de volgende bewaartermijnen voor de volgende (categorieën van) persoonsgegevens:</p>
+                <p>Wamelink Webdesign bewaart uw persoonsgegevens niet langer dan strikt nodig is om de doelen te realiseren waarvoor uw gegevens worden verzameld. Wij hanteren de volgende bewaartermijnen voor de volgende (categorie&euml;n van) persoonsgegevens:</p>
                 <ul className="list-disc pl-5 space-y-2 mt-4">
                   <li><strong>Contactgegevens:</strong> 1 jaar na laatste contact</li>
                   <li><strong>Factuurgegevens:</strong> 7 jaar, conform de fiscale bewaarplicht</li>
