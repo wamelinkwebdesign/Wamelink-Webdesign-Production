@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 
-interface TermsProps {
-  onClose: () => void;
-}
+const Terms: React.FC = () => {
 
-const Terms: React.FC<TermsProps> = ({ onClose }) => {
-  
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 50 }}
@@ -26,16 +23,16 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
         <div className="text-sm font-bold uppercase tracking-widest opacity-50">
            Juridisch
         </div>
-        <MagneticButton onClick={onClose}>
-           <button className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#FFD700] transition-colors">
+        <MagneticButton>
+           <Link to="/" className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-[#FFD700] transition-colors">
               <ArrowLeft size={16} /> Terug naar home
-           </button>
+           </Link>
         </MagneticButton>
       </div>
 
       <div className="container mx-auto px-4 sm:px-8 pt-32 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
-          
+
           {/* Left Sidebar - Title */}
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
@@ -45,7 +42,7 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
               <div className="text-sm font-mono text-gray-500 mb-8">
                 Opgemaakt 2021 te Amsterdam.
               </div>
-              
+
               <div className="p-6 bg-gray-50 rounded-2xl border border-black/5">
                 <h4 className="font-bold uppercase tracking-widest mb-4 text-xs">Bedrijfsinformatie</h4>
                 <div className="space-y-2 text-sm leading-relaxed">
@@ -62,7 +59,7 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
           {/* Right Content - Legal Text */}
           <div className="lg:col-span-8">
             <div className="prose prose-lg max-w-none">
-              
+
               <Article title="Artikel 1. Definities">
                 <p>In deze algemene voorwaarden worden de hiernavolgende termen in de navolgende betekenis gebruikt, tenzij uitdrukkelijk anders is aangegeven.</p>
                 <ul className="list-disc pl-5 space-y-2 mt-4">
@@ -97,26 +94,26 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
                 <p>Betaling van het factuurbedrag dient maximaal 14 dagen na factuurdatum te geschieden, op de door Wamelink Webdesign aan te geven wijze in de valuta waarin is gedeclareerd. Bezwaren tegen de hoogte van de declaraties schorten de betalingsverplichting niet op.</p>
                 <p>Alle kosten, vallende op de betaling, waaronder wissel- en bankkosten, zijn voor rekening van opdrachtgever.</p>
                 <p>De ondertekenaar van een offerte is solidair aansprakelijk met de opdrachtgever, natuurlijke of rechtspersoon in naam van en voor rekening van wie hij handelt, in geval van machtsmisbruik, evenals in geval een volledige identificatie van deze klant ontbreekt. De overeenkomst tussen de partijen wordt als gesloten beschouwd vanaf het ogenblik dat de klant de offerte ondertekend heeft.</p>
-                <p>Indien opdrachtgever de verschuldigde bedragen niet binnen de overeengekomen termijn betaalt, worden aanmaningskosten in rekening gebracht. Deze aanmaningskosten bedragen € 15. Indien opdrachtgever na ingebrekestelling nalatig blijft de vordering te voldoen, kan de vordering uit handen worden gegeven aan een incassobureau, in welk geval opdrachtgever naast het alsdan verschuldigde totale bedrag tevens gehouden zal zijn tot volledige vergoeding van buitengerechtelijke en gerechtelijke kosten.</p>
+                <p>Indien opdrachtgever de verschuldigde bedragen niet binnen de overeengekomen termijn betaalt, worden aanmaningskosten in rekening gebracht. Deze aanmaningskosten bedragen &euro; 15. Indien opdrachtgever na ingebrekestelling nalatig blijft de vordering te voldoen, kan de vordering uit handen worden gegeven aan een incassobureau, in welk geval opdrachtgever naast het alsdan verschuldigde totale bedrag tevens gehouden zal zijn tot volledige vergoeding van buitengerechtelijke en gerechtelijke kosten.</p>
               </Article>
 
               <Article title="Artikel 5. Onderhoud van de website en onderhoudscontracten">
-                <p>Deze voorwaarden gelden voor een éénjarig onderhoudscontract voor een bestaande website.</p>
+                <p>Deze voorwaarden gelden voor een &eacute;&eacute;njarig onderhoudscontract voor een bestaande website.</p>
                 <p>Met onderhoud van de website wordt bedoeld:</p>
                 <ul className="list-disc pl-5 space-y-2 mt-2">
-                    <li>Het verzamelen, ordenen en verwerken van verkregen data van de opdrachtgever op bestaande pagina’s van de website. Het verzamelen, ordenen en verwerken van verkregen data van derden zoals de krant, tijdschriften, internet en andere media op bestaande pagina’s van de website indien toepasselijk.</li>
-                    <li>Het toevoegen van nieuwe teksten op bestaande pagina’s. Wijzigingen aan de teksten worden éénmalig uitgevoerd mits binnen 1 week aangeleverd, gerekend vanaf de eerste presentatie. In alle andere gevallen worden de kosten op uurbasis aan de klant doorberekend.</li>
+                    <li>Het verzamelen, ordenen en verwerken van verkregen data van de opdrachtgever op bestaande pagina's van de website. Het verzamelen, ordenen en verwerken van verkregen data van derden zoals de krant, tijdschriften, internet en andere media op bestaande pagina's van de website indien toepasselijk.</li>
+                    <li>Het toevoegen van nieuwe teksten op bestaande pagina's. Wijzigingen aan de teksten worden &eacute;&eacute;nmalig uitgevoerd mits binnen 1 week aangeleverd, gerekend vanaf de eerste presentatie. In alle andere gevallen worden de kosten op uurbasis aan de klant doorberekend.</li>
                     <li>Onderhoud van contacten met het hostingbedrijf indien toepasselijk.</li>
                     <li>Update van website Content Management Systeem en onderdelen indien van toepassing, mits deze geplaatst zijn door Wamelink Webdesign.</li>
                 </ul>
                 <p>Overgebleven uren gaan mee naar de volgende maand. Overgebleven uren gaan niet mee naar het volgende jaar. Geen restitutie van de overgebleven uren. Elk aanvullend uur wordt berekend volgens het uurtarief.</p>
-                <p>Kosten van een onderhoudscontract gelden voor één jaar en moeten vooraf, binnen 30 dagen na ondertekening van het contract worden voldaan.</p>
+                <p>Kosten van een onderhoudscontract gelden voor &eacute;&eacute;n jaar en moeten vooraf, binnen 30 dagen na ondertekening van het contract worden voldaan.</p>
                 <p>De opzegtermijn voor een onderhoudscontract is drie maanden voor het einde van de contractdatum.</p>
               </Article>
 
               <Article title="Artikel 6. Verplichtingen van de opdrachtgever">
                 <p>De opdrachtgever draagt zorg voor tijdige aanlevering van het materiaal.</p>
-                <p>Wamelink Webdesign mag de website van opdrachtgever gebruiken voor promotie en/of publiciteit. De gebruikelijke vorm hiervoor is een kleine link in de footer van de website met de tekst: ‘Website door Wamelink Webdesign’. Daarnaast wordt er een portfolio afbeelding op wamelinkwebdesign.nl geplaatst met daaronder een korte reactie van de opdrachtgever, tenzij anders afgesproken.</p>
+                <p>Wamelink Webdesign mag de website van opdrachtgever gebruiken voor promotie en/of publiciteit. De gebruikelijke vorm hiervoor is een kleine link in de footer van de website met de tekst: 'Website door Wamelink Webdesign'. Daarnaast wordt er een portfolio afbeelding op wamelinkwebdesign.nl geplaatst met daaronder een korte reactie van de opdrachtgever, tenzij anders afgesproken.</p>
               </Article>
 
               <Article title="Artikel 7. Uitvoering van de overeenkomst">
@@ -128,21 +125,21 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
 
               <Article title="Artikel 8. Wijzigingen en meerwerk">
                 <p>Indien Wamelink Webdesign op verzoek of met voorafgaande instemming van opdrachtgever werkzaamheden of andere prestaties heeft verricht die buiten de inhoud of omvang de overeengekomen diensten en producten vallen, zullen deze werkzaamheden of prestaties door opdrachtgever aan Wamelink Webdesign worden vergoed volgens de gebruikelijke tarieven van Wamelink Webdesign. Wamelink Webdesign is echter niet verplicht aan een dergelijk verzoek te voldoen en kan verlangen dat daar voor een afzonderlijke schriftelijke overeenkomst wordt gesloten.</p>
-                <p>Voor zover voor de diensten en producten een vaste prijs is afgesproken en partijen voornemens zijn om met betrekking tot extra werkzaamheden of prestaties een afzonderlijke overeenkomst te sluiten, zal Wamelink Webdesign opdrachtgever tevoren schriftelijk informeren over de financiële consequenties van die extra werkzaamheden of prestaties.</p>
+                <p>Voor zover voor de diensten en producten een vaste prijs is afgesproken en partijen voornemens zijn om met betrekking tot extra werkzaamheden of prestaties een afzonderlijke overeenkomst te sluiten, zal Wamelink Webdesign opdrachtgever tevoren schriftelijk informeren over de financi&euml;le consequenties van die extra werkzaamheden of prestaties.</p>
                 <p>Na het goedkeuren van de offerte en het goedkeuren van de eerste opzet van de website is het niet mogelijk om kosteloos veranderingen aan het design te laten uitvoeren.</p>
                 <p>Tariefswijziging kan plaats vinden bij wijziging van de inhoud van de opdracht, bij verlenging van de opdracht of bij wijzigingen in voor Wamelink Webdesign van toepassing zijnde wet- en regelgeving.</p>
               </Article>
 
-              <Article title="Artikel 9. Duur en beëindiging">
+              <Article title="Artikel 9. Duur en be&euml;indiging">
                 <p>Contracten met betrekking tot domeinnaamregistratie en hosting kennen een opzegtermijn van 3 maanden. Deze contracten worden elk jaar stilzwijgend verlengd.</p>
                 <p>Onderhoudscontracten kennen een minimale looptijd van 1 jaar en worden ieder jaar stilzwijgend verlengd met 1 jaar. Na het verstrijken van de minimale looptijd kan de overeenkomst op elk moment schriftelijk worden opgezegd, met inachtneming van een opzegtermijn van 3 maanden.</p>
-                <p>Wamelink Webdesign kan een overeenkomst met de opdrachtgever direct beëindigen wanneer de opdrachtgever zich niet, onbehoorlijk of onvolledig houdt aan de met Wamelink Webdesign gesloten overeenkomst(en) inclusief de bijbehorende voorwaarden.</p>
+                <p>Wamelink Webdesign kan een overeenkomst met de opdrachtgever direct be&euml;indigen wanneer de opdrachtgever zich niet, onbehoorlijk of onvolledig houdt aan de met Wamelink Webdesign gesloten overeenkomst(en) inclusief de bijbehorende voorwaarden.</p>
                 <p>Wamelink Webdesign heeft het recht geleverde producten en diensten tijdelijk of geheel buiten gebruik te stellen en/of het gebruik ervan te beperken indien opdrachtgever de overeenkomst en verplichting jegens Wamelink Webdesign niet nakomt of in strijd handelt met deze algemene voorwaarden. Wamelink Webdesign zal opdrachtgever hiervan tevoren in kennis stellen, tenzij zulks in alle redelijkheid en billijkheid niet van Wamelink Webdesign kan worden verlangd. De verplichting tot betaling van de verschuldigde bedragen blijft ook tijdens de buitengebruikstelling bestaan.</p>
               </Article>
 
               <Article title="Artikel 10. Levering en levertijd">
                 <p>De in de getekende overeenkomst genoemde opleverdatum zal worden aangehouden met eventuele aanpassing van die datum bij overeengekomen meerwerk en/of het te laat aanleveren van data door de opdrachtgever.</p>
-                <p>Overschrijding van de levertijd geldt nimmer als wanprestatie en laat de verplichting aan cliënt om de website af te nemen onverlet. In geen geval is opdrachtgever gerechtigd de overeenkomst te annuleren, de ontvangst van de website of de betaling daarvan te weigeren, of op schadevergoeding aanspraak te maken.</p>
+                <p>Overschrijding van de levertijd geldt nimmer als wanprestatie en laat de verplichting aan cli&euml;nt om de website af te nemen onverlet. In geen geval is opdrachtgever gerechtigd de overeenkomst te annuleren, de ontvangst van de website of de betaling daarvan te weigeren, of op schadevergoeding aanspraak te maken.</p>
               </Article>
 
               <Article title="Artikel 11. Copyright">
@@ -163,7 +160,7 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
               </Article>
 
                <Article title="Artikel 14. Diverse bepalingen">
-                <p>Mocht enige bepaling van deze voorwaarden naar het oordeel van de bevoegde rechter niet van toepassing zijn of in strijd met de openbare orde of wet zijn, dan zal slechts de betreffende bepaling als niet geschreven worden beschouwd en zullen partijen deze vervangen door één of meer bepalingen welke zo nauw mogelijk aansluiten bij de strijdige bepaling(en) en zullen overigens deze algemene voorwaarden volledig van kracht blijven.</p>
+                <p>Mocht enige bepaling van deze voorwaarden naar het oordeel van de bevoegde rechter niet van toepassing zijn of in strijd met de openbare orde of wet zijn, dan zal slechts de betreffende bepaling als niet geschreven worden beschouwd en zullen partijen deze vervangen door &eacute;&eacute;n of meer bepalingen welke zo nauw mogelijk aansluiten bij de strijdige bepaling(en) en zullen overigens deze algemene voorwaarden volledig van kracht blijven.</p>
                 <p>Op al onze aanbiedingen en met ons gesloten overeenkomsten is het Nederlands recht van toepassing.</p>
                 <p>Wamelink Webdesign kan op ieder gewenst moment zonder voorafgaande kennisgeving en opgaaf van redenen de algemene voorwaarden wijzigen en aanvullen. Wijzigingen gelden ook ten aanzien van reeds gesloten overeenkomsten met inachtneming van een termijn van 30 dagen na bekendmaking van de wijzigingen. Indien de opdrachtgever een wijziging in deze voorwaarden niet wil accepteren, kan hij de overeenkomst ontbinden. Dit ontslaat de opdrachtgever echter niet van zijn verplichtingen tot betalen voor de reeds geleverde diensten.</p>
                 <p>Wamelink Webdesign heeft het recht om geleverde producten en diensten tijdelijk buiten gebruik te stellen indien onderhoudswerkzaamheden noodzakelijk zijn.</p>
@@ -177,7 +174,7 @@ const Terms: React.FC<TermsProps> = ({ onClose }) => {
               <Article title="Artikel 16. Eigendomsvoorbehoud">
                 <p>De opdrachtgever is verplicht de benodigde gegevens met betrekking tot de website, domeinnaam en hosting door te geven aan Wamelink Webdesign. Opdrachtgever is en blijft eigenaar van alle wachtwoorden en andere verkregen documenten die betrekking hebben op de website, domeinnaam en hosting. Deze gegevens worden niet aan derden verstrekt zonder uitdrukkelijk tevoren gevraagde en gegeven toestemming van de opdrachtgever.</p>
                 <p>De door Wamelink Webdesign vervaardigde website is en blijft na betaling van de overeengekomen verschuldigde vergoeding eigendom van de opdrachtgever.</p>
-                <p>Door Wamelink Webdesign of anderen ontwikkelde scripts en programma’s gebruikt in en/of bij het tot stand komen van de website blijven eigendom van Wamelink Webdesign.</p>
+                <p>Door Wamelink Webdesign of anderen ontwikkelde scripts en programma's gebruikt in en/of bij het tot stand komen van de website blijven eigendom van Wamelink Webdesign.</p>
               </Article>
 
               <Article title="Artikel 17. Privacybepalingen">

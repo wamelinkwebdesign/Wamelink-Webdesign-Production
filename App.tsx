@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
@@ -12,6 +13,25 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import SalesOutreach from './components/sales/SalesOutreach';
 import Lenis from 'lenis';
 import { AnimatePresence, motion } from 'framer-motion';
+
+const HomePage: React.FC = () => (
+  <motion.div
+    key="home"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
+    <Header />
+    <main>
+      <Hero />
+      <Marquee />
+      <Services />
+      <ProjectShowcase />
+      <CTA />
+    </main>
+    <Footer />
+  </motion.div>
+);
 
 const App: React.FC = () => {
   const [view, setView] = useState<'home' | 'terms' | 'privacy' | 'sales'>('home');
@@ -34,6 +54,7 @@ const App: React.FC = () => {
       setView('sales');
     }
   }, []);
+  const location = useLocation();
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -64,33 +85,6 @@ const App: React.FC = () => {
   return (
     <div className="antialiased text-black bg-white selection:bg-[#ffcf00] selection:text-black">
       <CustomCursor />
-      
-      <AnimatePresence mode="wait">
-        {view === 'home' && (
-          <motion.div 
-            key="home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <Header />
-            <main>
-              <Hero />
-              <Marquee />
-              <Services />
-              <ProjectShowcase />
-              <CTA />
-            </main>
-            <Footer 
-              onOpenTerms={() => setView('terms')} 
-              onOpenPrivacy={() => setView('privacy')} 
-            />
-          </motion.div>
-        )}
-        
-        {view === 'terms' && (
-          <Terms key="terms" onClose={() => setView('home')} />
-        )}
 
         {view === 'privacy' && (
           <PrivacyPolicy key="privacy" onClose={() => setView('home')} />
@@ -99,6 +93,12 @@ const App: React.FC = () => {
         {view === 'sales' && (
           <SalesOutreach key="sales" onClose={() => setView('home')} />
         )}
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+        </Routes>
       </AnimatePresence>
     </div>
   );
