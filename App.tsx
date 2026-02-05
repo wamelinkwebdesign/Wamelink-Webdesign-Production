@@ -9,11 +9,31 @@ import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import Terms from './components/Terms';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import SalesOutreach from './components/sales/SalesOutreach';
 import Lenis from 'lenis';
 import { AnimatePresence, motion } from 'framer-motion';
 
 const App: React.FC = () => {
-  const [view, setView] = useState<'home' | 'terms' | 'privacy'>('home');
+  const [view, setView] = useState<'home' | 'terms' | 'privacy' | 'sales'>('home');
+
+  // Hidden keyboard shortcut to access sales dashboard (Ctrl+Shift+S)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'S') {
+        e.preventDefault();
+        setView('sales');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    // Check URL hash for sales dashboard access
+    if (window.location.hash === '#sales') {
+      setView('sales');
+    }
+  }, []);
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -74,6 +94,10 @@ const App: React.FC = () => {
 
         {view === 'privacy' && (
           <PrivacyPolicy key="privacy" onClose={() => setView('home')} />
+        )}
+
+        {view === 'sales' && (
+          <SalesOutreach key="sales" onClose={() => setView('home')} />
         )}
       </AnimatePresence>
     </div>
