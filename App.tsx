@@ -37,24 +37,12 @@ const App: React.FC = () => {
   const [showSales, setShowSales] = useState(false);
   const location = useLocation();
 
-  // Hidden keyboard shortcut to access sales dashboard (Ctrl+Shift+S)
+  // Check URL hash or path for admin dashboard access (not indexable by Google)
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'S') {
-        e.preventDefault();
-        setShowSales(true);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  // Check URL hash for sales dashboard access
-  useEffect(() => {
-    if (window.location.hash === '#sales') {
+    if (window.location.hash === '#admin' || window.location.pathname === '/admin') {
       setShowSales(true);
     }
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
