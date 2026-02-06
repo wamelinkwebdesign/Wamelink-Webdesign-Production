@@ -40,7 +40,7 @@ const App: React.FC = () => {
   // Hidden keyboard shortcut to access sales dashboard (Ctrl+Shift+S)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key === 'S') {
+      if (e.ctrlKey && e.shiftKey && (e.key === 'S' || e.key === 's')) {
         e.preventDefault();
         setShowSales(true);
       }
@@ -49,12 +49,12 @@ const App: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  // Check URL hash for sales dashboard access
+  // Check URL hash or path for sales dashboard access
   useEffect(() => {
-    if (window.location.hash === '#sales') {
+    if (window.location.hash === '#sales' || window.location.pathname === '/sales') {
       setShowSales(true);
     }
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -98,6 +98,7 @@ const App: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/sales" element={<SalesOutreach onClose={() => window.location.href = '/'} />} />
         </Routes>
       </AnimatePresence>
     </div>
