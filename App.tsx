@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -34,33 +34,33 @@ const HomePage: React.FC = () => (
 );
 
 const App: React.FC = () => {
-  const [view, setView] = useState<'home' | 'terms' | 'privacy' | 'sales'>('home');
+  const [showSales, setShowSales] = useState(false);
+  const location = useLocation();
 
   // Hidden keyboard shortcut to access sales dashboard (Ctrl+Shift+S)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.shiftKey && e.key === 'S') {
         e.preventDefault();
-        setView('sales');
+        setShowSales(true);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Check URL hash for sales dashboard access
   useEffect(() => {
-    // Check URL hash for sales dashboard access
     if (window.location.hash === '#sales') {
-      setView('sales');
+      setShowSales(true);
     }
   }, []);
-  const location = useLocation();
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
@@ -68,7 +68,6 @@ const App: React.FC = () => {
       touchMultiplier: 2,
     });
 
-    // Request Animation Frame loop
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -76,23 +75,24 @@ const App: React.FC = () => {
 
     requestAnimationFrame(raf);
 
-    // Cleanup
     return () => {
       lenis.destroy();
     };
   }, []);
 
+  // Show sales dashboard overlay if active
+  if (showSales) {
+    return (
+      <div className="antialiased text-black bg-white selection:bg-[#ffcf00] selection:text-black">
+        <SalesOutreach onClose={() => setShowSales(false)} />
+      </div>
+    );
+  }
+
   return (
     <div className="antialiased text-black bg-white selection:bg-[#ffcf00] selection:text-black">
       <CustomCursor />
 
-        {view === 'privacy' && (
-          <PrivacyPolicy key="privacy" onClose={() => setView('home')} />
-        )}
-
-        {view === 'sales' && (
-          <SalesOutreach key="sales" onClose={() => setView('home')} />
-        )}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<HomePage />} />
