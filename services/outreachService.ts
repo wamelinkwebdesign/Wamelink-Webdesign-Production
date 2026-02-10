@@ -236,3 +236,46 @@ export const scheduleFollowUps = async (
     return { success: false, error: error.message };
   }
 };
+
+
+/**
+ * Find email address by scraping a prospect's website
+ */
+export const findEmail = async (
+  websiteUrl: string
+): Promise<{
+  success: boolean;
+  bestEmail?: string;
+  emails?: { email: string; score: number; foundOn: string }[];
+  error?: string;
+}> => {
+  try {
+    const response = await fetch('/api/find-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: websiteUrl }),
+    });
+
+    const data = await response.json();
+    if (!response.ok) return { success: false, error: data.error };
+    return { success: true, bestEmail: data.bestEmail, emails: data.emails };
+  } catch (error: any) {
+    return { success: false, error: error.message };
+  }
+};
+
+/**
+ * Check Gmail OAuth connection status
+ */
+export const checkGmailStatus = async (): Promise<{
+  connected: boolean;
+  email?: string;
+  authorizeUrl?: string;
+}> => {
+  try {
+    const response = await fetch('/api/gmail/status');
+    return await response.json();
+  } catch {
+    return { connected: false, authorizeUrl: '/api/gmail/authorize' };
+  }
+};
