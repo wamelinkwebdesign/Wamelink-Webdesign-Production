@@ -4,6 +4,7 @@ import {
   ArrowLeft, Plus, Users, LayoutGrid, FileText, Search,
   Mail, Phone, Linkedin, MessageCircle, Calendar,
   ChevronDown, Trash2, ExternalLink, Sparkles, Filter,
+  Upload, SearchCheck, Clock,
 } from 'lucide-react';
 import { Lead, LeadStatus, OutreachMessage, OutreachTemplate } from '../../types';
 import {
@@ -14,6 +15,9 @@ import LeadForm from './LeadForm';
 import OutreachComposer from './OutreachComposer';
 import PipelineView from './PipelineView';
 import TemplateManager from './TemplateManager';
+import CSVImport from './CSVImport';
+import FollowUpSequence from './FollowUpSequence';
+import ProspectFinder from './ProspectFinder';
 
 interface SalesOutreachProps {
   onClose: () => void;
@@ -48,6 +52,10 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [search, setSearch] = useState('');
   const [filterStatus, setFilterStatus] = useState<LeadStatus | 'all'>('all');
+  // New state for Phase 3, 4, 5
+  const [showCSVImport, setShowCSVImport] = useState(false);
+  const [showProspectFinder, setShowProspectFinder] = useState(false);
+  const [sequenceLead, setSequenceLead] = useState<Lead | null>(null);
 
   useEffect(() => {
     setLeads(getLeads());
@@ -109,6 +117,19 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
     setTemplates(getTemplates());
   };
 
+  // Phase 3: Handle CSV import
+  const handleCSVImport = (importedLeads: Lead[]) => {
+    importedLeads.forEach((lead) => saveLead(lead));
+    refreshLeads();
+    setShowCSVImport(false);
+  };
+
+  // Phase 5: Handle adding a prospect as a lead
+  const handleAddProspectLead = (lead: Lead) => {
+    saveLead(lead);
+    refreshLeads();
+  };
+
   const filteredLeads = leads.filter((lead) => {
     const matchesSearch =
       !search ||
@@ -148,16 +169,32 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
                 <p className="text-xs text-gray-500">MKB Acquisitie Tool</p>
               </div>
             </div>
-            <button
-              onClick={() => {
-                setEditingLead(null);
-                setShowLeadForm(true);
-              }}
-              className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-gray-800 transition-colors"
-            >
-              <Plus size={14} />
-              Nieuwe Lead
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setShowProspectFinder(true)}
+                className="flex items-center gap-2 bg-[#FFD700] text-black px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-[#FFCF00] transition-colors border border-black"
+              >
+                <SearchCheck size={14} />
+                Prospect Finder
+              </button>
+              <button
+                onClick={() => setShowCSVImport(true)}
+                className="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-gray-50 transition-colors border border-gray-300"
+              >
+                <Upload size={14} />
+                CSV Import
+              </button>
+              <button
+                onClick={() => {
+                  setEditingLead(null);
+                  setShowLeadForm(true);
+                }}
+                className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-gray-800 transition-colors"
+              >
+                <Plus size={14} />
+                Nieuwe Lead
+              </button>
+            </div>
           </div>
 
           {/* Tabs */}
@@ -254,7 +291,7 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
                       {search || filterStatus !== 'all' ? 'Geen leads gevonden' : 'Nog geen leads toegevoegd'}
                     </p>
                     <p className="text-gray-300 text-xs mt-1">
-                      {!search && filterStatus === 'all' && 'Klik op "Nieuwe Lead" om te beginnen'}
+                      {!search && filterStatus === 'all' && 'Gebruik de Prospect Finder of CSV Import om te beginnen'}
                     </p>
                   </div>
                 )}
@@ -382,6 +419,14 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
                           Bericht Opstellen
                         </button>
                         <button
+                          onClick={() => setSequenceLead(selectedLead)}
+                          className="flex items-center justify-center gap-2 px-3 py-2 border border-gray-300 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-gray-50 transition-colors"
+                          title="Follow-up Sequence"
+                        >
+                          <Clock size={14} />
+                          Follow-ups
+                        </button>
+                        <button
                           onClick={() => {
                             setEditingLead(selectedLead);
                             setShowLeadForm(true);
@@ -472,6 +517,41 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
             lead={composerLead}
             onSend={handleOutreachSend}
             onClose={() => setComposerLead(null)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Phase 3: CSV Import Modal */}
+      <AnimatePresence>
+        {showCSVImport && (
+          <CSVImport
+            onImport={handleCSVImport}
+            onClose={() => setShowCSVImport(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Phase 4: Follow-up Sequence Modal */}
+      <AnimatePresence>
+        {sequenceLead && (
+          <FollowUpSequence
+            lead={sequenceLead}
+            onClose={() => setSequenceLead(null)}
+            onScheduled={() => {
+              refreshLeads();
+              setSequenceLead(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Phase 5: Prospect Finder Modal */}
+      <AnimatePresence>
+        {showProspectFinder && (
+          <ProspectFinder
+            onAddLead={handleAddProspectLead}
+            existingLeads={leads}
+            onClose={() => setShowProspectFinder(false)}
           />
         )}
       </AnimatePresence>
