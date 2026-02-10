@@ -151,7 +151,7 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen bg-gray-50"
+      className="min-h-screen bg-gray-50" style={{ cursor: "auto" }}
     >
       {/* Top Bar */}
       <div className="bg-white border-b border-gray-200 sticky top-0 z-40">
@@ -560,3 +560,4 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
 };
 
 export default SalesOutreach;
+

@@ -23,7 +23,6 @@ interface Prospect {
   rating: number | null;
   totalRatings: number;
   placeId: string;
-  // Website score (populated after scoring)
   scored: boolean;
   scoring: boolean;
   prospectScore: number | null;
@@ -115,7 +114,6 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
 
       setProspects(newProspects);
 
-      // Auto-score prospects that have websites
       const withWebsites = newProspects.filter((p) => p.website);
       if (withWebsites.length > 0) {
         scoreProspects(newProspects);
@@ -131,12 +129,10 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
     setScoringAll(true);
 
     const withWebsites = prospectList.filter((p) => p.website);
-    // Score in batches of 5
     for (let i = 0; i < withWebsites.length; i += 5) {
       const batch = withWebsites.slice(i, i + 5);
       const urls = batch.map((p) => p.website);
 
-      // Mark as scoring
       setProspects((prev) =>
         prev.map((p) =>
           urls.includes(p.website) ? { ...p, scoring: true } : p
@@ -178,7 +174,6 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
           );
         }
       } catch (err) {
-        // Mark batch as scored with error
         setProspects((prev) =>
           prev.map((p) =>
             urls.includes(p.website) ? { ...p, scoring: false, scored: true } : p
@@ -187,7 +182,6 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
       }
     }
 
-    // Prospects without websites get high prospect score
     setProspects((prev) =>
       prev.map((p) =>
         !p.website
@@ -257,7 +251,6 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
   };
 
   const sortedProspects = [...prospects].sort((a, b) => {
-    // Sort by prospect score (highest first), nulls last
     if (a.prospectScore === null && b.prospectScore === null) return 0;
     if (a.prospectScore === null) return 1;
     if (b.prospectScore === null) return -1;
@@ -265,25 +258,27 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
   });
 
   const inputClass =
-    'w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent bg-white text-black';
+    'w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent bg-white text-black cursor-auto';
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999] flex items-center justify-center p-4"
+      style={{ cursor: 'auto' }}
       onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col"
+        style={{ cursor: 'auto' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-100">
+        <div className="flex items-center justify-between p-6 border-b border-gray-100 shrink-0">
           <div>
             <h2 className="text-lg font-black uppercase tracking-tight flex items-center gap-2">
               <Search size={20} />
@@ -293,13 +288,13 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
               Vind MKB-bedrijven met slechte websites in heel Nederland
             </p>
           </div>
-          <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-lg transition-colors">
+          <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-lg transition-colors cursor-auto">
             <X size={20} />
           </button>
         </div>
 
-        {/* Search Controls */}
-        <div className="p-6 border-b border-gray-100 space-y-3">
+        {/* Search Controls - fixed, not scrollable */}
+        <div className="p-6 border-b border-gray-100 space-y-3 shrink-0">
           <div className="flex gap-3">
             {/* City Selection */}
             <div className="flex-1">
@@ -314,7 +309,7 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
                     setSelectedCity(e.target.value);
                     setCustomCity('');
                   }}
-                  className={inputClass + ' pl-9 cursor-pointer'}
+                  className={inputClass + ' pl-9'}
                 >
                   <option value="">Kies een stad...</option>
                   {Object.entries(DUTCH_CITIES).map(([province, cities]) => (
@@ -348,7 +343,7 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
               <select
                 value={selectedIndustry}
                 onChange={(e) => setSelectedIndustry(e.target.value as Industry | '')}
-                className={inputClass + ' cursor-pointer'}
+                className={inputClass}
               >
                 <option value="">Alle branches</option>
                 {INDUSTRIES.map((ind) => (
@@ -371,7 +366,7 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
           <button
             onClick={handleSearch}
             disabled={searching || (!city && !customQuery)}
-            className="w-full bg-[#FFD700] text-black py-2.5 px-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-[#FFCF00] transition-colors flex items-center justify-center gap-2 border border-black disabled:opacity-40"
+            className="w-full bg-[#FFD700] text-black py-2.5 px-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-[#FFCF00] transition-colors flex items-center justify-center gap-2 border border-black disabled:opacity-40 cursor-auto"
           >
             {searching ? (
               <>
@@ -387,8 +382,8 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
           </button>
         </div>
 
-        {/* Results */}
-        <div className="flex-1 overflow-y-auto p-6">
+        {/* Results - THIS is the scrollable area */}
+        <div className="flex-1 overflow-y-auto overscroll-contain p-6" style={{ minHeight: 0 }}>
           {error && (
             <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg mb-4">
               <AlertTriangle size={16} className="text-red-500" />
@@ -429,7 +424,7 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
                     className="border border-gray-200 rounded-xl overflow-hidden hover:border-gray-300 transition-colors"
                   >
                     <div
-                      className="p-4 cursor-pointer"
+                      className="p-4 cursor-auto"
                       onClick={() => setExpandedProspect(isExpanded ? null : prospect.placeId)}
                     >
                       <div className="flex items-start justify-between">
@@ -510,7 +505,7 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
                               handleAddAsLead(prospect);
                             }}
                             disabled={alreadyAdded}
-                            className={`p-2 rounded-lg transition-all ${
+                            className={`p-2 rounded-lg transition-all cursor-auto ${
                               alreadyAdded
                                 ? 'bg-green-100 text-green-600'
                                 : 'bg-black text-white hover:bg-gray-800'
@@ -532,7 +527,6 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
                           className="border-t border-gray-100"
                         >
                           <div className="p-4 space-y-3 bg-gray-50">
-                            {/* Issues */}
                             {prospect.issues.length > 0 && (
                               <div>
                                 <p className="text-[10px] font-bold uppercase tracking-wider text-red-500 mb-1">
@@ -549,7 +543,6 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
                               </div>
                             )}
 
-                            {/* Opportunities */}
                             {prospect.opportunities.length > 0 && (
                               <div>
                                 <p className="text-[10px] font-bold uppercase tracking-wider text-green-600 mb-1">

@@ -4,24 +4,10 @@ import { motion } from 'framer-motion';
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
-  const [isOnDarkBg, setIsOnDarkBg] = useState(true);
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
-
-      // Check if cursor is over a dark or light background
-      const elementBelow = document.elementFromPoint(e.clientX, e.clientY);
-      if (elementBelow) {
-        const bg = window.getComputedStyle(elementBelow).backgroundColor;
-        const match = bg.match(/\d+/g);
-        if (match) {
-          const [r, g, b] = match.map(Number);
-          // Luminance check: dark if below 128
-          const luminance = (r * 299 + g * 587 + b * 114) / 1000;
-          setIsOnDarkBg(luminance < 128);
-        }
-      }
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -46,23 +32,20 @@ const CustomCursor: React.FC = () => {
     };
   }, []);
 
-  const cursorColor = isOnDarkBg ? 'white' : 'black';
-
   return (
     <>
       <motion.div
-        className="hidden md:block fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-[9999]"
-        style={{ backgroundColor: cursorColor }}
+        className="hidden md:block fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
         animate={{ x: mousePosition.x - 6, y: mousePosition.y - 6 }}
         transition={{ type: 'tween', ease: 'linear', duration: 0 }}
       />
       <motion.div
-        className="hidden md:block fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999]"
-        style={{ borderColor: cursorColor, borderWidth: isHovering ? '1px' : '2px', borderStyle: 'solid' }}
+        className="hidden md:block fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
         animate={{
           x: mousePosition.x - 16,
           y: mousePosition.y - 16,
           scale: isHovering ? 2.5 : 1,
+          borderWidth: isHovering ? '1px' : '2px',
         }}
         transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
       />
