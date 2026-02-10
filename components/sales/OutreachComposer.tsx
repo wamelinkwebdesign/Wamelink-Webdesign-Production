@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Sparkles, Copy, Send, Check } from 'lucide-react';
+import { X, Sparkles, Copy, Send, Check, Mail, Linkedin, Phone, MessageCircle, Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { Lead, OutreachChannel, OutreachMessage } from '../../types';
-import { generateOutreachMessage } from '../../services/outreachService';
+import { generateOutreachMessage, sendEmail } from '../../services/outreachService';
 import { generateId } from '../../services/storageService';
 
 interface OutreachComposerProps {
@@ -11,12 +11,14 @@ interface OutreachComposerProps {
   onClose: () => void;
 }
 
-const CHANNELS: { value: OutreachChannel; label: string; icon: string }[] = [
-  { value: 'email', label: 'E-mail', icon: 'mail' },
-  { value: 'linkedin', label: 'LinkedIn', icon: 'linkedin' },
-  { value: 'phone', label: 'Telefoon', icon: 'phone' },
-  { value: 'whatsapp', label: 'WhatsApp', icon: 'message' },
+const CHANNELS: { value: OutreachChannel; label: string; icon: React.ReactNode }[] = [
+  { value: 'email', label: 'E-mail', icon: <Mail size={14} /> },
+  { value: 'linkedin', label: 'LinkedIn', icon: <Linkedin size={14} /> },
+  { value: 'phone', label: 'Telefoon', icon: <Phone size={14} /> },
+  { value: 'whatsapp', label: 'WhatsApp', icon: <MessageCircle size={14} /> },
 ];
+
+type SendStatus = 'idle' | 'sending' | 'sent' | 'error';
 
 const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClose }) => {
   const [channel, setChannel] = useState<OutreachChannel>('email');
@@ -27,6 +29,8 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
   const [body, setBody] = useState('');
   const [generating, setGenerating] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [sendStatus, setSendStatus] = useState<SendStatus>('idle');
+  const [sendError, setSendError] = useState('');
 
   const handleGenerate = async () => {
     setGenerating(true);
@@ -55,7 +59,38 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleSend = () => {
+  const handleSendEmail = async () => {
+    if (!lead.email) {
+      setSendError('Geen e-mailadres beschikbaar voor deze lead');
+      setSendStatus('error');
+      return;
+    }
+
+    setSendStatus('sending');
+    setSendError('');
+
+    const result = await sendEmail(lead.email, subject, body);
+
+    if (result.success) {
+      setSendStatus('sent');
+      // Also track in local state
+      const message: OutreachMessage = {
+        id: generateId(),
+        leadId: lead.id,
+        channel: 'email',
+        subject,
+        body,
+        sentAt: new Date().toISOString(),
+        status: 'sent',
+      };
+      onSend(message);
+    } else {
+      setSendStatus('error');
+      setSendError(result.error || 'Onbekende fout bij verzenden');
+    }
+  };
+
+  const handleMarkAsSent = () => {
     const message: OutreachMessage = {
       id: generateId(),
       leadId: lead.id,
@@ -68,8 +103,9 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
     onSend(message);
   };
 
-  const inputClass = "w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent bg-white text-black";
-  const labelClass = "block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1";
+  const inputClass =
+    'w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:border-transparent bg-white text-black';
+  const labelClass = 'block text-xs font-bold uppercase tracking-wider text-gray-600 mb-1';
 
   return (
     <motion.div
@@ -89,7 +125,9 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
         <div className="flex items-center justify-between p-6 border-b border-gray-100">
           <div>
             <h2 className="text-lg font-black uppercase tracking-tight">Outreach Bericht</h2>
-            <p className="text-sm text-gray-500 mt-0.5">{lead.companyName} — {lead.contactPerson}</p>
+            <p className="text-sm text-gray-500 mt-0.5">
+              {lead.companyName} — {lead.contactPerson}
+            </p>
           </div>
           <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-lg transition-colors">
             <X size={20} />
@@ -105,12 +143,13 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
                 <button
                   key={ch.value}
                   onClick={() => setChannel(ch.value)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border transition-all ${
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold uppercase tracking-wider border transition-all ${
                     channel === ch.value
                       ? 'bg-black text-white border-black'
                       : 'bg-white text-gray-600 border-gray-300 hover:border-gray-400'
                   }`}
                 >
+                  {ch.icon}
                   {ch.label}
                 </button>
               ))}
@@ -118,25 +157,25 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
           </div>
 
           {/* Tone & Language */}
-          <div className="grid grid-cols-2 gap-4">
-            <div>
+          <div className="flex gap-4">
+            <div className="flex-1">
               <label className={labelClass}>Toon</label>
               <select
                 value={tone}
-                onChange={(e) => setTone(e.target.value as 'formal' | 'friendly' | 'direct')}
-                className={inputClass}
+                onChange={(e) => setTone(e.target.value as any)}
+                className={inputClass + ' cursor-pointer'}
               >
-                <option value="formal">Formeel</option>
                 <option value="friendly">Vriendelijk</option>
+                <option value="formal">Formeel</option>
                 <option value="direct">Direct</option>
               </select>
             </div>
-            <div>
+            <div className="flex-1">
               <label className={labelClass}>Taal</label>
               <select
                 value={language}
-                onChange={(e) => setLanguage(e.target.value as 'nl' | 'en')}
-                className={inputClass}
+                onChange={(e) => setLanguage(e.target.value as any)}
+                className={inputClass + ' cursor-pointer'}
               >
                 <option value="nl">Nederlands</option>
                 <option value="en">English</option>
@@ -146,13 +185,13 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
 
           {/* Focus Point */}
           <div>
-            <label className={labelClass}>Focus / Haakje</label>
+            <label className={labelClass}>Focuspunt (optioneel)</label>
             <input
               type="text"
               value={focusPoint}
               onChange={(e) => setFocusPoint(e.target.value)}
               className={inputClass}
-              placeholder="bijv. hun website laadt langzaam, geen mobiele versie, verouderd design..."
+              placeholder="Bijv. hun website laadt langzaam, geen mobiele versie, verouderd design..."
             />
           </div>
 
@@ -166,7 +205,7 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
               <>
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                 >
                   <Sparkles size={16} />
                 </motion.div>
@@ -200,29 +239,82 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
             <textarea
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              className={inputClass + " resize-none font-mono text-xs"}
+              className={inputClass + ' resize-none font-mono text-xs'}
               rows={10}
               placeholder="Schrijf je bericht of laat AI het genereren..."
             />
           </div>
 
+          {/* Send Status Messages */}
+          {sendStatus === 'sent' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-2 p-3 bg-green-50 border border-green-200 rounded-lg"
+            >
+              <CheckCircle2 size={16} className="text-green-600" />
+              <span className="text-sm text-green-700 font-medium">
+                E-mail succesvol verzonden naar {lead.email}!
+              </span>
+            </motion.div>
+          )}
+
+          {sendStatus === 'error' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg"
+            >
+              <AlertCircle size={16} className="text-red-600" />
+              <span className="text-sm text-red-700 font-medium">{sendError}</span>
+            </motion.div>
+          )}
+
           {/* Actions */}
           {body && (
             <div className="flex gap-3">
+              {/* Copy button */}
               <button
                 onClick={handleCopy}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-300 rounded-lg text-sm font-bold uppercase tracking-wider hover:bg-gray-50 transition-colors"
+                className="flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-300 rounded-lg text-sm font-bold uppercase tracking-wider hover:bg-gray-50 transition-colors"
               >
                 {copied ? <Check size={16} /> : <Copy size={16} />}
                 {copied ? 'Gekopieerd!' : 'Kopieer'}
               </button>
-              <button
-                onClick={handleSend}
-                className="flex-1 flex items-center justify-center gap-2 bg-black text-white py-2.5 px-4 rounded-lg text-sm font-bold uppercase tracking-wider hover:bg-gray-800 transition-colors"
-              >
-                <Send size={16} />
-                Markeer als verstuurd
-              </button>
+
+              {/* Send or Mark as sent */}
+              {channel === 'email' && lead.email ? (
+                <button
+                  onClick={handleSendEmail}
+                  disabled={sendStatus === 'sending' || sendStatus === 'sent'}
+                  className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white py-2.5 px-4 rounded-lg text-sm font-bold uppercase tracking-wider hover:bg-green-700 transition-colors disabled:opacity-50"
+                >
+                  {sendStatus === 'sending' ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      Verzenden...
+                    </>
+                  ) : sendStatus === 'sent' ? (
+                    <>
+                      <CheckCircle2 size={16} />
+                      Verzonden!
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Verstuur E-mail
+                    </>
+                  )}
+                </button>
+              ) : (
+                <button
+                  onClick={handleMarkAsSent}
+                  className="flex-1 flex items-center justify-center gap-2 bg-black text-white py-2.5 px-4 rounded-lg text-sm font-bold uppercase tracking-wider hover:bg-gray-800 transition-colors"
+                >
+                  <Send size={16} />
+                  Markeer als verstuurd
+                </button>
+              )}
             </div>
           )}
         </div>
