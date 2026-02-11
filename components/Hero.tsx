@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Smile, ArrowDown } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import MagneticButton from './MagneticButton';
 
@@ -163,7 +163,7 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Rotating Badge */}
-      <motion.div 
+      <motion.div
         className="absolute top-32 right-8 md:right-32 z-10 hidden md:block"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -178,7 +178,7 @@ const Hero: React.FC = () => {
             </text>
           </svg>
           <div className="w-16 h-16 bg-[#FFD700] rounded-full flex items-center justify-center border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-            <Smile size={32} strokeWidth={2} />
+            <span className="text-2xl font-black tracking-tighter">W</span>
           </div>
         </div>
       </motion.div>
