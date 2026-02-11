@@ -136,7 +136,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section aria-label="Website laten maken Amsterdam - Wamelink Webdesign" className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden border-b border-black bg-white">
+    <section aria-label="Wamelink Webdesign" className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden border-b border-black bg-white">
       
       {/* Floating Reveal Image with 3D Tilt */}
       <motion.div
