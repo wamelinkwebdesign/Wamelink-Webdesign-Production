@@ -35,12 +35,12 @@ const Footer: React.FC = () => {
                 <h4 className="mb-4 md:mb-6 text-gray-400">Socials</h4>
                 <ul className="flex flex-col gap-4 items-start lg:items-end">
                   <li>
-                    <a href="#" className="flex items-center gap-2 hover:text-[#ffcf00] transition-colors group">
+                    <a href="https://instagram.com/denniswamelink" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#ffcf00] transition-colors group">
                       <span className="group-hover:underline decoration-[#ffcf00]">Instagram</span>
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="flex items-center gap-2 hover:text-[#ffcf00] transition-colors group">
+                    <a href="https://linkedin.com/in/denniswamelink" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#ffcf00] transition-colors group">
                       <span className="group-hover:underline decoration-[#ffcf00]">LinkedIn</span>
                     </a>
                   </li>
