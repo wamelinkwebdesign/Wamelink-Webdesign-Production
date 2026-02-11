@@ -1,0 +1,9 @@
+# Robots.txt for wamelinkwebdesign.nl
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /#admin
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://wamelinkwebdesign.nl/sitemap.xml

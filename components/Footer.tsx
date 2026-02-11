@@ -48,18 +48,18 @@ const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="mb-4 md:mb-6 text-gray-400">Office</h4>
-                <p className="text-sm leading-relaxed">
+                <address className="text-sm leading-relaxed not-italic">
                   Herengracht 320<br />
                   1016CE Amsterdam<br />
                   The Netherlands
-                </p>
+                </address>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-black pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 gap-4 md:gap-0">
-           <p>&copy; {new Date().getFullYear()} Wamelink Webdesign</p>
+           <p>&copy; {new Date().getFullYear()} Wamelink Webdesign — Website laten maken Amsterdam</p>
            <div className="flex gap-8">
              <Link to="/terms" className="hover:text-black transition-colors">ALGEMENE VOORWAARDEN</Link>
              <Link to="/privacy" className="hover:text-black transition-colors">PRIVACY POLICY</Link>

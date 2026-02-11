@@ -7,15 +7,18 @@ const CTA: React.FC = () => {
     <section className="py-20 md:py-32 bg-white border-t border-black overflow-hidden relative">
       <div className="container mx-auto px-4 sm:px-8 text-center">
         
-        <motion.h2 
+        <motion.h2
            initial={{ opacity: 0, y: 50 }}
            whileInView={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8 }}
-           className="text-[12vw] md:text-[6vw] leading-[0.9] font-black tracking-tighter uppercase mb-10 md:mb-12"
+           className="text-[12vw] md:text-[6vw] leading-[0.9] font-black tracking-tighter uppercase mb-6 md:mb-8"
         >
           Klaar om online<br />
           <span className="text-[#ffcf00] stroke-black text-stroke-mobile md:text-stroke-desktop">Impact</span> te maken?
         </motion.h2>
+        <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
+          Laat je website maken door Wamelink Webdesign in Amsterdam. Neem vandaag nog contact op voor een vrijblijvend gesprek.
+        </p>
 
         <div className="flex justify-center w-full px-2 sm:px-0">
           <MagneticButton 

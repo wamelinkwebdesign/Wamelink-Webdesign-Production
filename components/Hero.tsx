@@ -136,7 +136,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden border-b border-black bg-white">
+    <section aria-label="Website laten maken Amsterdam - Wamelink Webdesign" className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden border-b border-black bg-white">
       
       {/* Floating Reveal Image with 3D Tilt */}
       <motion.div
@@ -259,13 +259,14 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }} 
             >
-               <h3 
+               <p
                  className="text-xl md:text-2xl font-bold leading-tight cursor-pointer hover:underline decoration-2 underline-offset-4 decoration-[#FFD700]"
                  onMouseEnter={() => setIsHovering(true)}
                  onMouseLeave={() => setIsHovering(false)}
                >
                  <b>digital designer & developer</b><br /><i>based in AMS</i>
-               </h3>
+               </p>
+               <p className="sr-only">Website laten maken in Amsterdam? Wamelink Webdesign maakt maatwerk websites met impact voor bedrijven in Amsterdam.</p>
                
                {/* Mobile CTA */}
                <div className="mt-8 md:hidden w-full">
