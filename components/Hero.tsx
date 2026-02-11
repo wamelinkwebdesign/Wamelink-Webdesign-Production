@@ -266,7 +266,6 @@ const Hero: React.FC = () => {
                >
                  <b>digital designer & developer</b><br /><i>based in AMS</i>
                </p>
-               <p className="sr-only">Website laten maken in Amsterdam? Wamelink Webdesign maakt maatwerk websites met impact voor bedrijven in Amsterdam.</p>
                
                {/* Mobile CTA */}
                <div className="mt-8 md:hidden w-full">

@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="border-t border-black pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500 gap-4 md:gap-0">
-           <p>&copy; {new Date().getFullYear()} Wamelink Webdesign — Website laten maken Amsterdam</p>
+           <p>&copy; {new Date().getFullYear()} Wamelink Webdesign</p>
            <div className="flex gap-8">
              <Link to="/terms" className="hover:text-black transition-colors">ALGEMENE VOORWAARDEN</Link>
              <Link to="/privacy" className="hover:text-black transition-colors">PRIVACY POLICY</Link>
