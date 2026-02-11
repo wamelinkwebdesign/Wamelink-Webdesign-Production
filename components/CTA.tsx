@@ -20,12 +20,19 @@ const CTA: React.FC = () => {
           Vertel me over je project. Ik reageer binnen 24 uur.
         </p>
 
-        <div className="flex justify-center w-full px-2 sm:px-0">
-          <MagneticButton 
-            href="mailto:dennis@wamelinkwebdesign.nl"
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-2 sm:px-0">
+          <MagneticButton
+            href="https://calendar.app.google/DZwS3JYfBFnzHn566"
+            target="_blank"
             className="bg-black text-white px-8 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest hover:bg-[#ffcf00] hover:text-black transition-colors hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full sm:w-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none flex items-center justify-center"
           >
-            Start Project
+            Plan een gesprek
+          </MagneticButton>
+          <MagneticButton
+            href="mailto:dennis@wamelinkwebdesign.nl"
+            className="bg-white text-black border-2 border-black px-8 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest hover:bg-[#ffcf00] hover:text-black transition-colors hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full sm:w-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none flex items-center justify-center"
+          >
+            Stuur een mail
           </MagneticButton>
         </div>
       </div>

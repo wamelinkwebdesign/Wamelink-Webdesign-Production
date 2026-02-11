@@ -245,11 +245,12 @@ const Hero: React.FC = () => {
           {/* Bottom Row: Subhead & CTA */}
           <div className="w-full flex flex-col md:flex-row justify-center md:justify-between items-end gap-8 border-t border-black pt-8">
             <div className="hidden md:block">
-              <MagneticButton 
-                href="mailto:dennis@wamelinkwebdesign.nl"
+              <MagneticButton
+                href="https://calendar.app.google/DZwS3JYfBFnzHn566"
+                target="_blank"
                 className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center"
               >
-                Start Project
+                Plan een gesprek
               </MagneticButton>
             </div>
 
@@ -269,11 +270,12 @@ const Hero: React.FC = () => {
                
                {/* Mobile CTA */}
                <div className="mt-8 md:hidden w-full">
-                <MagneticButton 
-                  href="mailto:dennis@wamelinkwebdesign.nl"
+                <MagneticButton
+                  href="https://calendar.app.google/DZwS3JYfBFnzHn566"
+                  target="_blank"
                   className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors w-full flex justify-center"
                 >
-                  Start Project
+                  Plan een gesprek
                 </MagneticButton>
                </div>
             </motion.div>
