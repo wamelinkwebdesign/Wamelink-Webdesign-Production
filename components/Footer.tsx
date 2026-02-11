@@ -48,11 +48,11 @@ const Footer: React.FC = () => {
               </div>
               <div>
                 <h4 className="mb-4 md:mb-6 text-gray-400">Office</h4>
-                <p className="text-sm leading-relaxed">
+                <address className="text-sm leading-relaxed not-italic">
                   Herengracht 320<br />
                   1016CE Amsterdam<br />
                   The Netherlands
-                </p>
+                </address>
               </div>
             </div>
           </div>

@@ -51,9 +51,9 @@ const Services: React.FC = () => {
                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                className="sticky top-32"
              >
-               <h2 className="text-6xl font-black tracking-tighter uppercase mb-8">Expertises</h2>
+               <h2 className="text-6xl font-black tracking-tighter uppercase mb-8">Expertise</h2>
                <p className="text-xl font-medium text-gray-500 max-w-sm leading-relaxed">
-                  Geen templates. Geen half werk. <br />Ik ontwerp en bouw digitale ervaringen die je merk versterken en verschil maken.
+                  Geen templates. Geen half werk. <br />Ik ontwerp en bouw digitale ervaringen die je merk versterken en verschil maken. Van concept tot lancering.
                </p>
              </motion.div>
           </div>

@@ -136,7 +136,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden border-b border-black bg-white">
+    <section aria-label="Wamelink Webdesign" className="relative min-h-screen flex flex-col justify-center py-32 overflow-hidden border-b border-black bg-white">
       
       {/* Floating Reveal Image with 3D Tilt */}
       <motion.div
@@ -245,11 +245,12 @@ const Hero: React.FC = () => {
           {/* Bottom Row: Subhead & CTA */}
           <div className="w-full flex flex-col md:flex-row justify-center md:justify-between items-end gap-8 border-t border-black pt-8">
             <div className="hidden md:block">
-              <MagneticButton 
-                href="mailto:dennis@wamelinkwebdesign.nl"
+              <MagneticButton
+                href="https://calendar.app.google/DZwS3JYfBFnzHn566"
+                target="_blank"
                 className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center"
               >
-                Start Project
+                Plan een gesprek
               </MagneticButton>
             </div>
 
@@ -259,21 +260,22 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }} 
             >
-               <h3 
+               <p
                  className="text-xl md:text-2xl font-bold leading-tight cursor-pointer hover:underline decoration-2 underline-offset-4 decoration-[#FFD700]"
                  onMouseEnter={() => setIsHovering(true)}
                  onMouseLeave={() => setIsHovering(false)}
                >
                  <b>digital designer & developer</b><br /><i>based in AMS</i>
-               </h3>
+               </p>
                
                {/* Mobile CTA */}
                <div className="mt-8 md:hidden w-full">
-                <MagneticButton 
-                  href="mailto:dennis@wamelinkwebdesign.nl"
+                <MagneticButton
+                  href="https://calendar.app.google/DZwS3JYfBFnzHn566"
+                  target="_blank"
                   className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors w-full flex justify-center"
                 >
-                  Start Project
+                  Plan een gesprek
                 </MagneticButton>
                </div>
             </motion.div>
