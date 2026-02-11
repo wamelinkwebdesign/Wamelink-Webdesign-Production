@@ -45,6 +45,54 @@ const projects: ProjectData[] = [
   {
     id: '0',
     caseId: '01',
+    title: 'Studio Valkenier',
+    description: 'Multidisciplinair architectuurbureau gespecialiseerd in vergeten ruimtes en circulair ontwerp.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png',
+    year: '2026',
+    color: '#1A1A2E',
+    textColor: '#ffffff',
+    tags: ['Design', 'Development'],
+    challenge: 'Studio Valkenier — winnaar van de Europese 40under40 Award — had een portfolio dat hun visie op circulaire architectuur en stedelijke interventies niet goed overbracht. De bestaande site deed geen recht aan de kwaliteit en ambitie van hun projecten.',
+    solution: 'Een strak, minimalistisch platform dat hun projecten centraal stelt. De nieuwe website ademt de circulaire en speelse filosofie van het bureau uit, met een visueel sterke showcase van projecten als Station Sloterdijk en Hannekes Boom.',
+    url: 'https://studiovalkenier.nl',
+    stats: [],
+    fonts: {
+        heading: 'Inter, sans-serif',
+        body: 'DM Sans, sans-serif'
+    },
+    bento: {
+        desktop: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png',
+        mobile: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier-mobile.png',
+        palette: ['#1A1A2E', '#E8E0D4', '#FFFFFF']
+    }
+  },
+  {
+    id: '1',
+    caseId: '02',
+    title: 'BouwbedrijfDW',
+    description: 'Bouw & Ontwerp: Een digitale identiteit voor een bedrijf dat monumenten en herenhuizen nieuw leven inblaast.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw.png',
+    year: '2025',
+    color: '#2D5016',
+    textColor: '#ffffff',
+    tags: ['Design', 'Development'],
+    challenge: 'BouwbedrijfDW combineert architectuur, renovatie en interieurontwerp met een passie voor monumenten en herenhuizen. Hun ambacht verdient een online uitstraling die dezelfde kwaliteit en aandacht voor detail uitstraalt — maar die ontbrak volledig.',
+    solution: 'Een maatwerk website die de unieke combinatie van design en uitvoering laat zien. Door sfeervolle fotografie, een strak kleurenpalet en heldere navigatie worden bezoekers direct meegenomen in de wereld van monumentale bouw en renovatie.',
+    url: 'https://bouwbedrijfdw.nl',
+    stats: [],
+    fonts: {
+        heading: 'Inter, sans-serif',
+        body: 'DM Sans, sans-serif'
+    },
+    bento: {
+        desktop: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw.png',
+        mobile: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw-mobile.png',
+        palette: ['#2D5016', '#1A1A1A', '#F5F0EB']
+    }
+  },
+  {
+    id: '2',
+    caseId: '03',
     title: 'Plus Dakbedekkingen',
     description: 'Herpositionering: Van lokaal dakdekkersbedrijf naar zakelijke partner voor aannemers en vastgoed.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/plusdak.png',
@@ -68,13 +116,13 @@ const projects: ProjectData[] = [
     },
     bento: {
         desktop: 'https://storage.googleapis.com/wamelinkwebdesign/plusdak.png',
-        mobile: 'https://storage.googleapis.com/wamelinkwebdesign/plus-ios.jpg', 
+        mobile: 'https://storage.googleapis.com/wamelinkwebdesign/plus-ios.jpg',
         palette: ['#FF5A1F', '#111111', '#F5F5F5']
     }
   },
   {
-    id: '1',
-    caseId: '02',
+    id: '3',
+    caseId: '04',
     title: 'Collect.fyi',
     description: 'De one-stop shop voor artiesten tour management.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/collectfyi.png',
@@ -93,8 +141,8 @@ const projects: ProjectData[] = [
     }
   },
   {
-    id: '2',
-    caseId: '03',
+    id: '4',
+    caseId: '05',
     title: 'Personal Excellence',
     description: 'Toonaangevend coachingbureau voor professionele groei.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/personalexcellence.png',
@@ -107,54 +155,6 @@ const projects: ProjectData[] = [
     url: 'https://personal-excellence.nl',
     stats: [],
     singleImage: 'https://storage.googleapis.com/wamelinkwebdesign/personalexcellence.png'
-  },
-  {
-    id: '3',
-    caseId: '04',
-    title: 'BouwbedrijfDW',
-    description: 'Bouw & Ontwerp: Een digitale identiteit voor een bedrijf dat monumenten en herenhuizen nieuw leven inblaast.',
-    image: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw.png',
-    year: '2025',
-    color: '#2D5016',
-    textColor: '#ffffff',
-    tags: ['Design', 'Development'],
-    challenge: 'BouwbedrijfDW combineert architectuur, renovatie en interieurontwerp met een passie voor monumenten en herenhuizen. Hun ambacht verdient een online uitstraling die dezelfde kwaliteit en aandacht voor detail uitstraalt — maar die ontbrak volledig.',
-    solution: 'Een maatwerk website die de unieke combinatie van design en uitvoering laat zien. Door sfeervolle fotografie, een strak kleurenpalet en heldere navigatie worden bezoekers direct meegenomen in de wereld van monumentale bouw en renovatie.',
-    url: 'https://bouwbedrijfdw.nl',
-    stats: [],
-    fonts: {
-        heading: 'Inter, sans-serif',
-        body: 'DM Sans, sans-serif'
-    },
-    bento: {
-        desktop: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw.png',
-        mobile: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw-mobile.png',
-        palette: ['#2D5016', '#1A1A1A', '#F5F0EB']
-    }
-  },
-  {
-    id: '4',
-    caseId: '05',
-    title: 'Studio Valkenier',
-    description: 'Multidisciplinair architectuurbureau gespecialiseerd in vergeten ruimtes en circulair ontwerp.',
-    image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png',
-    year: '2025',
-    color: '#1A1A2E',
-    textColor: '#ffffff',
-    tags: ['Design', 'Development'],
-    challenge: 'Studio Valkenier — winnaar van de Europese 40under40 Award — had een portfolio dat hun visie op circulaire architectuur en stedelijke interventies niet goed overbracht. De bestaande site deed geen recht aan de kwaliteit en ambitie van hun projecten.',
-    solution: 'Een strak, minimalistisch platform dat hun projecten centraal stelt. De nieuwe website ademt de circulaire en speelse filosofie van het bureau uit, met een visueel sterke showcase van projecten als Station Sloterdijk en Hannekes Boom.',
-    url: 'https://studiovalkenier.nl',
-    stats: [],
-    fonts: {
-        heading: 'Inter, sans-serif',
-        body: 'DM Sans, sans-serif'
-    },
-    bento: {
-        desktop: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png',
-        mobile: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier-mobile.png',
-        palette: ['#1A1A2E', '#E8E0D4', '#FFFFFF']
-    }
   }
 ];
 
