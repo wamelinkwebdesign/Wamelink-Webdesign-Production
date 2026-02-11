@@ -5,9 +5,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import Services from './components/Services';
-import About from './components/About';
 import ProjectShowcase from './components/ProjectShowcase';
-import FAQSection from './components/FAQ';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -31,9 +29,7 @@ const HomePage: React.FC = () => (
       <Hero />
       <Marquee />
       <Services />
-      <About />
       <ProjectShowcase />
-      <FAQSection />
       <CTA />
     </main>
     <Footer />
