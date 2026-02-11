@@ -17,7 +17,7 @@ const CTA: React.FC = () => {
           <span className="text-[#ffcf00] stroke-black text-stroke-mobile md:text-stroke-desktop">Impact</span> te maken?
         </motion.h2>
         <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
-          Laat je website maken door Wamelink Webdesign in Amsterdam. Neem vandaag nog contact op voor een vrijblijvend gesprek.
+          Neem vandaag nog contact op voor een vrijblijvend gesprek.
         </p>
 
         <div className="flex justify-center w-full px-2 sm:px-0">
