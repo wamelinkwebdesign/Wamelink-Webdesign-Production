@@ -11,7 +11,7 @@ const faqs: FAQItem[] = [
   {
     question: 'Wat kost een website laten maken in Amsterdam?',
     answer:
-      'De kosten voor een website laten maken in Amsterdam variëren op basis van de complexiteit en functionaliteit. Een professionele maatwerk website begint vanaf €1.500. Bij Wamelink Webdesign krijg je altijd een transparante offerte op maat, inclusief responsive design, SEO-optimalisatie en persoonlijke begeleiding.',
+      'De investering in een professionele website hangt af van jouw wensen en doelen. Na een gratis kennismakingsgesprek ontvang je een transparante offerte op maat, inclusief responsive design, SEO-optimalisatie en persoonlijke begeleiding. Zo weet je precies waar je aan toe bent.',
   },
   {
     question: 'Hoe lang duurt het om een website te laten maken?',
