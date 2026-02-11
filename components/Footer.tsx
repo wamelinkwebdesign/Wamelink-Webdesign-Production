@@ -13,13 +13,6 @@ const Footer: React.FC = () => {
             </h2>
             <div className="flex flex-col gap-4 items-start w-full sm:w-auto">
               <MagneticButton
-                href="https://calendar.app.google/DZwS3JYfBFnzHn566"
-                target="_blank"
-                className="bg-black text-white border border-black px-5 py-4 md:px-6 md:py-3 rounded-full font-bold uppercase tracking-wider text-s sm:text-sm md:text-lg hover:bg-[#ffcf00] hover:text-black hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all w-full sm:w-auto flex justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none"
-              >
-                Plan een gesprek
-              </MagneticButton>
-              <MagneticButton
                 href="mailto:dennis@wamelinkwebdesign.nl"
                 className="bg-[#ffcf00] text-black border border-black px-5 py-4 md:px-6 md:py-3 rounded-full font-bold uppercase tracking-wider text-s sm:text-sm md:text-lg hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-all w-full sm:w-auto flex justify-center shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none"
               >
