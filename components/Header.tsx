@@ -25,7 +25,7 @@ const Header: React.FC = () => {
   }, [isOpen]);
 
   const navLinks = [
-    { name: 'Over ons', href: '/website-laten-maken-amsterdam', isRoute: true },
+    { name: 'Waarom WW', href: '/website-laten-maken-amsterdam', isRoute: true },
     { name: 'Expertise', href: '#services' },
     { name: 'Work', href: '#work' },
     { name: 'Contact', href: '#contact' },

@@ -119,7 +119,7 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
               <h1 className="text-[11vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-8">
                 Website Laten Maken
                 <br />
-                <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">
+                <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black] whitespace-nowrap">
                   in Amsterdam
                 </span>
               </h1>
