@@ -6,11 +6,13 @@ import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import Services from './components/Services';
 import ProjectShowcase from './components/ProjectShowcase';
+import FAQ from './components/FAQ';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import Terms from './components/Terms';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import WebsiteLatenMakenAmsterdam from './components/WebsiteLatenMakenAmsterdam';
 import SalesOutreach from './components/sales/SalesOutreach';
 import Lenis from 'lenis';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -30,6 +32,7 @@ const HomePage: React.FC = () => (
       <Marquee />
       <Services />
       <ProjectShowcase />
+      <FAQ />
       <CTA />
     </main>
     <Footer />
@@ -127,6 +130,7 @@ const App: React.FC = () => {
       <AnimatePresence mode="wait">
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/website-laten-maken-amsterdam" element={<WebsiteLatenMakenAmsterdam />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>
