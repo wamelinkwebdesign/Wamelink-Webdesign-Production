@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -24,6 +25,7 @@ const Header: React.FC = () => {
   }, [isOpen]);
 
   const navLinks = [
+    { name: 'Over ons', href: '/website-laten-maken-amsterdam', isRoute: true },
     { name: 'Expertise', href: '#services' },
     { name: 'Work', href: '#work' },
     { name: 'Contact', href: '#contact' },
@@ -46,13 +48,23 @@ const Header: React.FC = () => {
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href} 
-              className="text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition-colors text-black"
-            >
-              {link.name}
-            </a>
+            link.isRoute ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition-colors text-black"
+              >
+                {link.name}
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition-colors text-black"
+              >
+                {link.name}
+              </a>
+            )
           ))}
         </nav>
 
@@ -76,14 +88,25 @@ const Header: React.FC = () => {
             >
               <div className="flex flex-col items-center gap-8 mt-12">
                 {navLinks.map((link) => (
-                  <a 
-                    key={link.name} 
-                    href={link.href} 
-                    className="text-4xl font-black uppercase tracking-tighter hover:text-gray-500"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.name}
-                  </a>
+                  link.isRoute ? (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="text-4xl font-black uppercase tracking-tighter hover:text-gray-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className="text-4xl font-black uppercase tracking-tighter hover:text-gray-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {link.name}
+                    </a>
+                  )
                 ))}
               </div>
 
