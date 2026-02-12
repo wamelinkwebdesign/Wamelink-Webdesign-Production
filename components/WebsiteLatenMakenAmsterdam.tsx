@@ -384,15 +384,15 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-[10vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-6 md:mb-8"
             >
-              Klaar voor een website
+              Klaar voor een
               <br />
-              die{' '}
+              <span className="whitespace-nowrap">website die{' '}
               <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">
                 werkt
               </span>
-              ?
+              ?</span>
             </motion.h2>
-            <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto whitespace-nowrap">
               Plan een gratis kennismakingsgesprek. Ik reageer binnen 24 uur.
             </p>
 
