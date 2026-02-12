@@ -38,12 +38,12 @@ const Header: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-8 flex justify-between items-center">
-        <a 
-          href="#" 
+        <Link
+          to="/"
           className="text-2xl font-black tracking-tighter uppercase z-50 transition-colors text-black relative"
         >
           Wamelink<span className="hidden sm:inline"> Webdesign</span><span className="text-[#FFD700]">.</span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8">
