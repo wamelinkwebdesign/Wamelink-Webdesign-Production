@@ -12,14 +12,14 @@ const CustomCursor: React.FC = () => {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive =
-        target.tagName === 'A' ||
-        target.tagName === 'BUTTON' ||
+      const isInteractive = 
+        target.tagName === 'A' || 
+        target.tagName === 'BUTTON' || 
         target.tagName === 'INPUT' ||
-        target.closest('a') ||
+        target.closest('a') || 
         target.closest('button') ||
         target.closest('.cursor-hover');
-
+        
       setIsHovering(!!isInteractive);
     };
 

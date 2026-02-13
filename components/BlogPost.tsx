@@ -378,8 +378,7 @@ const BlogPost: React.FC = () => {
               ?
             </motion.h2>
             <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
-              <span className="block">Plan een gratis kennismakingsgesprek.</span>
-              <span className="block">Ik reageer binnen 24 uur.</span>
+              Plan een gratis kennismakingsgesprek.<br />Ik reageer binnen 24 uur.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-2 sm:px-0">
