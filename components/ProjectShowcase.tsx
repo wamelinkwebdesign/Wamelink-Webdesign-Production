@@ -253,7 +253,7 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
           scale,
           y: `calc(-5vh + ${i * 25}px)`
         }}
-        className="relative w-full max-w-[95vw] md:max-w-[90vw] h-[55vh] md:h-[85vh] origin-top will-change-transform"
+        className="relative w-full max-w-[95vw] md:max-w-[90vw] h-[65vh] md:h-[85vh] origin-top will-change-transform"
       >
         <motion.div 
           layoutId={`card-container-${project.id}`}
@@ -262,9 +262,9 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
             y: -15, 
             transition: { duration: 0.3, ease: "easeOut" } 
           }}
-          style={{ 
-            backgroundColor: project.color, 
-          }} 
+          style={{
+            backgroundImage: `linear-gradient(to bottom, ${project.color}, ${project.color})`,
+          }}
           className="w-full h-full flex flex-col rounded-[2rem] md:rounded-[3rem] border border-black/10 overflow-hidden shadow-2xl cursor-pointer group hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.4)] transition-shadow duration-300 relative"
         >
           <div className="flex flex-col h-full p-8 md:p-14 lg:p-16 relative z-10">
@@ -384,7 +384,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
       {/* 1. Immersive Hero */}
       <motion.div 
         layoutId={`card-container-${project.id}`}
-        style={{ backgroundColor: project.color, color: project.textColor }}
+        style={{ backgroundImage: `linear-gradient(to bottom, ${project.color}, ${project.color})`, color: project.textColor }}
         className="relative w-full h-[50vh] md:h-[80vh] flex flex-col justify-between p-0 md:p-12"
       >
          
