@@ -15,6 +15,8 @@ import WebsiteLatenMakenAmsterdam from './components/WebsiteLatenMakenAmsterdam'
 import WebsiteRedesignAmsterdam from './components/WebdesignAmsterdam';
 import WebshopLatenMakenAmsterdam from './components/WebshopLatenMakenAmsterdam';
 import AppLatenMakenAmsterdam from './components/AppLatenMakenAmsterdam';
+import Blog from './components/Blog';
+import BlogPost from './components/BlogPost';
 import SalesOutreach from './components/sales/SalesOutreach';
 import Lenis from 'lenis';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -135,6 +137,8 @@ const App: React.FC = () => {
           <Route path="/website-redesign-amsterdam" element={<WebsiteRedesignAmsterdam />} />
           <Route path="/webshop-laten-maken-amsterdam" element={<WebshopLatenMakenAmsterdam />} />
           <Route path="/app-laten-maken-amsterdam" element={<AppLatenMakenAmsterdam />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
         </Routes>

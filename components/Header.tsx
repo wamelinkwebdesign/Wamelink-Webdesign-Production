@@ -48,6 +48,7 @@ const Header: React.FC = () => {
   const navLinks = [
     { name: 'Expertise', href: '#services', hasDropdown: true },
     { name: 'Work', href: '#work' },
+    { name: 'Blog', href: '/blog', isRoute: true },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -106,6 +107,14 @@ const Header: React.FC = () => {
                   )}
                 </AnimatePresence>
               </div>
+            ) : link.isRoute ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition-colors text-black"
+              >
+                {link.name}
+              </Link>
             ) : (
               <a
                 key={link.name}

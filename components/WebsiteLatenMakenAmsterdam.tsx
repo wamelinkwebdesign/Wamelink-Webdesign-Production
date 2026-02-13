@@ -33,11 +33,11 @@ const process = [
 ];
 
 const benefits = [
-  'Maatwerk design,geen templates',
+  'Maatwerk design, geen templates',
   'SEO-geoptimaliseerd vanaf dag één',
   'Razendsnelle laadtijden (<1s)',
   'Responsive op elk apparaat',
-  'Persoonlijk contact,geen tussenpersonen',
+  'Persoonlijk contact, geen tussenpersonen',
   'Onderhoud & support na oplevering',
 ];
 
@@ -183,7 +183,7 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
                   <p className="text-lg leading-relaxed mb-10">
                     Bij Wamelink Webdesign werk je{' '}
                     <strong>rechtstreeks samen met een ervaren designer en developer</strong>. Geen
-                    grote bureaus met tussenpersonen,maar persoonlijk contact, scherpe communicatie
+                    grote bureaus met tussenpersonen, maar persoonlijk contact, scherpe communicatie
                     en een eindresultaat dat echt bij jouw merk past.
                   </p>
 
@@ -268,7 +268,7 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
                     Werkwijze
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Van eerste gesprek tot live website,in vier heldere stappen.
+                    Van eerste gesprek tot live website. In vier heldere stappen.
                   </p>
                 </motion.div>
               </div>
