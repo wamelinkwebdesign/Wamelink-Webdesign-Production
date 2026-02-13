@@ -404,7 +404,7 @@ const ProspectFinder: React.FC<ProspectFinderProps> = ({ onAddLead, existingLead
                 <p className="text-xs font-bold uppercase tracking-wider text-gray-500">
                   {sortedProspects.length} bedrijven gevonden
                   {sortedProspects.filter((p) => p.prospectScore && p.prospectScore >= 60).length > 0 &&
-                    ` — ${sortedProspects.filter((p) => p.prospectScore && p.prospectScore >= 60).length} goede prospects`}
+                    ` ·${sortedProspects.filter((p) => p.prospectScore && p.prospectScore >= 60).length} goede prospects`}
                 </p>
               </div>
 

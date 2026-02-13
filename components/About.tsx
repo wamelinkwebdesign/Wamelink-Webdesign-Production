@@ -4,11 +4,11 @@ import { CheckCircle } from 'lucide-react';
 
 const About: React.FC = () => {
   const benefits = [
-    'Maatwerk design — geen templates',
+    'Maatwerk design, geen templates',
     'SEO-geoptimaliseerd vanaf dag één',
     'Razendsnelle laadtijden',
     'Responsive op elk apparaat',
-    'Persoonlijk contact — geen tussenpersonen',
+    'Persoonlijk contact, geen tussenpersonen',
     'Onderhoud & support na oplevering',
   ];
 
@@ -17,7 +17,7 @@ const About: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
-          {/* Left Column — Heading */}
+          {/* Left Column */}
           <div className="lg:col-span-5">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -34,7 +34,7 @@ const About: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Right Column — Content */}
+          {/* Right Column */}
           <div className="lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -49,7 +49,7 @@ const About: React.FC = () => {
               </p>
               <p className="text-lg leading-relaxed mb-8">
                 Elke website die ik bouw is <strong>geoptimaliseerd voor Google</strong>, razendsnel en
-                volledig responsive. Of je nu een zakelijke website, portfolio of webshop nodig hebt —
+                volledig responsive. Of je nu een zakelijke website, portfolio of webshop nodig hebt,
                 ik lever een professioneel eindresultaat dat bezoekers omzet in klanten.
               </p>
 

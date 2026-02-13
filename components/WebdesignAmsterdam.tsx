@@ -8,83 +8,83 @@ import MagneticButton from './MagneticButton';
 const process = [
   {
     step: '01',
-    title: 'Strategie & Research',
+    title: 'Analyse & Audit',
     description:
-      'Ik verdiep me in jouw merk, doelgroep en concurrenten. Wat maakt jouw bedrijf uniek? Welke boodschap moet je website uitstralen? Dit vormt de basis van elk ontwerpbesluit.',
+      'Ik analyseer je huidige website op design, techniek, SEO en gebruiksvriendelijkheid. Samen bepalen we wat goed werkt en wat beter kan.',
   },
   {
     step: '02',
-    title: 'Wireframes & Concept',
+    title: 'Strategie & Ontwerp',
     description:
-      'Voordat er een pixel wordt ontworpen, werk ik de structuur en gebruikersflow uit. Zo zorgen we dat de navigatie logisch is en bezoekers moeiteloos vinden wat ze zoeken.',
+      'Op basis van de audit ontwerp ik een volledig nieuw design dat aansluit bij je merk en doelgroep. Je ziet het resultaat op een tijdelijke URL en geeft feedback.',
   },
   {
     step: '03',
-    title: 'Visueel Ontwerp',
+    title: 'Development & Migratie',
     description:
-      'Het concept wordt vertaald naar een high-end design dat past bij jouw merkidentiteit. Typografie, kleurgebruik en beeldtaal worden tot in detail afgestemd.',
+      'Het goedgekeurde design wordt gebouwd met schone, snelle code. Bestaande content en SEO-waarde worden zorgvuldig gemigreerd zodat je niets verliest.',
   },
   {
     step: '04',
-    title: 'Oplevering & Lancering',
+    title: 'Lancering & Optimalisatie',
     description:
-      'Na jouw goedkeuring wordt het design pixel-perfect gebouwd en gelanceerd. Je ontvangt een uitgebreide walkthrough en ik blijf beschikbaar voor feedback.',
+      'Na uitgebreide tests gaat de vernieuwde website live. Ik monitor de performance en blijf beschikbaar voor verdere optimalisaties.',
   },
 ];
 
 const benefits = [
-  'Uniek design op maat — geen templates',
-  'Conversiegericht UX/UI ontwerp',
-  'Consistente merkidentiteit op elk scherm',
-  'Responsive design voor alle apparaten',
-  'Persoonlijke samenwerking zonder tussenpersonen',
-  'Ontwerp gebaseerd op data en strategie',
+  'Volledig nieuw maatwerk design',
+  'Behoud van SEO-waarde en rankings',
+  'Snellere laadtijden en betere performance',
+  'Responsive op elk apparaat',
+  'Persoonlijke samenwerking, geen tussenpersonen',
+  'Zorgvuldige content- en datamigratie',
 ];
 
 const results = [
-  { value: '3x', label: 'Meer Conversie' },
-  { value: '100%', label: 'Op Maat' },
-  { value: '<48u', label: 'Design Revisies' },
+  { value: '2.5x', label: 'Meer Conversie' },
+  { value: '100%', label: 'SEO Behoud' },
+  { value: '<1s', label: 'Laadtijd' },
 ];
 
 const faqs = [
   {
-    question: 'Wat is het verschil tussen webdesign en webdevelopment?',
+    question: 'Verlies ik mijn Google-posities bij een redesign?',
     answer:
-      'Webdesign richt zich op het visuele ontwerp, de gebruikerservaring (UX) en de merkuitstraling van je website. Webdevelopment gaat over de technische bouw — het omzetten van het ontwerp naar werkende code. Bij Wamelink Webdesign krijg je beide onder één dak.',
+      'Nee. Ik zorg voor een zorgvuldige migratie waarbij URL-structuren, redirects en meta-informatie behouden blijven. In de meeste gevallen verbeteren je rankings juist door de snellere laadtijden en betere technische SEO.',
   },
   {
-    question: 'Hoe lang duurt een webdesign traject?',
+    question: 'Hoe lang duurt een website redesign?',
     answer:
-      'Een gemiddeld webdesign traject duurt 1 tot 3 weken, afhankelijk van de complexiteit en het aantal pagina\'s. Na de strategiefase ontvang je snel de eerste concepten, zodat we samen iteratief toewerken naar het perfecte resultaat.',
+      'Een gemiddeld redesign traject duurt 2 tot 4 weken, afhankelijk van de omvang van je huidige website en de gewenste veranderingen. We werken in fases zodat je tussentijds feedback kunt geven.',
   },
   {
-    question: 'Hoeveel revisierondes zijn inbegrepen?',
+    question: 'Kan ik mijn bestaande content behouden?',
     answer:
-      'Standaard zijn er twee revisierondes inbegrepen. In de praktijk is het design vaak al na de eerste ronde nagenoeg perfect, omdat ik vooraf grondig de tijd neem om jouw wensen en merkidentiteit te begrijpen.',
+      'Ja, bestaande teksten, afbeeldingen en andere content worden zorgvuldig gemigreerd naar de nieuwe website. Waar nodig adviseer ik over verbeteringen aan de content voor betere SEO-resultaten.',
   },
   {
-    question: 'Ontwerpen jullie ook logo\'s en huisstijlen?',
+    question: 'Wat als mijn huidige website op WordPress draait?',
     answer:
-      'Ja. Naast webdesign bied ik ook visuele identiteit diensten aan, waaronder logo-ontwerp, kleurpaletten, typografie en merkrichtlijnen. Zo zorg je voor een consistente uitstraling over al je kanalen.',
+      'Geen probleem. Ik heb ervaring met het migreren van websites vanaf elk platform. Of je nu van WordPress, Wix, Squarespace of een ander systeem komt, de overgang verloopt soepel.',
   },
   {
-    question: 'Wat als ik al een huisstijl heb?',
+    question: 'Hoeveel kost een website redesign?',
     answer:
-      'Dan gebruik ik jouw bestaande merkrichtlijnen als basis voor het webdesign. Ik zorg ervoor dat de website naadloos aansluit bij je huisstijl en deze versterkt in de digitale omgeving.',
+      'De investering hangt af van de omvang en complexiteit van je huidige website. Na een gratis analyse ontvang je een transparante offerte op maat, zonder verrassingen achteraf.',
   },
 ];
 
-const WebdesignAmsterdam: React.FC = () => {
+const WebsiteRedesignAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = 'Webdesign Amsterdam | Creatief Webdesign Bureau | Wamelink Webdesign';
+    document.title = 'Website Redesign Amsterdam | Vernieuw Je Website | Wamelink Webdesign';
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.setAttribute(
         'content',
-        'Op zoek naar webdesign in Amsterdam? Wamelink Webdesign ontwerpt unieke, conversie-gerichte websites op maat. Geen templates — alleen design dat werkt. Vraag een gratis offerte aan.'
+        'Website redesign in Amsterdam? Wamelink Webdesign vernieuwt je website met maatwerk design, snellere performance en betere SEO. Behoud je rankings. Vraag een gratis analyse aan.'
       );
     }
     window.scrollTo(0, 0);
@@ -95,7 +95,7 @@ const WebdesignAmsterdam: React.FC = () => {
 
   return (
     <motion.div
-      key="webdesign-amsterdam"
+      key="website-redesign-amsterdam"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -114,18 +114,18 @@ const WebdesignAmsterdam: React.FC = () => {
               className="max-w-4xl"
             >
               <span className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-6 block">
-                Creatief Webdesign Bureau
+                Website Redesign Bureau
               </span>
               <h1 className="text-[11vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-8">
-                Webdesign
+                Website Redesign
                 <br />
                 <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black] whitespace-nowrap">
                   Amsterdam
                 </span>
               </h1>
               <p className="text-xl md:text-2xl font-medium text-gray-500 leading-relaxed max-w-2xl mb-12">
-                Design dat niet alleen mooi is, maar converteert. Ik ontwerp websites die jouw merk
-                versterken en bezoekers omzetten in klanten.
+                Je website verouderd? Tijd voor een upgrade. Ik vernieuw je website met een strak
+                design, snellere performance en betere vindbaarheid in Google.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <MagneticButton
@@ -133,7 +133,7 @@ const WebdesignAmsterdam: React.FC = () => {
                   target="_blank"
                   className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center gap-3"
                 >
-                  Gratis Kennismakingsgesprek <ArrowRight size={18} />
+                  Gratis Website Analyse <ArrowRight size={18} />
                 </MagneticButton>
                 <MagneticButton
                   href="mailto:dennis@wamelinkwebdesign.nl"
@@ -158,10 +158,10 @@ const WebdesignAmsterdam: React.FC = () => {
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6">
-                    Waarom Professioneel Webdesign?
+                    Waarom een Website Redesign?
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Goed design is geen luxe — het is de basis van vertrouwen en conversie online.
+                    Een verouderde website kost je dagelijks klanten en geloofwaardigheid.
                   </p>
                 </motion.div>
               </div>
@@ -174,16 +174,16 @@ const WebdesignAmsterdam: React.FC = () => {
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <p className="text-lg leading-relaxed mb-6">
-                    Bezoekers beoordelen je website binnen <strong>50 milliseconden</strong>. Een
-                    professioneel ontwerp communiceert direct betrouwbaarheid, kwaliteit en
-                    relevantie. Template-websites missen die unieke uitstraling die jouw merk
-                    onderscheidt van de concurrentie.
+                    Webdesign trends en technologie veranderen snel. Een website die drie jaar
+                    geleden modern was, kan vandaag verouderd overkomen. Trage laadtijden, een
+                    niet-responsive design of een onduidelijke navigatie zorgen ervoor dat bezoekers{' '}
+                    <strong>binnen 3 seconden afhaken</strong>.
                   </p>
                   <p className="text-lg leading-relaxed mb-10">
-                    Bij Wamelink Webdesign combineer ik{' '}
-                    <strong>creatief design met conversie-optimalisatie</strong>. Elk element — van
-                    typografie tot kleurgebruik, van whitespace tot call-to-actions — is doordacht
-                    ontworpen om bezoekers te begeleiden naar actie.
+                    Bij een redesign bouw ik je website{' '}
+                    <strong>vanaf de grond opnieuw op</strong>, met behoud van je bestaande
+                    SEO-waarde en content. Het resultaat: een snellere, mooiere website die weer
+                    converteert en aansluit bij waar je bedrijf nu staat.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -225,7 +225,7 @@ const WebdesignAmsterdam: React.FC = () => {
                 Resultaten
               </h2>
               <p className="text-xl font-medium text-gray-400">
-                Wat je kunt verwachten van een professioneel webdesign traject.
+                Gemiddelde resultaten na een website redesign.
               </p>
             </motion.div>
 
@@ -264,10 +264,10 @@ const WebdesignAmsterdam: React.FC = () => {
                   className="sticky top-32"
                 >
                   <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6">
-                    Design Proces
+                    Werkwijze
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Van strategie tot pixel-perfect ontwerp — in vier doordachte stappen.
+                    Van analyse tot lancering, in vier duidelijke stappen.
                   </p>
                 </motion.div>
               </div>
@@ -320,7 +320,7 @@ const WebdesignAmsterdam: React.FC = () => {
                     Veelgestelde Vragen
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Alles over webdesign en het creatieve proces.
+                    Alles over het redesignen van je website.
                   </p>
                 </motion.div>
               </div>
@@ -383,16 +383,16 @@ const WebdesignAmsterdam: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-[10vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-6 md:mb-8"
             >
-              Klaar voor design
+              Klaar voor een
               <br />
-              <span className="whitespace-nowrap">dat{' '}
+              <span className="whitespace-nowrap">website die weer{' '}
               <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">
-                impact
+                scoort
               </span>
-              {' '}maakt?</span>
+              ?</span>
             </motion.h2>
             <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
-              Plan een gratis kennismakingsgesprek. Ik reageer binnen 24 uur.
+              Vraag een gratis website analyse aan. Ik reageer binnen 24 uur.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-2 sm:px-0">
@@ -401,7 +401,7 @@ const WebdesignAmsterdam: React.FC = () => {
                 target="_blank"
                 className="bg-black text-white px-8 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest hover:bg-[#FFD700] hover:text-black transition-colors hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full sm:w-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none flex items-center justify-center"
               >
-                Plan een gesprek
+                Gratis analyse
               </MagneticButton>
               <MagneticButton
                 href="mailto:dennis@wamelinkwebdesign.nl"
@@ -424,4 +424,4 @@ const WebdesignAmsterdam: React.FC = () => {
   );
 };
 
-export default WebdesignAmsterdam;
+export default WebsiteRedesignAmsterdam;
