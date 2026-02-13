@@ -1,34 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 
 const Footer: React.FC = () => {
   return (
-    <footer id="contact" className="bg-black text-white">
+    <footer id="contact" className="bg-black text-white relative z-10">
       {/* Main content */}
       <div className="container mx-auto px-4 sm:px-8 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left: Let's Talk */}
           <div className="lg:col-span-7">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-[15vw] md:text-[8vw] leading-[0.85] font-black tracking-tighter uppercase mb-8 md:mb-12"
-            >
+            <h2 className="text-[15vw] md:text-[8vw] leading-[0.85] font-black tracking-tighter uppercase mb-8 md:mb-12">
               Let's<br />
               Talk<span className="text-[#FFD700]">.</span>
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col gap-4 items-start"
-            >
+            </h2>
+            <div className="flex flex-col gap-4 items-start">
               <MagneticButton
                 href="mailto:dennis@wamelinkwebdesign.nl"
                 className="bg-[#FFD700] text-black border border-[#FFD700] px-6 py-4 rounded-full font-bold uppercase tracking-wider text-sm md:text-lg hover:bg-white hover:border-white transition-colors w-full sm:w-auto flex justify-center"
@@ -41,17 +28,11 @@ const Footer: React.FC = () => {
               >
                 +31 6 510 959 19
               </a>
-            </motion.div>
+            </div>
           </div>
 
           {/* Right: Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="lg:col-span-5 flex flex-col justify-end"
-          >
+          <div className="lg:col-span-5 flex flex-col justify-end">
             <div className="grid grid-cols-2 gap-8 md:gap-12">
               <div>
                 <h4 className="text-[10px] font-black uppercase tracking-widest text-gray-500 mb-6">
@@ -91,7 +72,7 @@ const Footer: React.FC = () => {
                 </address>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

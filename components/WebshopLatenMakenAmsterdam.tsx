@@ -390,11 +390,11 @@ const WebshopLatenMakenAmsterdam: React.FC = () => {
             >
               Klaar om online
               <br />
-              <span className="whitespace-nowrap">te{' '}
+              te{' '}
               <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">
                 verkopen
               </span>
-              ?</span>
+              ?
             </motion.h2>
             <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
               Plan een gratis kennismakingsgesprek. Ik reageer binnen 24 uur.

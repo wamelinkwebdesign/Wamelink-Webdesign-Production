@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const CTA: React.FC = () => {
   return (
-    <section className="py-24 md:py-40 bg-black text-white overflow-hidden relative">
+    <section className="py-24 md:py-40 bg-black text-white overflow-hidden relative z-10">
       {/* Decorative rotating circles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
