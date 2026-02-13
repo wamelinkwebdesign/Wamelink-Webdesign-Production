@@ -245,15 +245,15 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
   return (
     <div 
       ref={containerRef} 
-      className="h-screen flex items-center justify-center sticky top-12 md:top-24"
+      className="h-[100dvh] flex items-center justify-center sticky top-12 md:top-24"
       style={{ zIndex: i + 1 }}
     >
-      <motion.div 
-         style={{ 
+      <motion.div
+         style={{
           scale,
-          y: `calc(-5vh + ${i * 25}px)` 
-        }} 
-        className="relative w-full max-w-[95vw] md:max-w-[90vw] h-[80vh] md:h-[85vh] origin-top will-change-transform"
+          y: `calc(-5vh + ${i * 25}px)`
+        }}
+        className="relative w-full max-w-[95vw] md:max-w-[90vw] h-[65vh] md:h-[85vh] origin-top will-change-transform"
       >
         <motion.div 
           layoutId={`card-container-${project.id}`}
