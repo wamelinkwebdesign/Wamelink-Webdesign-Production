@@ -143,9 +143,9 @@ const Header: React.FC = () => {
               animate={{ y: "0%" }}
               exit={{ y: "-100%" }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-between py-24 md:hidden text-black h-[100dvh]"
+              className="fixed inset-0 bg-white z-40 flex flex-col items-center py-24 md:hidden text-black h-[100dvh]"
             >
-              <div className="flex flex-col items-center gap-8 mt-12">
+              <div className="flex-1 flex flex-col items-center justify-center gap-8">
                 {/* Expertise with sub-links */}
                 <div className="flex flex-col items-center">
                   <button

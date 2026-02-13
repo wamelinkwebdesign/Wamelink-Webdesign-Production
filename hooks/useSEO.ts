@@ -51,8 +51,12 @@ function removeJsonLd(id: string) {
 }
 
 export function useSEO({ title, description, canonical, ogType = 'website', jsonLd }: SEOProps) {
+  // Scroll to top only on mount (page navigation), not on every re-render
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     document.title = title;
 
     const fullCanonical = canonical.startsWith('http') ? canonical : `${BASE_URL}${canonical}`;
