@@ -245,7 +245,7 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
   return (
     <div
       ref={containerRef}
-      className="h-[calc(100dvh-3rem)] md:h-[calc(100dvh-6rem)] flex items-center justify-center sticky top-12 md:top-24 bg-white"
+      className="h-[calc(100dvh-3rem)] md:h-[calc(100dvh-6rem)] flex items-center justify-center sticky top-12 md:top-24"
       style={{ zIndex: i + 1 }}
     >
       <motion.div
@@ -253,7 +253,7 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
           scale,
           y: `calc(-5vh + ${i * 25}px)`
         }}
-        className="relative w-full max-w-[95vw] md:max-w-[90vw] h-[65vh] md:h-[85vh] origin-top will-change-transform"
+        className="relative w-full max-w-[95vw] md:max-w-[90vw] h-[55vh] md:h-[85vh] origin-top will-change-transform"
       >
         <motion.div 
           layoutId={`card-container-${project.id}`}
@@ -802,7 +802,7 @@ const ProjectShowcase: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
   return (
-    <section ref={containerRef} id="work" className="bg-white relative border-t border-black">
+    <section ref={containerRef} id="work" className="bg-white relative border-t border-black z-[1] isolate">
       <div className="container mx-auto px-4 sm:px-8 pt-24 pb-8">
            <motion.div
              initial={{ opacity: 0, y: 30 }}
