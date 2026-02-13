@@ -60,9 +60,9 @@ const faqs = [
       'Alle gangbare betaalmethodes: iDEAL, creditcard, PayPal, Bancontact, Apple Pay, Google Pay en meer. Ik integreer de betaalprovider die het beste past bij jouw doelgroep en markt.',
   },
   {
-    question: 'Wie beheert mijn webshop na oplevering?',
+    question: 'Kan ik mijn webshop zelf beheren?',
     answer:
-      'Ik neem het volledige beheer uit handen. Producten toevoegen, prijzen aanpassen, seizoensacties inrichten. Je stuurt me aan wat je nodig hebt en ik regel het. Zo kun jij je focussen op je bedrijf terwijl je webshop altijd up-to-date is.',
+      'Ja. Je krijgt een gebruiksvriendelijk dashboard waarmee je zelf producten toevoegt, prijzen aanpast en bestellingen beheert. Na oplevering krijg je een uitgebreide uitleg zodat je direct aan de slag kunt.',
   },
   {
     question: 'Hoe zit het met SEO voor mijn webshop?',
