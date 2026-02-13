@@ -343,7 +343,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'heading',
-        text: '3. Mobiel-eerste design',
+        text: '3. Mobile-first design',
       },
       {
         type: 'paragraph',
@@ -419,7 +419,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           'Duidelijk doel voor je website gedefinieerd',
           'Webdesigner gekozen op basis van portfolio, proces en techniek',
-          'Mobiel-eerste aanpak bevestigd',
+          'Mobile-first aanpak bevestigd',
           'Snelheid en performance als eis gesteld',
           'SEO-optimalisatie inbegrepen vanaf het begin',
           'Content voorbereid of hulp bij copywriting afgesproken',
