@@ -1,0 +1,427 @@
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle, Plus, Minus, ArrowRight } from 'lucide-react';
+import Header from './Header';
+import Footer from './Footer';
+import MagneticButton from './MagneticButton';
+
+const process = [
+  {
+    step: '01',
+    title: 'Strategie & Research',
+    description:
+      'Ik verdiep me in jouw merk, doelgroep en concurrenten. Wat maakt jouw bedrijf uniek? Welke boodschap moet je website uitstralen? Dit vormt de basis van elk ontwerpbesluit.',
+  },
+  {
+    step: '02',
+    title: 'Wireframes & Concept',
+    description:
+      'Voordat er een pixel wordt ontworpen, werk ik de structuur en gebruikersflow uit. Zo zorgen we dat de navigatie logisch is en bezoekers moeiteloos vinden wat ze zoeken.',
+  },
+  {
+    step: '03',
+    title: 'Visueel Ontwerp',
+    description:
+      'Het concept wordt vertaald naar een high-end design dat past bij jouw merkidentiteit. Typografie, kleurgebruik en beeldtaal worden tot in detail afgestemd.',
+  },
+  {
+    step: '04',
+    title: 'Oplevering & Lancering',
+    description:
+      'Na jouw goedkeuring wordt het design pixel-perfect gebouwd en gelanceerd. Je ontvangt een uitgebreide walkthrough en ik blijf beschikbaar voor feedback.',
+  },
+];
+
+const benefits = [
+  'Uniek design op maat — geen templates',
+  'Conversiegericht UX/UI ontwerp',
+  'Consistente merkidentiteit op elk scherm',
+  'Responsive design voor alle apparaten',
+  'Persoonlijke samenwerking zonder tussenpersonen',
+  'Ontwerp gebaseerd op data en strategie',
+];
+
+const results = [
+  { value: '3x', label: 'Meer Conversie' },
+  { value: '100%', label: 'Op Maat' },
+  { value: '<48u', label: 'Design Revisies' },
+];
+
+const faqs = [
+  {
+    question: 'Wat is het verschil tussen webdesign en webdevelopment?',
+    answer:
+      'Webdesign richt zich op het visuele ontwerp, de gebruikerservaring (UX) en de merkuitstraling van je website. Webdevelopment gaat over de technische bouw — het omzetten van het ontwerp naar werkende code. Bij Wamelink Webdesign krijg je beide onder één dak.',
+  },
+  {
+    question: 'Hoe lang duurt een webdesign traject?',
+    answer:
+      'Een gemiddeld webdesign traject duurt 1 tot 3 weken, afhankelijk van de complexiteit en het aantal pagina\'s. Na de strategiefase ontvang je snel de eerste concepten, zodat we samen iteratief toewerken naar het perfecte resultaat.',
+  },
+  {
+    question: 'Hoeveel revisierondes zijn inbegrepen?',
+    answer:
+      'Standaard zijn er twee revisierondes inbegrepen. In de praktijk is het design vaak al na de eerste ronde nagenoeg perfect, omdat ik vooraf grondig de tijd neem om jouw wensen en merkidentiteit te begrijpen.',
+  },
+  {
+    question: 'Ontwerpen jullie ook logo\'s en huisstijlen?',
+    answer:
+      'Ja. Naast webdesign bied ik ook visuele identiteit diensten aan, waaronder logo-ontwerp, kleurpaletten, typografie en merkrichtlijnen. Zo zorg je voor een consistente uitstraling over al je kanalen.',
+  },
+  {
+    question: 'Wat als ik al een huisstijl heb?',
+    answer:
+      'Dan gebruik ik jouw bestaande merkrichtlijnen als basis voor het webdesign. Ik zorg ervoor dat de website naadloos aansluit bij je huisstijl en deze versterkt in de digitale omgeving.',
+  },
+];
+
+const WebdesignAmsterdam: React.FC = () => {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    document.title = 'Webdesign Amsterdam | Creatief Webdesign Bureau | Wamelink Webdesign';
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute(
+        'content',
+        'Op zoek naar webdesign in Amsterdam? Wamelink Webdesign ontwerpt unieke, conversie-gerichte websites op maat. Geen templates — alleen design dat werkt. Vraag een gratis offerte aan.'
+      );
+    }
+    window.scrollTo(0, 0);
+    return () => {
+      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
+    };
+  }, []);
+
+  return (
+    <motion.div
+      key="webdesign-amsterdam"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+
+      <Header />
+
+      <main>
+        {/* Hero */}
+        <section className="relative min-h-[80vh] flex items-center py-32 border-b border-black bg-white overflow-hidden">
+          <div className="container mx-auto px-4 sm:px-8 relative z-10">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-4xl"
+            >
+              <span className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-6 block">
+                Creatief Webdesign Bureau
+              </span>
+              <h1 className="text-[11vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-8">
+                Webdesign
+                <br />
+                <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black] whitespace-nowrap">
+                  Amsterdam
+                </span>
+              </h1>
+              <p className="text-xl md:text-2xl font-medium text-gray-500 leading-relaxed max-w-2xl mb-12">
+                Design dat niet alleen mooi is, maar converteert. Ik ontwerp websites die jouw merk
+                versterken en bezoekers omzetten in klanten.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <MagneticButton
+                  href="https://calendar.app.google/DZwS3JYfBFnzHn566"
+                  target="_blank"
+                  className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center gap-3"
+                >
+                  Gratis Kennismakingsgesprek <ArrowRight size={18} />
+                </MagneticButton>
+                <MagneticButton
+                  href="mailto:dennis@wamelinkwebdesign.nl"
+                  className="bg-white text-black border-2 border-black px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center"
+                >
+                  Stuur een mail
+                </MagneticButton>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Pain Points + Benefits */}
+        <section className="py-24 bg-white border-b border-black">
+          <div className="container mx-auto px-4 sm:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              <div className="lg:col-span-5">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6">
+                    Waarom Professioneel Webdesign?
+                  </h2>
+                  <p className="text-xl font-medium text-gray-500 leading-relaxed">
+                    Goed design is geen luxe — het is de basis van vertrouwen en conversie online.
+                  </p>
+                </motion.div>
+              </div>
+
+              <div className="lg:col-span-7">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <p className="text-lg leading-relaxed mb-6">
+                    Bezoekers beoordelen je website binnen <strong>50 milliseconden</strong>. Een
+                    professioneel ontwerp communiceert direct betrouwbaarheid, kwaliteit en
+                    relevantie. Template-websites missen die unieke uitstraling die jouw merk
+                    onderscheidt van de concurrentie.
+                  </p>
+                  <p className="text-lg leading-relaxed mb-10">
+                    Bij Wamelink Webdesign combineer ik{' '}
+                    <strong>creatief design met conversie-optimalisatie</strong>. Elk element — van
+                    typografie tot kleurgebruik, van whitespace tot call-to-actions — is doordacht
+                    ontworpen om bezoekers te begeleiden naar actie.
+                  </p>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {benefits.map((benefit, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: i * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        <CheckCircle
+                          size={20}
+                          className="text-[#FFD700] flex-shrink-0"
+                          strokeWidth={3}
+                        />
+                        <span className="text-base font-bold">{benefit}</span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Results */}
+        <section className="py-24 bg-black text-white border-b border-black">
+          <div className="container mx-auto px-4 sm:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-4">
+                Resultaten
+              </h2>
+              <p className="text-xl font-medium text-gray-400">
+                Wat je kunt verwachten van een professioneel webdesign traject.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-3xl mx-auto">
+              {results.map((result, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.15 }}
+                  className="text-center"
+                >
+                  <div className="text-6xl md:text-7xl font-black tracking-tighter text-[#FFD700] mb-2">
+                    {result.value}
+                  </div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-gray-400">
+                    {result.label}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Process */}
+        <section className="py-24 bg-white border-b border-black">
+          <div className="container mx-auto px-4 sm:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              <div className="lg:col-span-4">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="sticky top-32"
+                >
+                  <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6">
+                    Design Proces
+                  </h2>
+                  <p className="text-xl font-medium text-gray-500 leading-relaxed">
+                    Van strategie tot pixel-perfect ontwerp — in vier doordachte stappen.
+                  </p>
+                </motion.div>
+              </div>
+
+              <div className="lg:col-span-8">
+                <div className="space-y-0 divide-y divide-black">
+                  {process.map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: i * 0.1 }}
+                      className="py-8 grid grid-cols-12 gap-6 items-start"
+                    >
+                      <div className="col-span-2 md:col-span-1">
+                        <span className="text-sm font-bold text-gray-300 uppercase tracking-widest">
+                          {item.step}
+                        </span>
+                      </div>
+                      <div className="col-span-10 md:col-span-3">
+                        <h3 className="text-2xl font-black tracking-tight">{item.title}</h3>
+                      </div>
+                      <div className="col-span-12 md:col-span-8">
+                        <p className="text-lg text-gray-600 leading-relaxed font-medium">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="py-24 bg-white border-b border-black">
+          <div className="container mx-auto px-4 sm:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+              <div className="lg:col-span-4">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="sticky top-32"
+                >
+                  <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6">
+                    Veelgestelde Vragen
+                  </h2>
+                  <p className="text-xl font-medium text-gray-500 leading-relaxed">
+                    Alles over webdesign en het creatieve proces.
+                  </p>
+                </motion.div>
+              </div>
+
+              <div className="lg:col-span-8">
+                <div className="divide-y divide-black">
+                  {faqs.map((faq, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <button
+                        onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                        className="w-full py-6 flex items-start justify-between gap-4 text-left group"
+                        aria-expanded={openFaq === index}
+                      >
+                        <h3 className="text-lg md:text-xl font-bold tracking-tight group-hover:text-[#FFD700] transition-colors pr-4">
+                          {faq.question}
+                        </h3>
+                        <div className="w-8 h-8 flex-shrink-0 bg-black text-white rounded-full flex items-center justify-center group-hover:bg-[#FFD700] group-hover:text-black transition-colors mt-0.5">
+                          {openFaq === index ? (
+                            <Minus size={16} strokeWidth={3} />
+                          ) : (
+                            <Plus size={16} strokeWidth={3} />
+                          )}
+                        </div>
+                      </button>
+                      <AnimatePresence>
+                        {openFaq === index && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                            className="overflow-hidden"
+                          >
+                            <p className="pb-6 text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl">
+                              {faq.answer}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="py-20 md:py-32 bg-white border-b border-black overflow-hidden relative">
+          <div className="container mx-auto px-4 sm:px-8 text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-[10vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-6 md:mb-8"
+            >
+              Klaar voor design
+              <br />
+              <span className="whitespace-nowrap">dat{' '}
+              <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">
+                impact
+              </span>
+              {' '}maakt?</span>
+            </motion.h2>
+            <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
+              Plan een gratis kennismakingsgesprek. Ik reageer binnen 24 uur.
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-2 sm:px-0">
+              <MagneticButton
+                href="https://calendar.app.google/DZwS3JYfBFnzHn566"
+                target="_blank"
+                className="bg-black text-white px-8 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest hover:bg-[#FFD700] hover:text-black transition-colors hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full sm:w-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none flex items-center justify-center"
+              >
+                Plan een gesprek
+              </MagneticButton>
+              <MagneticButton
+                href="mailto:dennis@wamelinkwebdesign.nl"
+                className="bg-white text-black border-2 border-black px-8 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl font-bold uppercase tracking-widest hover:bg-[#FFD700] hover:text-black transition-colors hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full sm:w-auto shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] md:shadow-none flex items-center justify-center"
+              >
+                Stuur een mail
+              </MagneticButton>
+            </div>
+          </div>
+
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-full h-full -z-10 pointer-events-none opacity-5">
+            <div className="w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-black rounded-full blur-[100px] absolute -left-1/4 -bottom-1/2" />
+            <div className="w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#FFD700] rounded-full blur-[100px] absolute -right-1/4 -top-1/2" />
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </motion.div>
+  );
+};
+
+export default WebdesignAmsterdam;
