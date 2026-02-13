@@ -80,12 +80,12 @@ const AppLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: 'App Laten Maken Amsterdam | App Ontwikkeling | Wamelink Webdesign',
+    title: 'App laten maken Amsterdam | App ontwikkeling | Wamelink Webdesign',
     description: 'App laten maken in Amsterdam? Wamelink Webdesign ontwikkelt maatwerk apps voor iOS en Android. Van concept tot App Store. Vraag een gratis offerte aan.',
     canonical: '/app-laten-maken-amsterdam',
     jsonLd: {
       '@type': 'Service',
-      name: 'App Laten Maken Amsterdam',
+      name: 'App laten maken Amsterdam',
       description: 'Maatwerk app development in Amsterdam. Native en cross-platform apps voor iOS en Android.',
       provider: {
         '@type': 'ProfessionalService',

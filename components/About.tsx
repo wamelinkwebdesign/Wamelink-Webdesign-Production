@@ -26,7 +26,7 @@ const About: React.FC = () => {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6">
-                Website Laten Maken in Amsterdam
+                Website laten maken in Amsterdam
               </h2>
               <p className="text-xl font-medium text-gray-500 leading-relaxed">
                 Wamelink Webdesign bouwt maatwerk websites die jouw bedrijf laten groeien.

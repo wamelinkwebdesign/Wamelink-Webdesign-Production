@@ -80,12 +80,12 @@ const WebsiteRedesignAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: 'Website Redesign Amsterdam | Vernieuw Je Website | Wamelink Webdesign',
+    title: 'Website redesign Amsterdam | Vernieuw je website | Wamelink Webdesign',
     description: 'Website redesign in Amsterdam? Wamelink Webdesign vernieuwt je website met maatwerk design, snellere performance en betere SEO. Behoud je rankings. Vraag een gratis analyse aan.',
     canonical: '/website-redesign-amsterdam',
     jsonLd: {
       '@type': 'Service',
-      name: 'Website Redesign Amsterdam',
+      name: 'Website redesign Amsterdam',
       description: 'Website redesign in Amsterdam. Vernieuw je website met maatwerk design, snellere performance en betere SEO.',
       provider: {
         '@type': 'ProfessionalService',

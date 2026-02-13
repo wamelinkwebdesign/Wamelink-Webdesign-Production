@@ -20,8 +20,8 @@ export interface BlogSection {
 export const blogPosts: BlogPost[] = [
   {
     slug: 'wordpress-vs-maatwerk-website',
-    title: 'WordPress vs Maatwerk Website: Wat Is Beter Voor Jouw Bedrijf?',
-    metaTitle: 'WordPress vs Maatwerk Website | Vergelijking 2026 | Wamelink Webdesign',
+    title: 'WordPress vs maatwerk website: wat is beter voor jouw bedrijf?',
+    metaTitle: 'WordPress vs maatwerk website | Vergelijking 2026 | Wamelink Webdesign',
     metaDescription: 'WordPress of een maatwerk website? Ontdek de voor- en nadelen van beide opties en leer welke keuze het beste past bij jouw bedrijf en groeiverwachtingen.',
     excerpt: 'Je wilt een nieuwe website, maar welke route kies je? We vergelijken WordPress met een maatwerk website in React/Next.js op snelheid, veiligheid, SEO en schaalbaarheid.',
     date: '13 februari 2026',
@@ -165,8 +165,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'wat-kost-een-website-laten-maken',
-    title: 'Wat Kost Een Website Laten Maken in 2026?',
-    metaTitle: 'Wat Kost Een Website Laten Maken? Prijzen 2026 | Wamelink Webdesign',
+    title: 'Wat kost een website laten maken in 2026?',
+    metaTitle: 'Wat kost een website laten maken? Prijzen 2026 | Wamelink Webdesign',
     metaDescription: 'Wat kost een website laten maken in 2026? Ontdek de prijzen voor een maatwerk website, webshop of redesign. Eerlijke vergelijking van kosten en wat je ervoor terugkrijgt.',
     excerpt: 'Van goedkope templates tot maatwerk. Wat zijn realistische prijzen voor een professionele website in 2026? En waar betaal je eigenlijk voor?',
     date: '13 februari 2026',
@@ -231,7 +231,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'heading',
-        text: 'Template vs maatwerk: de verborgen kosten',
+        text: 'Template vs. maatwerk: de verborgen kosten',
       },
       {
         type: 'paragraph',
@@ -249,7 +249,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'heading',
-        text: 'Investering vs kosten',
+        text: 'Investering vs. kosten',
       },
       {
         type: 'paragraph',
@@ -289,8 +289,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'website-laten-maken-waar-op-letten',
-    title: 'Website Laten Maken: Waar Moet Je Op Letten?',
-    metaTitle: 'Website Laten Maken: Waar Op Letten? Checklist 2026 | Wamelink Webdesign',
+    title: 'Website laten maken: waar moet je op letten?',
+    metaTitle: 'Website laten maken: waar op letten? Checklist 2026 | Wamelink Webdesign',
     metaDescription: 'Website laten maken maar geen idee waar je moet beginnen? Deze checklist helpt je de juiste keuzes te maken: van webdesigner kiezen tot techniek en SEO.',
     excerpt: 'Je wilt een website laten maken, maar waar begin je? Van het kiezen van een webdesigner tot technische eisen. Een praktische checklist voor ondernemers.',
     date: '13 februari 2026',
@@ -435,8 +435,8 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'seo-tips-voor-kleine-bedrijven',
-    title: '10 SEO Tips Die Elk Klein Bedrijf Moet Weten',
-    metaTitle: '10 SEO Tips voor Kleine Bedrijven | Hoger in Google 2026 | Wamelink Webdesign',
+    title: '10 SEO-tips die elk klein bedrijf moet weten',
+    metaTitle: '10 SEO-tips voor kleine bedrijven | Hoger in Google 2026 | Wamelink Webdesign',
     metaDescription: 'Wil je hoger scoren in Google met je kleine bedrijf? Deze 10 praktische SEO tips helpen je meer bezoekers en klanten te krijgen via zoekmachines.',
     excerpt: 'SEO hoeft niet ingewikkeld te zijn. Met deze 10 praktische tips verbeter je de vindbaarheid van je bedrijf in Google, zonder technische kennis.',
     date: '13 februari 2026',
@@ -449,11 +449,11 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'heading',
-        text: '1. Claim en optimaliseer je Google Bedrijfsprofiel',
+        text: '1. Claim en optimaliseer je Google-bedrijfsprofiel',
       },
       {
         type: 'paragraph',
-        text: 'Dit is de belangrijkste stap voor lokale SEO. Je Google Bedrijfsprofiel (voorheen Google Mijn Bedrijf) verschijnt in de lokale zoekresultaten en op Google Maps. Vul het volledig in: bedrijfsnaam, adres, telefoonnummer, openingstijden, beschrijving, categorie en foto\'s. Vraag klanten actief om reviews, want die hebben een grote invloed op je ranking.',
+        text: 'Dit is de belangrijkste stap voor lokale SEO. Je Google-bedrijfsprofiel (voorheen Google Mijn Bedrijf) verschijnt in de lokale zoekresultaten en op Google Maps. Vul het volledig in: bedrijfsnaam, adres, telefoonnummer, openingstijden, beschrijving, categorie en foto\'s. Vraag klanten actief om reviews, want die hebben een grote invloed op je ranking.',
       },
       {
         type: 'heading',
@@ -553,7 +553,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'heading',
-        text: 'Bonus: Meet je resultaten',
+        text: 'Bonus: meet je resultaten',
       },
       {
         type: 'paragraph',

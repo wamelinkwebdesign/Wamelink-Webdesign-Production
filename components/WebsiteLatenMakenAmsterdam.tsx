@@ -80,12 +80,12 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: 'Website Laten Maken in Amsterdam | Wamelink Webdesign',
+    title: 'Website laten maken in Amsterdam | Wamelink Webdesign',
     description: 'Website laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk websites die scoren in Google. Persoonlijk contact, razendsnelle oplevering. Vraag een gratis offerte aan.',
     canonical: '/website-laten-maken-amsterdam',
     jsonLd: {
       '@type': 'Service',
-      name: 'Website Laten Maken Amsterdam',
+      name: 'Website laten maken Amsterdam',
       description: 'Professionele maatwerk website laten maken in Amsterdam. Responsive, SEO-geoptimaliseerd en gebouwd voor conversie.',
       provider: {
         '@type': 'ProfessionalService',

@@ -4,10 +4,10 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const expertiseLinks = [
-  { name: 'Website Laten Maken', href: '/website-laten-maken-amsterdam' },
-  { name: 'Website Redesign', href: '/website-redesign-amsterdam' },
+  { name: 'Website laten maken', href: '/website-laten-maken-amsterdam' },
+  { name: 'Website redesign', href: '/website-redesign-amsterdam' },
   { name: 'Webshop', href: '/webshop-laten-maken-amsterdam' },
-  { name: 'App Development', href: '/app-laten-maken-amsterdam' },
+  { name: 'App development', href: '/app-laten-maken-amsterdam' },
 ];
 
 const Header: React.FC = () => {

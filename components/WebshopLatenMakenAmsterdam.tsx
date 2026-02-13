@@ -80,12 +80,12 @@ const WebshopLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useSEO({
-    title: 'Webshop Laten Maken Amsterdam | E-commerce | Wamelink Webdesign',
+    title: 'Webshop laten maken Amsterdam | E-commerce | Wamelink Webdesign',
     description: 'Webshop laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk webshops die verkopen. Conversie-gericht design, alle betaalmethodes, SEO-geoptimaliseerd. Vraag een gratis offerte aan.',
     canonical: '/webshop-laten-maken-amsterdam',
     jsonLd: {
       '@type': 'Service',
-      name: 'Webshop Laten Maken Amsterdam',
+      name: 'Webshop laten maken Amsterdam',
       description: 'Maatwerk webshop laten maken in Amsterdam. Conversie-gericht design, alle betaalmethodes en SEO-geoptimaliseerd.',
       provider: {
         '@type': 'ProfessionalService',
