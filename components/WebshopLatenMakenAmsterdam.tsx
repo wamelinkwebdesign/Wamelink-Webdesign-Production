@@ -62,7 +62,7 @@ const faqs = [
   {
     question: 'Kan ik mijn webshop zelf beheren?',
     answer:
-      'Ja. Je kunt zelf producten toevoegen, prijzen aanpassen en bestellingen beheren via een gebruiksvriendelijk dashboard. Na oplevering krijg je een uitgebreide uitleg zodat je direct aan de slag kunt.',
+      'Ja. Je krijgt een gebruiksvriendelijk dashboard waarmee je zelf producten toevoegt, prijzen aanpast en bestellingen beheert. Na oplevering krijg je een uitgebreide uitleg zodat je direct aan de slag kunt.',
   },
   {
     question: 'Hoe zit het met SEO voor mijn webshop?',
