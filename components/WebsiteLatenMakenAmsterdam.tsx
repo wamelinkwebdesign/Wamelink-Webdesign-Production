@@ -65,9 +65,9 @@ const faqs = [
       'Ja, elke website wordt standaard SEO-geoptimaliseerd. Snelle laadtijden, schone code, juiste heading-structuur, meta tags en mobiel-vriendelijk design zijn altijd inbegrepen.',
   },
   {
-    question: 'Kan ik mijn website zelf beheren na oplevering?',
+    question: 'Wie beheert mijn website na oplevering?',
     answer:
-      'Uiteraard. Na oplevering krijg je een uitleg over hoe je content kunt aanpassen. Daarnaast bieden we onderhoudspakketten aan zodat je website altijd up-to-date, veilig en snel blijft.',
+      'Dat doe ik voor je. Na oplevering bied ik onderhoudspakketten aan zodat je website altijd up-to-date, veilig en snel blijft. Heb je een tekstwijziging of update nodig? Dan regel ik dat snel voor je, zonder dat je je druk hoeft te maken over de techniek.',
   },
   {
     question: 'Bieden jullie ook webshops aan?',
