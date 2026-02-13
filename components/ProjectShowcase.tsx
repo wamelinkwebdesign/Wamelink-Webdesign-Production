@@ -243,9 +243,9 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
   const scale = useTransform(progress, range, [1, targetScale]);
 
   return (
-    <div 
-      ref={containerRef} 
-      className="h-[calc(100dvh-3rem)] md:h-[calc(100dvh-6rem)] flex items-center justify-center sticky top-12 md:top-24"
+    <div
+      ref={containerRef}
+      className="h-[calc(100dvh-3rem)] md:h-[calc(100dvh-6rem)] flex items-center justify-center sticky top-12 md:top-24 bg-white"
       style={{ zIndex: i + 1 }}
     >
       <motion.div
