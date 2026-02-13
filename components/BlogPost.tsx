@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Clock, Tag } from 'lucide-react';
@@ -16,6 +16,10 @@ const BlogPost: React.FC = () => {
     ? blogPosts[(postIndex + 1) % blogPosts.length]
     : null;
   const articleNumber = postIndex >= 0 ? String(postIndex + 1).padStart(2, '0') : '01';
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
