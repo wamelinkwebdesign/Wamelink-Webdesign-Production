@@ -396,7 +396,7 @@ const WebsiteRedesignAmsterdam: React.FC = () => {
               ?
             </motion.h2>
             <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
-              Vraag een gratis website analyse aan. Ik reageer binnen 24 uur.
+              Vraag een gratis website analyse aan.<br />Ik reageer binnen 24 uur.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-2 sm:px-0">

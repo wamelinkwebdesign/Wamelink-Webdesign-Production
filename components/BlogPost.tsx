@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Clock, Tag } from 'lucide-react';
@@ -16,6 +16,10 @@ const BlogPost: React.FC = () => {
     ? blogPosts[(postIndex + 1) % blogPosts.length]
     : null;
   const articleNumber = postIndex >= 0 ? String(postIndex + 1).padStart(2, '0') : '01';
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -374,7 +378,7 @@ const BlogPost: React.FC = () => {
               ?
             </motion.h2>
             <p className="text-lg md:text-xl text-gray-500 font-medium mb-10 md:mb-12 max-w-xl mx-auto">
-              Plan een gratis kennismakingsgesprek. Ik reageer binnen 24 uur.
+              Plan een gratis kennismakingsgesprek.<br />Ik reageer binnen 24 uur.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full px-2 sm:px-0">
