@@ -123,7 +123,7 @@ const WebshopLatenMakenAmsterdam: React.FC = () => {
               <h1 className="text-[11vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-8">
                 Webshop Laten
                 <br />
-                <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black] whitespace-nowrap">
+                <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">
                   Maken Amsterdam
                 </span>
               </h1>
@@ -135,9 +135,9 @@ const WebshopLatenMakenAmsterdam: React.FC = () => {
                 <MagneticButton
                   href="https://calendar.app.google/DZwS3JYfBFnzHn566"
                   target="_blank"
-                  className="bg-black text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center gap-3"
+                  className="bg-black text-white px-6 sm:px-8 py-4 rounded-full font-bold uppercase text-sm sm:text-base tracking-wider hover:bg-[#FFD700] hover:text-black transition-colors flex items-center justify-center gap-3"
                 >
-                  Gratis Kennismakingsgesprek <ArrowRight size={18} />
+                  Gratis Gesprek <span className="hidden sm:inline">Inplannen</span> <ArrowRight size={18} />
                 </MagneticButton>
                 <MagneticButton
                   href="mailto:dennis@wamelinkwebdesign.nl"
