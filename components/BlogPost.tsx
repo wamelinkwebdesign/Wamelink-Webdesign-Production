@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Tag, ArrowRight } from 'lucide-react';
@@ -6,6 +6,7 @@ import Header from './Header';
 import Footer from './Footer';
 import MagneticButton from './MagneticButton';
 import { blogPosts, BlogSection } from '../data/blogPosts';
+import { useSEO } from '../hooks/useSEO';
 
 const renderSection = (section: BlogSection, index: number) => {
   switch (section.type) {
@@ -75,19 +76,34 @@ const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = blogPosts.find((p) => p.slug === slug);
 
-  useEffect(() => {
-    if (post) {
-      document.title = post.metaTitle;
-      const meta = document.querySelector('meta[name="description"]');
-      if (meta) {
-        meta.setAttribute('content', post.metaDescription);
-      }
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
+  const jsonLd = useMemo(() => {
+    if (!post) return undefined;
+    return {
+      '@type': 'Article',
+      headline: post.title,
+      description: post.metaDescription,
+      datePublished: '2026-02-13',
+      author: {
+        '@type': 'Person',
+        name: 'Dennis Wamelink',
+        jobTitle: 'Digital Designer & Developer',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+      mainEntityOfPage: `https://wamelinkwebdesign.nl/blog/${post.slug}`,
     };
   }, [post]);
+
+  useSEO({
+    title: post?.metaTitle || 'Blog | Wamelink Webdesign',
+    description: post?.metaDescription || '',
+    canonical: `/blog/${slug}`,
+    ogType: 'article',
+    jsonLd,
+  });
 
   if (!post) {
     return <Navigate to="/blog" replace />;

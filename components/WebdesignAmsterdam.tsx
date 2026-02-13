@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Plus, Minus, ArrowRight } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import MagneticButton from './MagneticButton';
+import { useSEO } from '../hooks/useSEO';
 
 const process = [
   {
@@ -78,20 +79,23 @@ const faqs = [
 const WebsiteRedesignAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    document.title = 'Website Redesign Amsterdam | Vernieuw Je Website | Wamelink Webdesign';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        'content',
-        'Website redesign in Amsterdam? Wamelink Webdesign vernieuwt je website met maatwerk design, snellere performance en betere SEO. Behoud je rankings. Vraag een gratis analyse aan.'
-      );
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
-    };
-  }, []);
+  useSEO({
+    title: 'Website Redesign Amsterdam | Vernieuw Je Website | Wamelink Webdesign',
+    description: 'Website redesign in Amsterdam? Wamelink Webdesign vernieuwt je website met maatwerk design, snellere performance en betere SEO. Behoud je rankings. Vraag een gratis analyse aan.',
+    canonical: '/website-redesign-amsterdam',
+    jsonLd: {
+      '@type': 'Service',
+      name: 'Website Redesign Amsterdam',
+      description: 'Website redesign in Amsterdam. Vernieuw je website met maatwerk design, snellere performance en betere SEO.',
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+      areaServed: { '@type': 'City', name: 'Amsterdam' },
+      serviceType: 'Website Redesign',
+    },
+  });
 
   return (
     <motion.div

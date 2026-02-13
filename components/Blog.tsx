@@ -1,26 +1,28 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock, Tag } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import { blogPosts } from '../data/blogPosts';
+import { useSEO } from '../hooks/useSEO';
 
 const Blog: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Blog | Wamelink Webdesign';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        'content',
-        'Lees onze artikelen over webdesign, development, SEO en online groei. Praktische tips en inzichten van Wamelink Webdesign Amsterdam.'
-      );
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
-    };
-  }, []);
+  useSEO({
+    title: 'Blog | Wamelink Webdesign',
+    description: 'Lees onze artikelen over webdesign, development, SEO en online groei. Praktische tips en inzichten van Wamelink Webdesign Amsterdam.',
+    canonical: '/blog',
+    jsonLd: {
+      '@type': 'Blog',
+      name: 'Wamelink Webdesign Blog',
+      description: 'Artikelen over webdesign, development, SEO en online groei.',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+    },
+  });
 
   return (
     <motion.div

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Plus, Minus, ArrowRight } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import MagneticButton from './MagneticButton';
+import { useSEO } from '../hooks/useSEO';
 
 const process = [
   {
@@ -78,20 +79,23 @@ const faqs = [
 const AppLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    document.title = 'App Laten Maken Amsterdam | App Ontwikkeling | Wamelink Webdesign';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        'content',
-        'App laten maken in Amsterdam? Wamelink Webdesign ontwikkelt maatwerk apps voor iOS en Android. Van concept tot App Store. Vraag een gratis offerte aan.'
-      );
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
-    };
-  }, []);
+  useSEO({
+    title: 'App Laten Maken Amsterdam | App Ontwikkeling | Wamelink Webdesign',
+    description: 'App laten maken in Amsterdam? Wamelink Webdesign ontwikkelt maatwerk apps voor iOS en Android. Van concept tot App Store. Vraag een gratis offerte aan.',
+    canonical: '/app-laten-maken-amsterdam',
+    jsonLd: {
+      '@type': 'Service',
+      name: 'App Laten Maken Amsterdam',
+      description: 'Maatwerk app development in Amsterdam. Native en cross-platform apps voor iOS en Android.',
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+      areaServed: { '@type': 'City', name: 'Amsterdam' },
+      serviceType: 'Mobile App Development',
+    },
+  });
 
   return (
     <motion.div

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Plus, Minus, ArrowRight } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import MagneticButton from './MagneticButton';
+import { useSEO } from '../hooks/useSEO';
 
 const process = [
   {
@@ -78,20 +79,23 @@ const faqs = [
 const WebsiteLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    document.title = 'Website Laten Maken in Amsterdam | Wamelink Webdesign';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        'content',
-        'Website laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk websites die scoren in Google. Persoonlijk contact, razendsnelle oplevering. Vraag een gratis offerte aan.'
-      );
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
-    };
-  }, []);
+  useSEO({
+    title: 'Website Laten Maken in Amsterdam | Wamelink Webdesign',
+    description: 'Website laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk websites die scoren in Google. Persoonlijk contact, razendsnelle oplevering. Vraag een gratis offerte aan.',
+    canonical: '/website-laten-maken-amsterdam',
+    jsonLd: {
+      '@type': 'Service',
+      name: 'Website Laten Maken Amsterdam',
+      description: 'Professionele maatwerk website laten maken in Amsterdam. Responsive, SEO-geoptimaliseerd en gebouwd voor conversie.',
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+      areaServed: { '@type': 'City', name: 'Amsterdam' },
+      serviceType: 'Web Design',
+    },
+  });
 
   return (
     <motion.div

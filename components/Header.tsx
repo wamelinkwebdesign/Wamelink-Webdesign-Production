@@ -190,6 +190,13 @@ const Header: React.FC = () => {
                 >
                   Work
                 </a>
+                <Link
+                  to="/blog"
+                  className="text-4xl font-black uppercase tracking-tighter hover:text-gray-500"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Blog
+                </Link>
                 <a
                   href="#contact"
                   className="text-4xl font-black uppercase tracking-tighter hover:text-gray-500"

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Plus, Minus, ArrowRight } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import MagneticButton from './MagneticButton';
+import { useSEO } from '../hooks/useSEO';
 
 const process = [
   {
@@ -78,20 +79,23 @@ const faqs = [
 const WebshopLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    document.title = 'Webshop Laten Maken Amsterdam | E-commerce | Wamelink Webdesign';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        'content',
-        'Webshop laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk webshops die verkopen. Conversie-gericht design, alle betaalmethodes, SEO-geoptimaliseerd. Vraag een gratis offerte aan.'
-      );
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
-    };
-  }, []);
+  useSEO({
+    title: 'Webshop Laten Maken Amsterdam | E-commerce | Wamelink Webdesign',
+    description: 'Webshop laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk webshops die verkopen. Conversie-gericht design, alle betaalmethodes, SEO-geoptimaliseerd. Vraag een gratis offerte aan.',
+    canonical: '/webshop-laten-maken-amsterdam',
+    jsonLd: {
+      '@type': 'Service',
+      name: 'Webshop Laten Maken Amsterdam',
+      description: 'Maatwerk webshop laten maken in Amsterdam. Conversie-gericht design, alle betaalmethodes en SEO-geoptimaliseerd.',
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+      areaServed: { '@type': 'City', name: 'Amsterdam' },
+      serviceType: 'E-commerce Development',
+    },
+  });
 
   return (
     <motion.div
