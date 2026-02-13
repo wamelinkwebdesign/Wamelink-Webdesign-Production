@@ -4,10 +4,10 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const expertiseLinks = [
-  { name: 'Website Laten Maken', href: '/website-laten-maken-amsterdam' },
-  { name: 'Website Redesign', href: '/website-redesign-amsterdam' },
+  { name: 'Website laten maken', href: '/website-laten-maken-amsterdam' },
+  { name: 'Website redesign', href: '/website-redesign-amsterdam' },
   { name: 'Webshop', href: '/webshop-laten-maken-amsterdam' },
-  { name: 'App Development', href: '/app-laten-maken-amsterdam' },
+  { name: 'App development', href: '/app-laten-maken-amsterdam' },
 ];
 
 const Header: React.FC = () => {
@@ -48,6 +48,7 @@ const Header: React.FC = () => {
   const navLinks = [
     { name: 'Expertise', href: '#services', hasDropdown: true },
     { name: 'Work', href: '#work' },
+    { name: 'Blog', href: '/blog', isRoute: true },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -106,6 +107,14 @@ const Header: React.FC = () => {
                   )}
                 </AnimatePresence>
               </div>
+            ) : link.isRoute ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="text-sm font-bold uppercase tracking-widest hover:text-gray-500 transition-colors text-black"
+              >
+                {link.name}
+              </Link>
             ) : (
               <a
                 key={link.name}
@@ -181,6 +190,13 @@ const Header: React.FC = () => {
                 >
                   Work
                 </a>
+                <Link
+                  to="/blog"
+                  className="text-4xl font-black uppercase tracking-tighter hover:text-gray-500"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Blog
+                </Link>
                 <a
                   href="#contact"
                   className="text-4xl font-black uppercase tracking-tighter hover:text-gray-500"

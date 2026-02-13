@@ -77,7 +77,7 @@ const Services: React.FC = () => {
                 <motion.div variants={itemVariants} className="w-16 h-16 bg-[#FFD700] rounded-full flex items-center justify-center border border-black mb-8">
                   <Globe size={32} />
                 </motion.div>
-                <motion.h3 variants={itemVariants} className="text-3xl font-bold mb-2 tracking-tight">Website Laten Maken</motion.h3>
+                <motion.h3 variants={itemVariants} className="text-3xl font-bold mb-2 tracking-tight">Website laten maken</motion.h3>
                 <motion.p variants={itemVariants} className="text-lg font-bold mb-6 opacity-80">Nieuwe websites die presteren.</motion.p>
                 <ul className="space-y-4">
                   {[
@@ -112,7 +112,7 @@ const Services: React.FC = () => {
                 <motion.div variants={itemVariants} className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center mb-8">
                   <RefreshCw size={32} />
                 </motion.div>
-                <motion.h3 variants={itemVariants} className="text-3xl font-bold mb-2 tracking-tight">Website Redesign</motion.h3>
+                <motion.h3 variants={itemVariants} className="text-3xl font-bold mb-2 tracking-tight">Website redesign</motion.h3>
                 <motion.p variants={itemVariants} className="text-lg font-bold mb-6 text-gray-300">Vernieuw je online aanwezigheid.</motion.p>
                 <ul className="space-y-4">
                   {[
@@ -182,7 +182,7 @@ const Services: React.FC = () => {
                 <motion.div variants={itemVariants} className="w-16 h-16 bg-black rounded-full flex items-center justify-center border border-black mb-8">
                   <Smartphone size={32} className="text-white" />
                 </motion.div>
-                <motion.h3 variants={itemVariants} className="text-3xl font-bold mb-2 tracking-tight">App Development</motion.h3>
+                <motion.h3 variants={itemVariants} className="text-3xl font-bold mb-2 tracking-tight">App development</motion.h3>
                 <motion.p variants={itemVariants} className="text-lg font-bold mb-6 opacity-80">Apps die gebruikers niet vergeten.</motion.p>
                 <ul className="space-y-4">
                   {[

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Plus, Minus, ArrowRight } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import MagneticButton from './MagneticButton';
+import { useSEO } from '../hooks/useSEO';
 
 const process = [
   {
@@ -33,11 +34,11 @@ const process = [
 ];
 
 const benefits = [
-  'Maatwerk design,geen templates',
+  'Maatwerk design, geen templates',
   'SEO-geoptimaliseerd vanaf dag één',
   'Razendsnelle laadtijden (<1s)',
   'Responsive op elk apparaat',
-  'Persoonlijk contact,geen tussenpersonen',
+  'Persoonlijk contact, geen tussenpersonen',
   'Onderhoud & support na oplevering',
 ];
 
@@ -78,20 +79,23 @@ const faqs = [
 const WebsiteLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    document.title = 'Website Laten Maken in Amsterdam | Wamelink Webdesign';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        'content',
-        'Website laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk websites die scoren in Google. Persoonlijk contact, razendsnelle oplevering. Vraag een gratis offerte aan.'
-      );
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
-    };
-  }, []);
+  useSEO({
+    title: 'Website laten maken in Amsterdam | Wamelink Webdesign',
+    description: 'Website laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk websites die scoren in Google. Persoonlijk contact, razendsnelle oplevering. Vraag een gratis offerte aan.',
+    canonical: '/website-laten-maken-amsterdam',
+    jsonLd: {
+      '@type': 'Service',
+      name: 'Website laten maken Amsterdam',
+      description: 'Professionele maatwerk website laten maken in Amsterdam. Responsive, SEO-geoptimaliseerd en gebouwd voor conversie.',
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+      areaServed: { '@type': 'City', name: 'Amsterdam' },
+      serviceType: 'Web Design',
+    },
+  });
 
   return (
     <motion.div
@@ -183,7 +187,7 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
                   <p className="text-lg leading-relaxed mb-10">
                     Bij Wamelink Webdesign werk je{' '}
                     <strong>rechtstreeks samen met een ervaren designer en developer</strong>. Geen
-                    grote bureaus met tussenpersonen,maar persoonlijk contact, scherpe communicatie
+                    grote bureaus met tussenpersonen, maar persoonlijk contact, scherpe communicatie
                     en een eindresultaat dat echt bij jouw merk past.
                   </p>
 
@@ -268,7 +272,7 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
                     Werkwijze
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Van eerste gesprek tot live website,in vier heldere stappen.
+                    Van eerste gesprek tot live website. In vier heldere stappen.
                   </p>
                 </motion.div>
               </div>

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Plus, Minus, ArrowRight } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 import MagneticButton from './MagneticButton';
+import { useSEO } from '../hooks/useSEO';
 
 const process = [
   {
@@ -37,7 +38,7 @@ const benefits = [
   'Intuïtieve gebruikerservaring',
   'Offline-first architectuur',
   'Naadloze API-integraties',
-  'Persoonlijk contact,geen tussenpartijen',
+  'Persoonlijk contact, geen tussenpartijen',
   'Doorlopende support na lancering',
 ];
 
@@ -78,20 +79,23 @@ const faqs = [
 const AppLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    document.title = 'App Laten Maken Amsterdam | App Ontwikkeling | Wamelink Webdesign';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute(
-        'content',
-        'App laten maken in Amsterdam? Wamelink Webdesign ontwikkelt maatwerk apps voor iOS en Android. Van concept tot App Store. Vraag een gratis offerte aan.'
-      );
-    }
-    window.scrollTo(0, 0);
-    return () => {
-      document.title = 'Website laten maken Amsterdam | Wamelink Webdesign';
-    };
-  }, []);
+  useSEO({
+    title: 'App laten maken Amsterdam | App ontwikkeling | Wamelink Webdesign',
+    description: 'App laten maken in Amsterdam? Wamelink Webdesign ontwikkelt maatwerk apps voor iOS en Android. Van concept tot App Store. Vraag een gratis offerte aan.',
+    canonical: '/app-laten-maken-amsterdam',
+    jsonLd: {
+      '@type': 'Service',
+      name: 'App laten maken Amsterdam',
+      description: 'Maatwerk app development in Amsterdam. Native en cross-platform apps voor iOS en Android.',
+      provider: {
+        '@type': 'ProfessionalService',
+        name: 'Wamelink Webdesign',
+        url: 'https://wamelinkwebdesign.nl',
+      },
+      areaServed: { '@type': 'City', name: 'Amsterdam' },
+      serviceType: 'Mobile App Development',
+    },
+  });
 
   return (
     <motion.div
@@ -175,14 +179,14 @@ const AppLatenMakenAmsterdam: React.FC = () => {
                 >
                   <p className="text-lg leading-relaxed mb-6">
                     Mensen besteden gemiddeld <strong>4,5 uur per dag</strong> op hun smartphone.
-                    Een eigen app geeft je directe toegang tot je doelgroep,met push-notificaties,
+                    Een eigen app geeft je directe toegang tot je doelgroep. Met push-notificaties,
                     offline functionaliteit en een ervaring die sneller en persoonlijker is dan een
                     website.
                   </p>
                   <p className="text-lg leading-relaxed mb-10">
                     Bij Wamelink Webdesign bouw ik apps die{' '}
                     <strong>technisch solide en gebruiksvriendelijk</strong> zijn. Geen bloatware,
-                    geen onnodige complexiteit,alleen de features die jouw gebruikers nodig
+                    geen onnodige complexiteit. Alleen de features die jouw gebruikers nodig
                     hebben, gebouwd met de nieuwste technologie.
                   </p>
 
@@ -267,7 +271,7 @@ const AppLatenMakenAmsterdam: React.FC = () => {
                     Werkwijze
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Van eerste idee tot lancering in de App Store,in vier stappen.
+                    Van eerste idee tot lancering in de App Store. In vier stappen.
                   </p>
                 </motion.div>
               </div>
