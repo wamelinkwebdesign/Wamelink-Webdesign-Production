@@ -322,7 +322,7 @@ const SalesOutreach: React.FC<SalesOutreachProps> = ({ onClose }) => {
                             {STATUS_CONFIG[lead.status].label}
                           </span>
                         </div>
-                        <p className="text-xs text-gray-500 mt-0.5">{lead.contactPerson} — {lead.city}</p>
+                        <p className="text-xs text-gray-500 mt-0.5">{lead.contactPerson} ·{lead.city}</p>
                       </div>
                       <div className="flex items-center gap-1 ml-2 shrink-0">
                         {lead.messages.length > 0 && (

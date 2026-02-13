@@ -4,8 +4,9 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const expertiseLinks = [
-  { name: 'Web Development', href: '/website-laten-maken-amsterdam' },
-  { name: 'Webdesign', href: '/webdesign-amsterdam' },
+  { name: 'Website Laten Maken', href: '/website-laten-maken-amsterdam' },
+  { name: 'Website Redesign', href: '/website-redesign-amsterdam' },
+  { name: 'Webshop', href: '/webshop-laten-maken-amsterdam' },
   { name: 'App Development', href: '/app-laten-maken-amsterdam' },
 ];
 

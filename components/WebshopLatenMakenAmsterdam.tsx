@@ -8,83 +8,83 @@ import MagneticButton from './MagneticButton';
 const process = [
   {
     step: '01',
-    title: 'Concept & Strategie',
+    title: 'Kennismaking & Strategie',
     description:
-      'We bespreken het doel van je app, de doelgroep en de kernfunctionaliteiten. Samen stellen we een roadmap op die richting geeft aan het hele traject.',
+      'We bespreken je producten, doelgroep en verkoopdoelen. Welke betaalmethodes, verzendopties en integraties heb je nodig? Samen bepalen we de beste aanpak.',
   },
   {
     step: '02',
-    title: 'UX Design & Prototype',
+    title: 'Design & UX',
     description:
-      'Ik ontwerp de gebruikerservaring en bouw een interactief prototype. Zo test je de flow en navigatie voordat er een regel code geschreven wordt.',
+      'Ik ontwerp een webshop die vertrouwen wekt en aanzet tot kopen. Productpagina\'s, checkout-flow en navigatie worden geoptimaliseerd voor maximale conversie.',
   },
   {
     step: '03',
-    title: 'Development & Testing',
+    title: 'Development & Integraties',
     description:
-      'De app wordt gebouwd met moderne technologie. Gedurende het hele traject test ik op performance, stabiliteit en gebruiksvriendelijkheid op alle apparaten.',
+      'De webshop wordt gebouwd met razendsnelle technologie. Betaalsystemen, voorraadbeheer en verzendintegraties worden naadloos gekoppeld.',
   },
   {
     step: '04',
-    title: 'Lancering & Support',
+    title: 'Lancering & Groei',
     description:
-      'Na uitgebreide testing wordt je app gelanceerd in de App Store en/of Google Play. Ik bied doorlopende support en updates om je app optimaal te houden.',
+      'Na uitgebreide tests gaat je webshop live. Je ontvangt een uitleg over het beheer en ik help je met de eerste optimalisaties voor meer verkopen.',
   },
 ];
 
 const benefits = [
-  'Native & cross-platform development',
-  'Intuïtieve gebruikerservaring',
-  'Offline-first architectuur',
-  'Naadloze API-integraties',
-  'Persoonlijk contact,geen tussenpartijen',
-  'Doorlopende support na lancering',
+  'Conversie-geoptimaliseerd design',
+  'Alle betaalmethodes (iDEAL, creditcard, etc.)',
+  'SEO-geoptimaliseerd voor Google Shopping',
+  'Responsive op elk apparaat',
+  'Persoonlijke samenwerking, geen tussenpersonen',
+  'Voorraadbeheer en verzendintegraties',
 ];
 
 const results = [
-  { value: '4.9★', label: 'App Store Rating' },
-  { value: '99.9%', label: 'Uptime' },
-  { value: '60fps', label: 'Performance' },
+  { value: '3x', label: 'Meer Verkopen' },
+  { value: '<1s', label: 'Laadtijd' },
+  { value: '100%', label: 'SEO Score' },
 ];
 
 const faqs = [
   {
-    question: 'Wat kost het om een app te laten maken?',
+    question: 'Wat kost een webshop laten maken?',
     answer:
-      'De kosten van een app hangen af van de complexiteit, het aantal schermen en de gewenste functionaliteiten. Na een gratis kennismakingsgesprek ontvang je een transparante offerte op maat. Ik denk graag mee over een aanpak die past bij jouw budget.',
+      'De investering hangt af van het aantal producten, gewenste functionaliteiten en integraties. Na een gratis kennismakingsgesprek ontvang je een transparante offerte op maat. Ik denk graag mee over een aanpak die past bij jouw budget en groeiverwachtingen.',
   },
   {
-    question: 'Bouwen jullie native of cross-platform apps?',
+    question: 'Welke betaalmethodes worden ondersteund?',
     answer:
-      'Beide. Afhankelijk van jouw doelen en budget adviseer ik de beste aanpak. Cross-platform (React Native) is ideaal als je snel op iOS én Android wilt zijn. Native development (Swift/Kotlin) kies je wanneer maximale performance en platform-specifieke features cruciaal zijn.',
+      'Alle gangbare betaalmethodes: iDEAL, creditcard, PayPal, Bancontact, Apple Pay, Google Pay en meer. Ik integreer de betaalprovider die het beste past bij jouw doelgroep en markt.',
   },
   {
-    question: 'Hoe lang duurt het om een app te ontwikkelen?',
+    question: 'Kan ik mijn webshop zelf beheren?',
     answer:
-      'Een MVP (Minimum Viable Product) is vaak binnen 6 tot 10 weken klaar. Een volledige app met uitgebreide functionaliteiten kan 3 tot 6 maanden duren. We werken in sprints zodat je tussentijds resultaat ziet en feedback kunt geven.',
+      'Ja. Je kunt zelf producten toevoegen, prijzen aanpassen en bestellingen beheren via een gebruiksvriendelijk dashboard. Na oplevering krijg je een uitgebreide uitleg zodat je direct aan de slag kunt.',
   },
   {
-    question: 'Bieden jullie ook onderhoud en updates aan?',
+    question: 'Hoe zit het met SEO voor mijn webshop?',
     answer:
-      'Ja. Na lancering bied ik onderhoudspakketten aan die updates, bug fixes, server monitoring en nieuwe features omvatten. Zo blijft je app veilig, snel en up-to-date met de nieuwste OS-versies.',
+      'Elke webshop wordt standaard SEO-geoptimaliseerd. Productpagina\'s krijgen gestructureerde data (rich snippets), snelle laadtijden en geoptimaliseerde meta-informatie zodat je producten goed vindbaar zijn in Google en Google Shopping.',
   },
   {
-    question: 'Kan mijn app koppelen met bestaande systemen?',
+    question: 'Kunnen jullie ook koppelen met mijn boekhoudsoftware?',
     answer:
-      'Absoluut. Ik bouw apps die naadloos integreren met bestaande systemen zoals CRM\'s, betaalsystemen, databases en externe API\'s. Zo wordt je app een verlengstuk van je huidige workflow.',
+      'Ja. Ik koppel je webshop met populaire boekhoud- en ERP-systemen zoals Exact, Moneybird, e-Boekhouden en meer. Zo worden bestellingen en facturen automatisch verwerkt.',
   },
 ];
 
-const AppLatenMakenAmsterdam: React.FC = () => {
+const WebshopLatenMakenAmsterdam: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    document.title = 'App Laten Maken Amsterdam | App Ontwikkeling | Wamelink Webdesign';
+    document.title = 'Webshop Laten Maken Amsterdam | E-commerce | Wamelink Webdesign';
     const meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.setAttribute(
         'content',
-        'App laten maken in Amsterdam? Wamelink Webdesign ontwikkelt maatwerk apps voor iOS en Android. Van concept tot App Store. Vraag een gratis offerte aan.'
+        'Webshop laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk webshops die verkopen. Conversie-gericht design, alle betaalmethodes, SEO-geoptimaliseerd. Vraag een gratis offerte aan.'
       );
     }
     window.scrollTo(0, 0);
@@ -95,7 +95,7 @@ const AppLatenMakenAmsterdam: React.FC = () => {
 
   return (
     <motion.div
-      key="app-laten-maken-amsterdam"
+      key="webshop-laten-maken-amsterdam"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -114,18 +114,18 @@ const AppLatenMakenAmsterdam: React.FC = () => {
               className="max-w-4xl"
             >
               <span className="text-sm font-bold uppercase tracking-widest text-gray-400 mb-6 block">
-                App Ontwikkeling Bureau
+                E-commerce Bureau Amsterdam
               </span>
               <h1 className="text-[11vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-8">
-                App Laten Maken
+                Webshop Laten
                 <br />
                 <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black] whitespace-nowrap">
-                  in Amsterdam
+                  Maken Amsterdam
                 </span>
               </h1>
               <p className="text-xl md:text-2xl font-medium text-gray-500 leading-relaxed max-w-2xl mb-12">
-                Van idee tot App Store. Ik ontwikkel apps die gebruikers niet vergeten.
-                Snel, betrouwbaar en gebouwd om te groeien.
+                Een webshop die niet alleen mooi is, maar ook verkoopt. Maatwerk e-commerce
+                met focus op conversie, snelheid en gebruiksvriendelijkheid.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <MagneticButton
@@ -158,10 +158,11 @@ const AppLatenMakenAmsterdam: React.FC = () => {
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase mb-6">
-                    Waarom een Maatwerk App?
+                    Waarom een Maatwerk Webshop?
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Een app brengt je dichter bij je klanten dan welk ander digitaal kanaal ook.
+                    Een goede webshop is meer dan een productcatalogus. Het is een verkoopkanaal dat
+                    24/7 voor je werkt.
                   </p>
                 </motion.div>
               </div>
@@ -174,16 +175,16 @@ const AppLatenMakenAmsterdam: React.FC = () => {
                   transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <p className="text-lg leading-relaxed mb-6">
-                    Mensen besteden gemiddeld <strong>4,5 uur per dag</strong> op hun smartphone.
-                    Een eigen app geeft je directe toegang tot je doelgroep,met push-notificaties,
-                    offline functionaliteit en een ervaring die sneller en persoonlijker is dan een
-                    website.
+                    <strong>70% van online shoppers</strong> haakt af bij een trage of
+                    onoverzichtelijke checkout. Een maatwerk webshop met een geoptimaliseerde
+                    gebruikerservaring, snelle laadtijden en betrouwbare betaalmethodes maakt het
+                    verschil tussen een gemiste verkoop en een terugkerende klant.
                   </p>
                   <p className="text-lg leading-relaxed mb-10">
-                    Bij Wamelink Webdesign bouw ik apps die{' '}
-                    <strong>technisch solide en gebruiksvriendelijk</strong> zijn. Geen bloatware,
-                    geen onnodige complexiteit,alleen de features die jouw gebruikers nodig
-                    hebben, gebouwd met de nieuwste technologie.
+                    Bij Wamelink Webdesign bouw ik webshops die{' '}
+                    <strong>ontworpen zijn om te verkopen</strong>. Van productpresentatie tot
+                    checkout, elk onderdeel is geoptimaliseerd voor conversie. Geen standaard
+                    templates, maar een unieke winkelervaring die past bij jouw merk.
                   </p>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -225,7 +226,7 @@ const AppLatenMakenAmsterdam: React.FC = () => {
                 Resultaten
               </h2>
               <p className="text-xl font-medium text-gray-400">
-                De standaard waar wij naartoe werken bij elke app.
+                Gemiddelde resultaten van onze opgeleverde webshops.
               </p>
             </motion.div>
 
@@ -267,7 +268,7 @@ const AppLatenMakenAmsterdam: React.FC = () => {
                     Werkwijze
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Van eerste idee tot lancering in de App Store,in vier stappen.
+                    Van strategie tot eerste verkoop, in vier stappen.
                   </p>
                 </motion.div>
               </div>
@@ -320,7 +321,7 @@ const AppLatenMakenAmsterdam: React.FC = () => {
                     Veelgestelde Vragen
                   </h2>
                   <p className="text-xl font-medium text-gray-500 leading-relaxed">
-                    Alles over het laten maken van een app in Amsterdam.
+                    Alles over het laten maken van een webshop.
                   </p>
                 </motion.div>
               </div>
@@ -383,11 +384,11 @@ const AppLatenMakenAmsterdam: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="text-[10vw] md:text-[5vw] leading-[0.9] font-black tracking-tighter uppercase mb-6 md:mb-8"
             >
-              Klaar voor een
+              Klaar om online
               <br />
-              <span className="whitespace-nowrap">app die{' '}
+              <span className="whitespace-nowrap">te{' '}
               <span className="text-[#FFD700] [-webkit-text-stroke:1px_black] md:[-webkit-text-stroke:2px_black]">
-                groeit
+                verkopen
               </span>
               ?</span>
             </motion.h2>
@@ -424,4 +425,4 @@ const AppLatenMakenAmsterdam: React.FC = () => {
   );
 };
 
-export default AppLatenMakenAmsterdam;
+export default WebshopLatenMakenAmsterdam;

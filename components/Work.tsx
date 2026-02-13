@@ -97,7 +97,7 @@ const ProjectCard = ({ project, index, total }: any) => {
 
         {/* Counter decoration */}
         <div className="absolute bottom-8 left-4 sm:left-8 text-sm font-bold uppercase tracking-widest opacity-50">
-          {index + 1} — {total}
+          {index + 1} / {total}
         </div>
       </div>
     </div>

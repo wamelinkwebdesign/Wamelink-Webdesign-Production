@@ -47,7 +47,7 @@ const FAQSection: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
 
-          {/* Left Column — Heading */}
+          {/* Left Column */}
           <div className="lg:col-span-4">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -65,7 +65,7 @@ const FAQSection: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Right Column — FAQ Items */}
+          {/* Right Column */}
           <div className="lg:col-span-8">
             <div className="divide-y divide-black">
               {faqs.map((faq, index) => (

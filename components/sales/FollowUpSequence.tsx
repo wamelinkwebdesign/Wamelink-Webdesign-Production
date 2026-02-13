@@ -157,7 +157,7 @@ const FollowUpSequence: React.FC<FollowUpSequenceProps> = ({ lead, onClose, onSc
           <div>
             <h2 className="text-lg font-black uppercase tracking-tight">Follow-up Sequence</h2>
             <p className="text-sm text-gray-500 mt-0.5">
-              {lead.companyName} — {lead.contactPerson}
+              {lead.companyName} ·{lead.contactPerson}
             </p>
           </div>
           <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-lg transition-colors">

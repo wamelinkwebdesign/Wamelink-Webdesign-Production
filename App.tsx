@@ -12,7 +12,8 @@ import CustomCursor from './components/CustomCursor';
 import Terms from './components/Terms';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import WebsiteLatenMakenAmsterdam from './components/WebsiteLatenMakenAmsterdam';
-import WebdesignAmsterdam from './components/WebdesignAmsterdam';
+import WebsiteRedesignAmsterdam from './components/WebdesignAmsterdam';
+import WebshopLatenMakenAmsterdam from './components/WebshopLatenMakenAmsterdam';
 import AppLatenMakenAmsterdam from './components/AppLatenMakenAmsterdam';
 import SalesOutreach from './components/sales/SalesOutreach';
 import Lenis from 'lenis';
@@ -131,7 +132,8 @@ const App: React.FC = () => {
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/website-laten-maken-amsterdam" element={<WebsiteLatenMakenAmsterdam />} />
-          <Route path="/webdesign-amsterdam" element={<WebdesignAmsterdam />} />
+          <Route path="/website-redesign-amsterdam" element={<WebsiteRedesignAmsterdam />} />
+          <Route path="/webshop-laten-maken-amsterdam" element={<WebshopLatenMakenAmsterdam />} />
           <Route path="/app-laten-maken-amsterdam" element={<AppLatenMakenAmsterdam />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />

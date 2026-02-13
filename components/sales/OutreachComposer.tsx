@@ -174,7 +174,7 @@ const OutreachComposer: React.FC<OutreachComposerProps> = ({ lead, onSend, onClo
           <div>
             <h2 className="text-lg font-black uppercase tracking-tight">Outreach Bericht</h2>
             <p className="text-sm text-gray-500 mt-0.5">
-              {lead.companyName} — {lead.contactPerson}
+              {lead.companyName} ·{lead.contactPerson}
             </p>
           </div>
           <div className="flex items-center gap-3">

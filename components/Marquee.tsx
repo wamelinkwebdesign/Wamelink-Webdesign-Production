@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Marquee: React.FC = () => {
-  const marqueeText = "STRATEGY — DESIGN — DEVELOPMENT — BRANDING — MOTION — UX RESEARCH — ";
+  const marqueeText = "STRATEGY / DESIGN / DEVELOPMENT / BRANDING / MOTION / UX RESEARCH / ";
   
   return (
     <div className="relative w-full overflow-hidden border-b border-black bg-black py-4">
