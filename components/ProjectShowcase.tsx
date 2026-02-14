@@ -387,77 +387,59 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
   );
 };
 
-// --- Gallery Slide Components ---
+// --- Browser Frame Component (macOS-style) ---
 
-const GallerySlide: React.FC<{
-  index: number;
+const BrowserFrame: React.FC<{
   src: string;
+  url?: string;
   title: string;
-  progress: MotionValue<number>;
-  range: [number, number];
-  zIndex: number;
-}> = ({ index, src, title, progress, range, zIndex }) => {
-  const x = useTransform(
-    progress,
-    range,
-    index === 0 ? ["0%", "0%"] : ["105%", "0%"]
-  );
-
-  return (
-    <motion.div
-      style={{ x, zIndex }}
-      className="absolute inset-0 w-full h-full will-change-transform"
-    >
+  index?: number;
+  total?: number;
+  headingStyle?: React.CSSProperties;
+}> = ({ src, url, title, index, total, headingStyle }) => (
+  <div className="relative">
+    {/* Page indicator */}
+    {index !== undefined && total !== undefined && (
+      <div className="flex items-center gap-2 mb-4 justify-end" style={headingStyle}>
+        <span className="text-sm font-bold text-white/30 tabular-nums">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+        <span className="text-[10px] text-white/15">/</span>
+        <span className="text-[10px] font-bold text-white/15 tabular-nums">
+          {String(total).padStart(2, '0')}
+        </span>
+      </div>
+    )}
+    <div className="rounded-xl md:rounded-2xl overflow-hidden shadow-[0_20px_80px_-20px_rgba(0,0,0,0.8)] bg-[#1E1E1E] ring-1 ring-white/10">
+      {/* macOS-style toolbar */}
+      <div className="flex items-center gap-3 px-4 py-3 bg-[#2D2D2D] border-b border-white/5">
+        <div className="flex gap-2 shrink-0">
+          <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+          <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+          <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+        </div>
+        <div className="flex-1 max-w-sm mx-auto">
+          <div className="bg-[#1A1A1A] rounded-lg px-4 py-1.5 text-[11px] text-white/30 font-mono truncate text-center">
+            {url || title}
+          </div>
+        </div>
+        <div className="w-[52px] shrink-0" />
+      </div>
+      {/* Screenshot */}
       <img
         src={src}
-        alt={`${title} pagina ${index + 1}`}
-        className="w-full h-full object-cover object-top"
+        alt={`${title} pagina ${(index ?? 0) + 1}`}
+        className="w-full h-auto block"
+        loading="lazy"
       />
-    </motion.div>
-  );
-};
-
-const GalleryCounter: React.FC<{
-  progress: MotionValue<number>;
-  total: number;
-  headingStyle: React.CSSProperties;
-}> = ({ progress, total, headingStyle }) => {
-  const [current, setCurrent] = React.useState(1);
-
-  useEffect(() => {
-    const unsubscribe = progress.on("change", (v) => {
-      const idx = Math.min(Math.floor(v * total) + 1, total);
-      setCurrent(idx);
-    });
-    return unsubscribe;
-  }, [progress, total]);
-
-  return (
-    <div className="flex items-center gap-3" style={headingStyle}>
-      <span className="text-2xl font-black text-white/80 tabular-nums">
-        {String(current).padStart(2, '0')}
-      </span>
-      <span className="text-sm text-white/30">/</span>
-      <span className="text-sm font-bold text-white/30 tabular-nums">
-        {String(total).padStart(2, '0')}
-      </span>
     </div>
-  );
-};
+  </div>
+);
 
 // --- Detail View Component ---
 
 const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ project, onClose }) => {
   const scrollRef = useRef(null);
-
-  // Gallery: per-slide scroll tracking
-  const galleryRef = useRef(null);
-  const { scrollYProgress: galleryProgress } = useScroll({
-    target: galleryRef,
-    container: scrollRef,
-    offset: ["start start", "end end"]
-  });
-  const galleryCount = project.gallery?.desktop.length ?? 0;
 
   // Bento Grid Parallax Refs
   const bentoRef = useRef(null);
@@ -739,51 +721,64 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
         </section>
       )}
 
-      {/* 3. Slide-Over Screenshot Gallery */}
+      {/* 3. Screenshot Gallery — Browser Frame Showcase */}
       {project.gallery && project.gallery.desktop.length > 0 && (
-        <section
-          ref={galleryRef}
-          className="relative bg-[#0A0A0A] border-t border-white/5"
-          style={{ height: `${galleryCount * 100}vh` }}
-        >
-          {/* Sticky frame that stays in viewport */}
-          <div className="sticky top-0 h-screen w-full overflow-hidden">
-            {/* Section label */}
-            <div className="absolute top-8 left-0 right-0 z-30 container mx-auto px-4 sm:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="flex items-center gap-4"
-              >
-                <Monitor size={14} className="text-white/40" />
-                <h4 className="text-xs font-bold uppercase tracking-widest text-white/40" style={headingStyle}>Website Tour</h4>
-                <div className="h-[1px] flex-1 bg-white/10" />
-              </motion.div>
+        <section className="bg-[#0A0A0A] py-16 md:py-32 border-t border-white/5">
+          <div className="container mx-auto px-4 sm:px-8">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4 mb-12 md:mb-20"
+            >
+              <Monitor size={14} className="text-white/40" />
+              <h4 className="text-xs font-bold uppercase tracking-widest text-white/40" style={headingStyle}>Website Tour</h4>
+              <div className="h-[1px] flex-1 bg-white/10" />
+            </motion.div>
+
+            {/* Desktop Gallery — Browser Frames */}
+            <div className="hidden md:flex flex-col gap-20 lg:gap-28">
+              {project.gallery.desktop.map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 80, scale: 0.96 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <BrowserFrame
+                    src={src}
+                    url={project.url}
+                    title={project.title}
+                    index={i}
+                    total={project.gallery!.desktop.length}
+                    headingStyle={headingStyle}
+                  />
+                </motion.div>
+              ))}
             </div>
 
-            {/* Stacked slides — each one slides in from the right */}
-            {project.gallery.desktop.map((src, i) => {
-              // First image is always visible (base layer)
-              // Subsequent images slide in from x: 100% to x: 0%
-              const start = i / galleryCount;
-              const end = (i + 0.6) / galleryCount;
-              return (
-                <GallerySlide
+            {/* Mobile Gallery — Clean Cards */}
+            <div className="flex md:hidden flex-col gap-10">
+              {(project.gallery.mobile.length > 0 ? project.gallery.mobile : project.gallery.desktop).map((src, i) => (
+                <motion.div
                   key={i}
-                  index={i}
-                  src={src}
-                  title={project.title}
-                  progress={galleryProgress}
-                  range={[start, end]}
-                  zIndex={i + 1}
-                />
-              );
-            })}
-
-            {/* Page counter */}
-            <div className="absolute bottom-8 right-8 z-30">
-              <GalleryCounter progress={galleryProgress} total={galleryCount} headingStyle={headingStyle} />
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="rounded-2xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
+                    <img
+                      src={src}
+                      alt={`${project.title} pagina ${i + 1}`}
+                      className="w-full h-auto block"
+                      loading="lazy"
+                    />
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
