@@ -17,16 +17,22 @@ const BlogPost: React.FC = () => {
     : null;
   const articleNumber = postIndex >= 0 ? String(postIndex + 1).padStart(2, '0') : '01';
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
-
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001,
   });
+
+  useEffect(() => {
+    scaleX.jump(0);
+    const lenis = (window as any).__lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [slug]);
 
   const headingIndices = useMemo(() => {
     const indices: Record<number, number> = {};
