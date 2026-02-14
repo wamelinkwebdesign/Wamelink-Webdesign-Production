@@ -450,6 +450,9 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
   });
   const parallaxY = useTransform(bentoScroll, [0, 1], [0, -40]);
 
+  // Gallery drag carousel
+  const carouselRef = useRef(null);
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.body.classList.add('detail-view-open');
@@ -721,73 +724,65 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
         </section>
       )}
 
-      {/* 3. Screenshot Gallery — Browser Frame Showcase */}
+      {/* 3. Screenshot Gallery — Drag Carousel */}
       {project.gallery && project.gallery.desktop.length > 0 && (
-        <section className="bg-[#0A0A0A] py-16 md:py-32 border-t border-white/5">
+        <section className="bg-[#0A0A0A] py-16 md:py-32 border-t border-white/5 overflow-hidden">
           <div className="container mx-auto px-4 sm:px-8">
             {/* Section Header */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4 mb-12 md:mb-20"
+              className="flex items-center gap-4 mb-12 md:mb-16"
             >
               <Monitor size={14} className="text-white/40" />
               <h4 className="text-xs font-bold uppercase tracking-widest text-white/40" style={headingStyle}>Website Tour</h4>
               <div className="h-[1px] flex-1 bg-white/10" />
             </motion.div>
+          </div>
 
-            {/* Desktop Gallery — Stacking Browser Frames */}
-            <div className="hidden md:block pb-[40vh]">
-              {project.gallery.desktop.map((src, i) => {
+          {/* Framer Motion Drag Carousel */}
+          <div ref={carouselRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
+            <motion.div
+              drag="x"
+              dragConstraints={carouselRef}
+              dragElastic={0.08}
+              dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
+              className="flex gap-5 md:gap-8 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24"
+            >
+              {project.gallery.desktop.map((desktopSrc, i) => {
+                const mobileSrc = project.gallery!.mobile[i];
                 const total = project.gallery!.desktop.length;
                 return (
-                  <div
+                  <motion.div
                     key={i}
-                    className="sticky top-8"
-                    style={{ zIndex: i + 1, paddingTop: i === 0 ? 0 : '4rem' }}
+                    className="shrink-0 w-[85vw] md:w-[75vw] lg:w-[65vw]"
                   >
-                    <motion.div
-                      initial={{ opacity: 0, y: 60 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true, margin: "-50px" }}
-                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    >
+                    {/* Desktop: Browser Frame */}
+                    <div className="hidden md:block">
                       <BrowserFrame
-                        src={src}
+                        src={desktopSrc}
                         url={project.url}
                         title={project.title}
                         index={i}
                         total={total}
                         headingStyle={headingStyle}
                       />
-                    </motion.div>
-                  </div>
+                    </div>
+                    {/* Mobile: Clean Card */}
+                    <div className="block md:hidden rounded-2xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
+                      <img
+                        src={mobileSrc || desktopSrc}
+                        alt={`${project.title} pagina ${i + 1}`}
+                        className="w-full h-auto block"
+                        loading="lazy"
+                      />
+                    </div>
+                  </motion.div>
                 );
               })}
-            </div>
-
-            {/* Mobile Gallery — Clean Cards */}
-            <div className="flex md:hidden flex-col gap-10">
-              {(project.gallery.mobile.length > 0 ? project.gallery.mobile : project.gallery.desktop).map((src, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="rounded-2xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
-                    <img
-                      src={src}
-                      alt={`${project.title} pagina ${i + 1}`}
-                      className="w-full h-auto block"
-                      loading="lazy"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+              <div className="shrink-0 w-4 md:w-8" />
+            </motion.div>
           </div>
         </section>
       )}
