@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Marquee: React.FC = () => {
-  const row1 = 'STRATEGY — DESIGN — DEVELOPMENT — BRANDING — MOTION — UX RESEARCH — ';
-  const row2 = 'REACT — NEXT.JS — TYPESCRIPT — TAILWIND — FIGMA — FRAMER MOTION — ';
+  const row1 = 'STRATEGY - DESIGN - DEVELOPMENT - BRANDING - MOTION - UX RESEARCH - ';
+  const row2 = 'REACT - NEXT.JS - TYPESCRIPT - TAILWIND - FIGMA - FRAMER MOTION - ';
 
   return (
     <div className="relative w-full overflow-hidden border-b border-black bg-black py-5 select-none">
