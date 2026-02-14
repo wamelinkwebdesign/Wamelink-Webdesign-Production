@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useScroll, useTransform, MotionValue, AnimatePresence, useInView, animate, useMotionValue } from 'framer-motion';
 import { ArrowUpRight, ArrowDown, X, Smartphone, Monitor, Palette, MousePointer2, History, Quote, ChevronLeft, ChevronRight, Copy, Type as TypeIcon } from 'lucide-react';
 import MagneticButton from './MagneticButton';
@@ -451,10 +451,44 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
   });
   const parallaxY = useTransform(bentoScroll, [0, 1], [0, -40]);
 
-  // Gallery drag carousel with velocity-based skew
-  const carouselRef = useRef(null);
+  // Gallery snap carousel
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const dragX = useMotionValue(0);
+  const [activeSlide, setActiveSlide] = useState(0);
   const dragVelocityX = useMotionValue(0);
   const skewX = useTransform(dragVelocityX, [-2000, 0, 2000], [-3, 0, 3]);
+
+  const snapToSlide = useCallback((index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const cards = track.querySelectorAll<HTMLElement>('[data-carousel-card]');
+    if (!cards.length) return;
+    const clampedIndex = Math.max(0, Math.min(index, cards.length - 1));
+    // Calculate target: scroll so the card's left edge aligns with the track's padding
+    const targetX = -(cards[clampedIndex].offsetLeft - cards[0].offsetLeft);
+    setActiveSlide(clampedIndex);
+    animate(dragX, targetX, {
+      type: 'spring',
+      stiffness: 300,
+      damping: 35,
+    });
+  }, [dragX]);
+
+  const handleDragEnd = useCallback((_: unknown, info: { offset: { x: number }; velocity: { x: number } }) => {
+    animate(dragVelocityX, 0, { duration: 0.4 });
+    const swipeThreshold = 50;
+    const velocityThreshold = 300;
+    const swipedLeft = info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold;
+    const swipedRight = info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold;
+    if (swipedLeft) {
+      snapToSlide(activeSlide + 1);
+    } else if (swipedRight) {
+      snapToSlide(activeSlide - 1);
+    } else {
+      snapToSlide(activeSlide);
+    }
+  }, [activeSlide, snapToSlide, dragVelocityX]);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -745,16 +779,17 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
             </motion.div>
           </div>
 
-          {/* Drag Carousel with velocity skew */}
+          {/* Snap Carousel with velocity skew */}
           <div ref={carouselRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
             <motion.div
+              ref={trackRef}
               drag="x"
               dragConstraints={carouselRef}
-              dragElastic={0.08}
-              dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
+              dragElastic={0.15}
+              dragMomentum={false}
               onDrag={(_, info) => dragVelocityX.set(info.velocity.x)}
-              onDragEnd={() => animate(dragVelocityX, 0, { duration: 0.4 })}
-              style={{ skewX }}
+              onDragEnd={handleDragEnd}
+              style={{ x: dragX, skewX }}
               className="flex gap-5 md:gap-8 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 pb-4 select-none"
             >
               {project.gallery.desktop.map((desktopSrc, i) => {
@@ -763,6 +798,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                 return (
                   <motion.div
                     key={i}
+                    data-carousel-card
                     className="shrink-0 w-[85vw] md:w-[75vw] lg:w-[65vw]"
                     initial={{ opacity: 0, y: 40, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -800,6 +836,24 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
               <div className="shrink-0 w-4 md:w-8" />
             </motion.div>
           </div>
+
+          {/* Dot indicators */}
+          {project.gallery.desktop.length > 1 && (
+            <div className="flex justify-center gap-2 mt-8">
+              {project.gallery.desktop.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => snapToSlide(i)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    i === activeSlide
+                      ? 'bg-white w-6'
+                      : 'bg-white/25 hover:bg-white/40'
+                  }`}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </section>
       )}
 
