@@ -16,6 +16,11 @@ interface ProjectBento {
   palette: string[];
 }
 
+interface ProjectGallery {
+  desktop: string[];
+  mobile: string[];
+}
+
 interface ProjectData {
   id: string;
   caseId: string;
@@ -39,6 +44,7 @@ interface ProjectData {
   };
   bento?: ProjectBento;
   singleImage?: string;
+  gallery?: ProjectGallery;
 }
 
 const projects: ProjectData[] = [
@@ -129,7 +135,7 @@ const projects: ProjectData[] = [
     caseId: '05',
     title: 'Studio Valkenier',
     description: 'Multidisciplinair ontwerpbureau uit Amsterdam voor stedenbouw, architectuur en interieur.',
-    image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier.png',
     year: '2026',
     color: '#6B4C3B',
     textColor: '#ffffff',
@@ -138,7 +144,32 @@ const projects: ProjectData[] = [
     solution: 'Een website ontworpen die de brede expertise van Studio Valkenier samenbrengt: van stedenbouwkundige projecten zoals Urban Blocks Sloterdijk tot hun Ceuvel Gallery op een getransformeerde woonboot. Het resultaat is een platform dat hun projecten, verhalen en ontwerpfilosofie op een inspirerende manier presenteert.',
     url: 'https://studiovalkenier.nl',
     stats: [],
-    singleImage: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png'
+    fonts: {
+      heading: 'Inter Tight, sans-serif',
+      body: 'Inter, sans-serif'
+    },
+    bento: {
+      desktop: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier.png',
+      mobile: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier-m.png',
+      palette: ['#6B4C3B', '#F5F0EB', '#2C2C2C', '#FFFFFF']
+    },
+    gallery: {
+      desktop: [
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier1.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier2.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier3.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier4.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier5.png',
+      ],
+      mobile: [
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier-m.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier-m1.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier-m2.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier-m3.png',
+        'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier-m4.png',
+      ]
+    }
   }
 ];
 
@@ -360,6 +391,16 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
 
 const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ project, onClose }) => {
   const scrollRef = useRef(null);
+
+  // Horizontal Gallery Scroll
+  const galleryRef = useRef(null);
+  const { scrollYProgress: galleryScroll } = useScroll({
+    target: galleryRef,
+    container: scrollRef,
+    offset: ["start end", "end start"]
+  });
+  const galleryX = useTransform(galleryScroll, [0, 1], ["5%", "-55%"]);
+  const mobileGalleryX = useTransform(galleryScroll, [0, 1], ["60%", "-20%"]);
 
   // Bento Grid Parallax Refs
   const bentoRef = useRef(null);
@@ -640,7 +681,101 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
         </section>
       )}
 
-      {/* 3. Bento Grid - Refactored for Premium Look (or Single Image) */}
+      {/* 3. Cinematic Horizontal Scroll Gallery */}
+      {project.gallery && (
+        <section ref={galleryRef} className="relative bg-[#0A0A0A] border-t border-white/5 overflow-hidden" style={{ height: '200vh' }}>
+          {/* Sticky viewport container */}
+          <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
+            {/* Section Label */}
+            <div className="container mx-auto px-4 sm:px-8 mb-8 md:mb-12">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-4"
+              >
+                <Monitor size={14} className="text-white/40" />
+                <h4 className="text-xs font-bold uppercase tracking-widest text-white/40" style={headingStyle}>Website Tour</h4>
+                <div className="h-[1px] flex-1 bg-white/10" />
+              </motion.div>
+            </div>
+
+            {/* Desktop Screenshots - Horizontal Scroll */}
+            <motion.div
+              style={{ x: galleryX }}
+              className="flex gap-6 md:gap-10 pl-8 md:pl-16 will-change-transform"
+            >
+              {project.gallery.desktop.map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: i * 0.1 }}
+                  className="relative flex-shrink-0 group"
+                >
+                  <div className="relative w-[75vw] md:w-[55vw] lg:w-[45vw] rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/10">
+                    {/* Browser Chrome */}
+                    <div className="bg-[#1A1A1A] px-4 py-3 flex items-center gap-2 border-b border-white/5">
+                      <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                      </div>
+                      <div className="flex-1 mx-4">
+                        <div className="bg-white/5 rounded-md px-3 py-1 text-[10px] text-white/30 font-mono max-w-[200px] mx-auto text-center truncate">
+                          studiovalkenier.nl
+                        </div>
+                      </div>
+                    </div>
+                    {/* Screenshot */}
+                    <img
+                      src={src}
+                      alt={`${project.title} pagina ${i + 1}`}
+                      className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                  </div>
+                  {/* Page Number */}
+                  <div className="absolute -bottom-6 left-8 text-white/20 text-xs font-bold uppercase tracking-widest" style={headingStyle}>
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Mobile Screenshots - Floating Row Below, moving opposite direction */}
+            <motion.div
+              style={{ x: mobileGalleryX }}
+              className="flex gap-4 md:gap-8 mt-12 md:mt-16 will-change-transform"
+            >
+              {project.gallery.mobile.map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 + i * 0.1 }}
+                  className="relative flex-shrink-0"
+                >
+                  <div className="w-[140px] md:w-[180px] lg:w-[200px] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.4)] border-[4px] md:border-[6px] border-[#2A2A2A] bg-[#2A2A2A]">
+                    {/* Phone Notch */}
+                    <div className="relative">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-4 bg-[#2A2A2A] rounded-b-xl z-10" />
+                    </div>
+                    <img
+                      src={src}
+                      alt={`${project.title} mobiel ${i + 1}`}
+                      className="w-full h-auto block rounded-[1rem] md:rounded-[1.2rem]"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+      )}
+
+      {/* 4. Bento Grid - Refactored for Premium Look (or Single Image) */}
       <section ref={bentoRef} className="bg-gray-50 py-32 overflow-hidden border-t border-black/5">
          <div className="container mx-auto px-4 sm:px-8">
             <motion.div 
