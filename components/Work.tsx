@@ -36,7 +36,7 @@ const projects = [
     title: 'Studio Valkenier',
     description: 'Multidisciplinair ontwerpbureau uit Amsterdam voor stedenbouw, architectuur en interieur.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier-nobg-s.png',
-    color: '#6B4C3B',
+    color: '#B5231A',
     textColor: '#ffffff'
   }
 ];

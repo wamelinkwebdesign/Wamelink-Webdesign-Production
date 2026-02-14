@@ -137,7 +137,7 @@ const projects: ProjectData[] = [
     description: 'Multidisciplinair ontwerpbureau uit Amsterdam voor stedenbouw, architectuur en interieur.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier.png',
     year: '2026',
-    color: '#6B4C3B',
+    color: '#B5231A',
     textColor: '#ffffff',
     tags: ['Webdesign', 'Development'],
     challenge: 'Studio Valkenier is een multidisciplinair ontwerpbureau uit Amsterdam, gespecialiseerd in stedenbouw, architectuur en interventies voor vergeten plekken in stad en landschap. Hun duurzame en circulaire aanpak — inclusief een zelfvoorzienende woonboot — verdiende een online aanwezigheid met dezelfde visie.',
@@ -151,7 +151,7 @@ const projects: ProjectData[] = [
     bento: {
       desktop: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier.png',
       mobile: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier/studiovalkenier-m.png',
-      palette: ['#6B4C3B', '#F5F0EB', '#2C2C2C', '#FFFFFF']
+      palette: ['#B5231A', '#F5F0EB', '#2C2C2C', '#FFFFFF']
     },
     gallery: {
       desktop: [
