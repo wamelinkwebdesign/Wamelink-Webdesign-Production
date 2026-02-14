@@ -396,67 +396,23 @@ const GallerySlide: React.FC<{
   progress: MotionValue<number>;
   range: [number, number];
   zIndex: number;
-  url?: string;
-  headingStyle: React.CSSProperties;
-  total: number;
-}> = ({ index, src, title, progress, range, zIndex, url, headingStyle, total }) => {
-  // First slide is static (base layer), others slide in from the right
+}> = ({ index, src, title, progress, range, zIndex }) => {
   const x = useTransform(
     progress,
     range,
     index === 0 ? ["0%", "0%"] : ["105%", "0%"]
   );
 
-  // Subtle shadow that intensifies as the slide arrives
-  const shadowOpacity = useTransform(
-    progress,
-    range,
-    index === 0 ? [0, 0] : [0, 0.4]
-  );
-
-  const domain = url ? url.replace(/^https?:\/\//, '').replace(/\/$/, '') : title.toLowerCase().replace(/\s+/g, '') + '.nl';
-
   return (
     <motion.div
       style={{ x, zIndex }}
-      className="absolute inset-0 w-full h-full flex items-center justify-center will-change-transform"
+      className="absolute inset-0 w-full h-full will-change-transform"
     >
-      {/* Shadow overlay on the slide underneath */}
-      {index > 0 && (
-        <motion.div
-          style={{ opacity: shadowOpacity }}
-          className="absolute inset-0 pointer-events-none"
-        >
-          <div className="absolute -left-8 top-0 bottom-0 w-16 bg-gradient-to-r from-black/60 to-transparent blur-sm" />
-        </motion.div>
-      )}
-
-      <div className="w-full h-full flex items-center justify-center px-4 sm:px-8 md:px-16 pt-20 pb-20">
-        <div className="relative w-full max-w-7xl h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-white/10 bg-[#1A1A1A] flex flex-col">
-          {/* Browser Chrome */}
-          <div className="flex-shrink-0 px-4 py-3 flex items-center gap-2 border-b border-white/5 bg-[#1A1A1A]">
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F57]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-[#28C840]" />
-            </div>
-            <div className="flex-1 mx-4">
-              <div className="bg-white/5 rounded-lg px-4 py-1.5 text-[11px] text-white/40 font-mono max-w-[240px] mx-auto text-center truncate">
-                {domain}
-              </div>
-            </div>
-          </div>
-
-          {/* Screenshot - scrollable overflow */}
-          <div className="flex-1 overflow-hidden">
-            <img
-              src={src}
-              alt={`${title} pagina ${index + 1}`}
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
-        </div>
-      </div>
+      <img
+        src={src}
+        alt={`${title} pagina ${index + 1}`}
+        className="w-full h-full object-cover object-top"
+      />
     </motion.div>
   );
 };
@@ -820,9 +776,6 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                   progress={galleryProgress}
                   range={[start, end]}
                   zIndex={i + 1}
-                  url={project.url}
-                  headingStyle={headingStyle}
-                  total={galleryCount}
                 />
               );
             })}
