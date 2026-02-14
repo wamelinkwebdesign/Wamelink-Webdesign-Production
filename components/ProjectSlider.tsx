@@ -18,6 +18,22 @@ const projects = [
     description: 'Een toonaangevend coachingbureau dat zich specialiseert in persoonlijke en professionele ontwikkeling.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/personal-excellence-nobg-s.png',
     year: '2023'
+  },
+  {
+    id: '3',
+    caseId: '03',
+    title: 'Bouwbedrijf DW',
+    description: 'Een betrouwbare online aanwezigheid voor een gevestigd bouwbedrijf.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw-nobg-s.png',
+    year: '2025'
+  },
+  {
+    id: '4',
+    caseId: '04',
+    title: 'Studio Valkenier',
+    description: 'Een creatieve online ervaring voor een veelzijdige studio.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier-nobg-s.png',
+    year: '2026'
   }
 ];
 

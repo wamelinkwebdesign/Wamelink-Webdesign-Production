@@ -107,6 +107,38 @@ const projects: ProjectData[] = [
     url: 'https://personal-excellence.nl',
     stats: [],
     singleImage: 'https://storage.googleapis.com/wamelinkwebdesign/personalexcellence.png'
+  },
+  {
+    id: '3',
+    caseId: '04',
+    title: 'Bouwbedrijf DW',
+    description: 'Een betrouwbare online aanwezigheid voor een gevestigd bouwbedrijf.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw.png',
+    year: '2025',
+    color: '#1A3C5E',
+    textColor: '#ffffff',
+    tags: ['Webdesign', 'Development'],
+    challenge: 'Bouwbedrijf DW had behoefte aan een professionele website die hun vakmanschap en betrouwbaarheid uitstraalt. De oude site was verouderd en niet mobielvriendelijk, waardoor potentiële klanten afhaakten.',
+    solution: 'Een strakke, moderne website gebouwd die de kracht en expertise van het bedrijf weerspiegelt. Met heldere projectfoto\'s, een overzichtelijke dienstenpagina en een laagdrempelig contactformulier dat direct leads genereert.',
+    url: 'https://bouwbedrijfdw.nl',
+    stats: [],
+    singleImage: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw.png'
+  },
+  {
+    id: '4',
+    caseId: '05',
+    title: 'Studio Valkenier',
+    description: 'Een creatieve online ervaring voor een veelzijdige studio.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png',
+    year: '2026',
+    color: '#6B4C3B',
+    textColor: '#ffffff',
+    tags: ['Webdesign', 'Development'],
+    challenge: 'Studio Valkenier zocht een website die hun creatieve identiteit versterkt en hun portfolio op een inspirerende manier presenteert. De vorige site deed geen recht aan de kwaliteit van hun werk.',
+    solution: 'Een visueel rijke website ontworpen die de sfeer en het vakmanschap van de studio direct overbrengt. Met een nadruk op beeldmateriaal, soepele navigatie en een ontwerp dat de unieke stijl van Studio Valkenier weerspiegelt.',
+    url: 'https://studiovalkenier.nl',
+    stats: [],
+    singleImage: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier.png'
   }
 ];
 

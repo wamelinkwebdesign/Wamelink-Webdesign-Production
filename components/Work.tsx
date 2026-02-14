@@ -20,6 +20,24 @@ const projects = [
     image: 'https://storage.googleapis.com/wamelinkwebdesign/personal-excellence-nobg-s.png',
     color: '#442139',
     textColor: '#ffffff'
+  },
+  {
+    id: '3',
+    caseId: '03',
+    title: 'Bouwbedrijf DW',
+    description: 'Een betrouwbare online aanwezigheid voor een gevestigd bouwbedrijf.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw-nobg-s.png',
+    color: '#1A3C5E',
+    textColor: '#ffffff'
+  },
+  {
+    id: '4',
+    caseId: '04',
+    title: 'Studio Valkenier',
+    description: 'Een creatieve online ervaring voor een veelzijdige studio.',
+    image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier-nobg-s.png',
+    color: '#6B4C3B',
+    textColor: '#ffffff'
   }
 ];
 
