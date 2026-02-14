@@ -35,6 +35,11 @@ body {
   scrollbar-width: none;
 }
 
+/* Hide site header when a portfolio detail view is open */
+body.detail-view-open header {
+  display: none !important;
+}
+
 /* Lenis Smooth Scroll CSS */
 html.lenis, html.lenis body {
   height: auto;

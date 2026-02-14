@@ -470,8 +470,8 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('detail-view-open');
 
-    // Add escape key handler
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         onClose();
@@ -481,6 +481,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
 
     return () => {
       document.body.style.overflow = 'unset';
+      document.body.classList.remove('detail-view-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
