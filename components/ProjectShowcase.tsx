@@ -801,41 +801,6 @@ const ProjectShowcase: React.FC = () => {
 
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
 
-  // Dynamically update Safari's URL bar color to match the active portfolio card
-  useEffect(() => {
-    const meta = document.querySelector('meta[name="theme-color"]');
-    const el = containerRef.current;
-    if (!meta || !el) return;
-
-    let inView = false;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        inView = entry.isIntersecting;
-        if (!inView) {
-          meta.setAttribute('content', '#ffffff');
-        }
-      },
-      { threshold: 0 }
-    );
-    observer.observe(el);
-
-    const unsubscribe = scrollYProgress.on('change', (v) => {
-      if (!inView) return;
-      const activeIndex = Math.min(
-        Math.floor(v * projects.length),
-        projects.length - 1
-      );
-      meta.setAttribute('content', projects[activeIndex].color);
-    });
-
-    return () => {
-      observer.disconnect();
-      unsubscribe();
-      meta.setAttribute('content', '#ffffff');
-    };
-  }, [scrollYProgress]);
-
   return (
     <section ref={containerRef} id="work" className="bg-white relative border-t border-black z-[1] isolate">
       <div className="container mx-auto px-4 sm:px-8 pt-24 pb-8">
