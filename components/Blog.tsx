@@ -13,14 +13,21 @@ const Blog: React.FC = () => {
     description: 'Lees onze artikelen over webdesign, development, SEO en online groei. Praktische tips en inzichten van Wamelink Webdesign Amsterdam.',
     canonical: '/blog',
     jsonLd: {
-      '@type': 'Blog',
-      name: 'Wamelink Webdesign Blog',
-      description: 'Artikelen over webdesign, development, SEO en online groei.',
-      publisher: {
-        '@type': 'Organization',
-        name: 'Wamelink Webdesign',
-        url: 'https://wamelinkwebdesign.nl',
-      },
+      '@graph': [
+        {
+          '@type': 'CollectionPage',
+          name: 'Blog - Wamelink Webdesign',
+          description: 'Tips over webdesign, SEO en online groei voor MKB',
+          url: 'https://wamelinkwebdesign.nl/blog',
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://wamelinkwebdesign.nl' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://wamelinkwebdesign.nl/blog' },
+          ],
+        },
+      ],
     },
   });
 

@@ -84,16 +84,35 @@ const WebsiteRedesignAmsterdam: React.FC = () => {
     description: 'Website redesign in Amsterdam? Wamelink Webdesign vernieuwt je website met maatwerk design, snellere performance en betere SEO. Behoud je rankings. Vraag een gratis analyse aan.',
     canonical: '/website-redesign-amsterdam',
     jsonLd: {
-      '@type': 'Service',
-      name: 'Website redesign Amsterdam',
-      description: 'Website redesign in Amsterdam. Vernieuw je website met maatwerk design, snellere performance en betere SEO.',
-      provider: {
-        '@type': 'ProfessionalService',
-        name: 'Wamelink Webdesign',
-        url: 'https://wamelinkwebdesign.nl',
-      },
-      areaServed: { '@type': 'City', name: 'Amsterdam' },
-      serviceType: 'Website Redesign',
+      '@graph': [
+        {
+          '@type': 'Service',
+          name: 'Website redesign Amsterdam',
+          description: 'Website redesign in Amsterdam. Vernieuw je website met maatwerk design, snellere performance en betere SEO.',
+          provider: {
+            '@type': 'ProfessionalService',
+            name: 'Wamelink Webdesign',
+            url: 'https://wamelinkwebdesign.nl',
+          },
+          areaServed: { '@type': 'City', name: 'Amsterdam' },
+          serviceType: 'Website Redesign',
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+          })),
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://wamelinkwebdesign.nl' },
+            { '@type': 'ListItem', position: 2, name: 'Website redesign Amsterdam', item: 'https://wamelinkwebdesign.nl/website-redesign-amsterdam' },
+          ],
+        },
+      ],
     },
   });
 

@@ -193,7 +193,7 @@ const Terms: React.FC = () => {
 // Helper for consistency
 const Article: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
   <div className="mb-12">
-    <h3 className="text-xl font-bold uppercase tracking-wider mb-4 pb-4 border-b border-black">{title}</h3>
+    <h2 className="text-xl font-bold uppercase tracking-wider mb-4 pb-4 border-b border-black">{title}</h2>
     <div className="space-y-4 text-gray-700 leading-relaxed font-medium">
       {children}
     </div>
