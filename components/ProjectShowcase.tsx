@@ -429,8 +429,9 @@ const BrowserFrame: React.FC<{
       <img
         src={src}
         alt={`${title} pagina ${(index ?? 0) + 1}`}
-        className="w-full h-auto block"
+        className="w-full h-auto block pointer-events-none"
         loading="lazy"
+        draggable={false}
       />
     </div>
   </div>
@@ -754,7 +755,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
               onDrag={(_, info) => dragVelocityX.set(info.velocity.x)}
               onDragEnd={() => animate(dragVelocityX, 0, { duration: 0.4 })}
               style={{ skewX }}
-              className="flex gap-5 md:gap-8 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 pb-4"
+              className="flex gap-5 md:gap-8 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 pb-4 select-none"
             >
               {project.gallery.desktop.map((desktopSrc, i) => {
                 const mobileSrc = project.gallery!.mobile[i];
@@ -788,8 +789,9 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                       <img
                         src={mobileSrc || desktopSrc}
                         alt={`${project.title} pagina ${i + 1}`}
-                        className="w-full h-auto block"
+                        className="w-full h-auto block pointer-events-none"
                         loading="lazy"
+                        draggable={false}
                       />
                     </div>
                   </motion.div>
