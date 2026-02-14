@@ -53,7 +53,12 @@ function removeJsonLd(id: string) {
 export function useSEO({ title, description, canonical, ogType = 'website', jsonLd }: SEOProps) {
   // Scroll to top only on mount (page navigation), not on every re-render
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const lenis = (window as any).__lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, []);
 
   useEffect(() => {

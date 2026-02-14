@@ -107,6 +107,8 @@ const App: React.FC = () => {
       wheelMultiplier: 1,
     });
 
+    (window as any).__lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -116,6 +118,7 @@ const App: React.FC = () => {
 
     return () => {
       lenis.destroy();
+      (window as any).__lenis = undefined;
     };
   }, []);
 

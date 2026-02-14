@@ -18,7 +18,12 @@ const BlogPost: React.FC = () => {
   const articleNumber = postIndex >= 0 ? String(postIndex + 1).padStart(2, '0') : '01';
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const lenis = (window as any).__lenis;
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [slug]);
 
   const { scrollYProgress } = useScroll();
