@@ -25,7 +25,7 @@ const projects = [
     id: '3',
     caseId: '03',
     title: 'Bouwbedrijf DW',
-    description: 'Een betrouwbare online aanwezigheid voor een gevestigd bouwbedrijf.',
+    description: 'Bouw & Ontwerp: unieke woon- en werkplekken met passie voor monumenten en herenhuizen.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/bouwbedrijfdw-nobg-s.png',
     color: '#1A3C5E',
     textColor: '#ffffff'
@@ -34,7 +34,7 @@ const projects = [
     id: '4',
     caseId: '04',
     title: 'Studio Valkenier',
-    description: 'Een creatieve online ervaring voor een veelzijdige studio.',
+    description: 'Multidisciplinair ontwerpbureau uit Amsterdam voor stedenbouw, architectuur en interieur.',
     image: 'https://storage.googleapis.com/wamelinkwebdesign/studiovalkenier-nobg-s.png',
     color: '#6B4C3B',
     textColor: '#ffffff'
