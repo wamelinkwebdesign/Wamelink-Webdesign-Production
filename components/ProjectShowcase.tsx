@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, MotionValue, AnimatePresence, useInView, animate } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue, AnimatePresence, useInView, animate, useMotionValue, useVelocity, useMotionTemplate, useSpring } from 'framer-motion';
 import { ArrowUpRight, ArrowDown, X, Smartphone, Monitor, Palette, MousePointer2, History, Quote, ChevronLeft, ChevronRight, Copy, Type as TypeIcon } from 'lucide-react';
 import MagneticButton from './MagneticButton';
 
@@ -387,6 +387,72 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
   );
 };
 
+// --- 3D Tilt Card (Apple TV-style hover effect + spotlight) ---
+
+const TiltCard: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0.5);
+  const mouseY = useMotionValue(0.5);
+
+  // 3D rotation from mouse position
+  const rawRotateX = useTransform(mouseY, [0, 1], [6, -6]);
+  const rawRotateY = useTransform(mouseX, [0, 1], [-6, 6]);
+  const rotateX = useSpring(rawRotateX, { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(rawRotateY, { stiffness: 200, damping: 20 });
+
+  // Radiant spotlight that follows the cursor
+  const spotX = useTransform(mouseX, [0, 1], [0, 100]);
+  const spotY = useTransform(mouseY, [0, 1], [0, 100]);
+  const spotlight = useMotionTemplate`radial-gradient(500px circle at ${spotX}% ${spotY}%, rgba(255,255,255,0.07), transparent 65%)`;
+
+  // Ambient glow beneath the card — shifts with tilt
+  const glowX = useTransform(mouseX, [0, 1], [-20, 20]);
+  const glowY = useTransform(mouseY, [0, 1], [-10, 10]);
+  const springGlowX = useSpring(glowX, { stiffness: 150, damping: 15 });
+  const springGlowY = useSpring(glowY, { stiffness: 150, damping: 15 });
+
+  return (
+    <div className={className} style={{ perspective: 1200 }}>
+      <motion.div
+        ref={cardRef}
+        className="relative group/tilt"
+        onMouseMove={(e) => {
+          const rect = cardRef.current!.getBoundingClientRect();
+          mouseX.set((e.clientX - rect.left) / rect.width);
+          mouseY.set((e.clientY - rect.top) / rect.height);
+        }}
+        onMouseLeave={() => {
+          mouseX.set(0.5);
+          mouseY.set(0.5);
+        }}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: 'preserve-3d',
+        }}
+        whileHover={{ scale: 1.015 }}
+        transition={{ scale: { type: 'spring', stiffness: 300, damping: 20 } }}
+      >
+        {children}
+        {/* Radiant spotlight overlay */}
+        <motion.div
+          className="absolute inset-0 rounded-xl md:rounded-2xl pointer-events-none z-10 opacity-0 group-hover/tilt:opacity-100 transition-opacity duration-300"
+          style={{ background: spotlight }}
+        />
+      </motion.div>
+      {/* Ambient glow reflection beneath card */}
+      <motion.div
+        className="hidden md:block absolute -bottom-8 left-[10%] right-[10%] h-16 rounded-full blur-2xl pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse, rgba(255,255,255,0.06), transparent 70%)',
+          x: springGlowX,
+          y: springGlowY,
+        }}
+      />
+    </div>
+  );
+};
+
 // --- Browser Frame Component (macOS-style) ---
 
 const BrowserFrame: React.FC<{
@@ -450,8 +516,11 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
   });
   const parallaxY = useTransform(bentoScroll, [0, 1], [0, -40]);
 
-  // Gallery drag carousel
+  // Gallery drag carousel with velocity-based skew
   const carouselRef = useRef(null);
+  const dragX = useMotionValue(0);
+  const dragVelocity = useVelocity(dragX);
+  const skewX = useTransform(dragVelocity, [-2000, 0, 2000], [-3, 0, 3]);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -724,7 +793,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
         </section>
       )}
 
-      {/* 3. Screenshot Gallery — Drag Carousel */}
+      {/* 3. Screenshot Gallery — 3D Perspective Drag Carousel */}
       {project.gallery && project.gallery.desktop.length > 0 && (
         <section className="bg-[#0A0A0A] py-16 md:py-32 border-t border-white/5 overflow-hidden">
           <div className="container mx-auto px-4 sm:px-8">
@@ -738,17 +807,19 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
               <Monitor size={14} className="text-white/40" />
               <h4 className="text-xs font-bold uppercase tracking-widest text-white/40" style={headingStyle}>Website Tour</h4>
               <div className="h-[1px] flex-1 bg-white/10" />
+              <span className="text-[10px] uppercase tracking-widest text-white/20 hidden md:inline">Drag to explore</span>
             </motion.div>
           </div>
 
-          {/* Framer Motion Drag Carousel */}
+          {/* 3D Perspective Drag Carousel */}
           <div ref={carouselRef} className="overflow-hidden cursor-grab active:cursor-grabbing">
             <motion.div
               drag="x"
               dragConstraints={carouselRef}
               dragElastic={0.08}
               dragTransition={{ bounceStiffness: 300, bounceDamping: 30 }}
-              className="flex gap-5 md:gap-8 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24"
+              style={{ x: dragX, skewX }}
+              className="flex gap-5 md:gap-8 pl-4 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 pb-12 md:pb-16"
             >
               {project.gallery.desktop.map((desktopSrc, i) => {
                 const mobileSrc = project.gallery!.mobile[i];
@@ -756,18 +827,29 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                 return (
                   <motion.div
                     key={i}
-                    className="shrink-0 w-[85vw] md:w-[75vw] lg:w-[65vw]"
+                    className="shrink-0 w-[85vw] md:w-[75vw] lg:w-[65vw] relative group/tilt"
+                    initial={{ opacity: 0, y: 50, rotateY: -12, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, rotateY: 0, scale: 1 }}
+                    viewport={{ once: true, margin: "-10%" }}
+                    transition={{
+                      duration: 0.9,
+                      delay: i * 0.08,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                    style={{ perspective: 1200 }}
                   >
-                    {/* Desktop: Browser Frame */}
+                    {/* Desktop: 3D Tilt Browser Frame */}
                     <div className="hidden md:block">
-                      <BrowserFrame
-                        src={desktopSrc}
-                        url={project.url}
-                        title={project.title}
-                        index={i}
-                        total={total}
-                        headingStyle={headingStyle}
-                      />
+                      <TiltCard>
+                        <BrowserFrame
+                          src={desktopSrc}
+                          url={project.url}
+                          title={project.title}
+                          index={i}
+                          total={total}
+                          headingStyle={headingStyle}
+                        />
+                      </TiltCard>
                     </div>
                     {/* Mobile: Clean Card */}
                     <div className="block md:hidden rounded-2xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
