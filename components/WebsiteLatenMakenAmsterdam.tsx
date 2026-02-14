@@ -84,16 +84,35 @@ const WebsiteLatenMakenAmsterdam: React.FC = () => {
     description: 'Website laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk websites die scoren in Google. Persoonlijk contact, razendsnelle oplevering. Vraag een gratis offerte aan.',
     canonical: '/website-laten-maken-amsterdam',
     jsonLd: {
-      '@type': 'Service',
-      name: 'Website laten maken Amsterdam',
-      description: 'Professionele maatwerk website laten maken in Amsterdam. Responsive, SEO-geoptimaliseerd en gebouwd voor conversie.',
-      provider: {
-        '@type': 'ProfessionalService',
-        name: 'Wamelink Webdesign',
-        url: 'https://wamelinkwebdesign.nl',
-      },
-      areaServed: { '@type': 'City', name: 'Amsterdam' },
-      serviceType: 'Web Design',
+      '@graph': [
+        {
+          '@type': 'Service',
+          name: 'Website laten maken Amsterdam',
+          description: 'Professionele maatwerk website laten maken in Amsterdam. Responsive, SEO-geoptimaliseerd en gebouwd voor conversie.',
+          provider: {
+            '@type': 'ProfessionalService',
+            name: 'Wamelink Webdesign',
+            url: 'https://wamelinkwebdesign.nl',
+          },
+          areaServed: { '@type': 'City', name: 'Amsterdam' },
+          serviceType: 'Web Design',
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+          })),
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://wamelinkwebdesign.nl' },
+            { '@type': 'ListItem', position: 2, name: 'Website laten maken Amsterdam', item: 'https://wamelinkwebdesign.nl/website-laten-maken-amsterdam' },
+          ],
+        },
+      ],
     },
   });
 

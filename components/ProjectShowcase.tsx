@@ -112,7 +112,7 @@ const projects: ProjectData[] = [
 
 // --- Helper Components ---
 
-const ComparisonSlider: React.FC<{ before: string; after: string }> = ({ before, after }) => {
+const ComparisonSlider: React.FC<{ before: string; after: string; title: string }> = ({ before, after, title }) => {
   const [sliderPos, setSliderPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -132,7 +132,7 @@ const ComparisonSlider: React.FC<{ before: string; after: string }> = ({ before,
       onTouchMove={handleMove}
     >
       {/* After Image (Background - Right Side "NU") */}
-      <img src={after} alt="After" className="absolute inset-0 w-full h-full object-cover object-left-top" />
+      <img src={after} alt={`${title} website na redesign`} className="absolute inset-0 w-full h-full object-cover object-left-top" />
       <div className="absolute top-6 right-6 bg-black/60 backdrop-blur text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest pointer-events-none">
         Nu
       </div>
@@ -142,7 +142,7 @@ const ComparisonSlider: React.FC<{ before: string; after: string }> = ({ before,
         className="absolute inset-0 w-full h-full"
         style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
       >
-        <img src={before} alt="Before" className="absolute inset-0 w-full h-full object-cover object-left-top" />
+        <img src={before} alt={`${title} website voor redesign`} className="absolute inset-0 w-full h-full object-cover object-left-top" />
         <div className="absolute top-6 left-6 bg-black/60 backdrop-blur text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest z-10 pointer-events-none">
           Voorheen
         </div>
@@ -297,7 +297,7 @@ const Card: React.FC<CardProps> = ({ i, project, progress, range, targetScale, o
                     )}
                     <img 
                       src={project.image} 
-                      alt={project.title} 
+                      alt={`Screenshot van het ${project.title} project door Wamelink Webdesign`}
                       className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                   </picture>
@@ -518,7 +518,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                viewport={{ once: true }}
                className="mb-24 md:mb-32"
              >
-               <ComparisonSlider before={project.beforeImage} after={project.bento.desktop} />
+               <ComparisonSlider before={project.beforeImage} after={project.bento.desktop} title={project.title} />
              </motion.div>
            )}
 
@@ -631,7 +631,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                >
                   <img 
                     src={project.singleImage} 
-                    alt="Design Overview" 
+                    alt={`${project.title} website design overzicht`}
                     className="w-full h-auto rounded-[2.5rem] shadow-2xl border border-black/5"
                   />
                </motion.div>
@@ -663,7 +663,7 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
                       >
                          <img 
                             src={project.bento.mobile} 
-                            alt="Mobile Design" 
+                            alt={`${project.title} mobiel design`}
                             className="w-[85%] mx-auto h-auto rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] border-[8px] border-white ring-1 ring-black/5 object-cover"
                          />
                       </motion.div>

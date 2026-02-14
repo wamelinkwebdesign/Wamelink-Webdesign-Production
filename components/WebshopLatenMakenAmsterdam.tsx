@@ -84,16 +84,35 @@ const WebshopLatenMakenAmsterdam: React.FC = () => {
     description: 'Webshop laten maken in Amsterdam? Wamelink Webdesign bouwt maatwerk webshops die verkopen. Conversie-gericht design, alle betaalmethodes, SEO-geoptimaliseerd. Vraag een gratis offerte aan.',
     canonical: '/webshop-laten-maken-amsterdam',
     jsonLd: {
-      '@type': 'Service',
-      name: 'Webshop laten maken Amsterdam',
-      description: 'Maatwerk webshop laten maken in Amsterdam. Conversie-gericht design, alle betaalmethodes en SEO-geoptimaliseerd.',
-      provider: {
-        '@type': 'ProfessionalService',
-        name: 'Wamelink Webdesign',
-        url: 'https://wamelinkwebdesign.nl',
-      },
-      areaServed: { '@type': 'City', name: 'Amsterdam' },
-      serviceType: 'E-commerce Development',
+      '@graph': [
+        {
+          '@type': 'Service',
+          name: 'Webshop laten maken Amsterdam',
+          description: 'Maatwerk webshop laten maken in Amsterdam. Conversie-gericht design, alle betaalmethodes en SEO-geoptimaliseerd.',
+          provider: {
+            '@type': 'ProfessionalService',
+            name: 'Wamelink Webdesign',
+            url: 'https://wamelinkwebdesign.nl',
+          },
+          areaServed: { '@type': 'City', name: 'Amsterdam' },
+          serviceType: 'E-commerce Development',
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+          })),
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://wamelinkwebdesign.nl' },
+            { '@type': 'ListItem', position: 2, name: 'Webshop laten maken Amsterdam', item: 'https://wamelinkwebdesign.nl/webshop-laten-maken-amsterdam' },
+          ],
+        },
+      ],
     },
   });
 

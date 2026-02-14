@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: 'paragraph',
-        text: 'Je wilt een professionele website voor je bedrijf. De eerste vraag die veel ondernemers zich stellen: ga ik voor WordPress of kies ik voor een maatwerk website? Het is een keuze die je online resultaten voor jaren bepaalt. In dit artikel vergelijken we beide opties eerlijk, zodat jij een weloverwogen beslissing kunt nemen.',
+        text: 'Je wilt een professionele website voor je bedrijf. De eerste vraag die veel ondernemers zich stellen: ga ik voor WordPress of kies ik voor een <a href="/website-laten-maken-amsterdam">maatwerk website</a>? Het is een keuze die je online resultaten voor jaren bepaalt. In dit artikel vergelijken we beide opties eerlijk, zodat jij een weloverwogen beslissing kunt nemen.',
       },
       {
         type: 'heading',
@@ -154,7 +154,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'WordPress is een goed startpunt voor wie snel en goedkoop online wil zijn. Maar voor bedrijven die serieus willen groeien, die waarde hechten aan snelheid, veiligheid en een unieke merkervaring, is een maatwerk website in React/Next.js de slimmere investering. Je betaalt meer aan de voorkant, maar bespaart op de lange termijn op onderhoud, lost potentiele klanten niet door trage laadtijden, en bouwt een digitale basis die jaren meegaat.',
+        text: 'WordPress is een goed startpunt voor wie snel en goedkoop online wil zijn. Maar voor bedrijven die serieus willen groeien, die waarde hechten aan snelheid, veiligheid en een unieke merkervaring, is een <a href="/website-laten-maken-amsterdam">maatwerk website</a> in React/Next.js de slimmere investering. Je betaalt meer aan de voorkant, maar bespaart op de lange termijn op onderhoud, lost potentiele klanten niet door trage laadtijden, en bouwt een digitale basis die jaren meegaat.',
       },
       {
         type: 'callout',
@@ -227,7 +227,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Een maatwerk website start vanaf <strong>€2.500</strong> en omvat: strategisch advies, uniek design, development in React/Next.js, SEO-optimalisatie, responsive design en een snelle lancering. Voor webshops en complexere projecten liggen de prijzen hoger, afhankelijk van de functionaliteiten.',
+        text: 'Een <a href="/website-laten-maken-amsterdam">maatwerk website</a> start vanaf <strong>€2.500</strong> en omvat: strategisch advies, uniek design, development in React/Next.js, SEO-optimalisatie, responsive design en een snelle lancering. Voor <a href="/webshop-laten-maken-amsterdam">webshops</a> en complexere projecten liggen de prijzen hoger, afhankelijk van de functionaliteiten.',
       },
       {
         type: 'heading',
@@ -314,7 +314,7 @@ export const blogPosts: BlogPost[] = [
         items: [
           'Informatieve website: Je bedrijf presenteren en contactgegevens delen',
           'Leadgeneratie: Bezoekers omzetten naar aanvragen via formulieren en CTA\'s',
-          'E-commerce: Online producten of diensten verkopen met een webshop',
+          'E-commerce: Online producten of diensten verkopen met een <a href="/webshop-laten-maken-amsterdam">webshop</a>',
           'Portfolio: Je werk tonen en je expertise uitstralen',
         ],
       },
@@ -372,7 +372,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Veel ondernemers denken dat SEO iets is dat je "later wel doet". Maar de technische basis van je website bepaalt voor een groot deel hoe goed je kunt scoren in Google. Zorg dat je webdesigner hier vanaf het begin rekening mee houdt:',
+        text: 'Veel ondernemers denken dat <a href="/blog/seo-tips-voor-kleine-bedrijven">SEO</a> iets is dat je "later wel doet". Maar de technische basis van je website bepaalt voor een groot deel hoe goed je kunt scoren in Google. Zorg dat je webdesigner hier vanaf het begin rekening mee houdt:',
       },
       {
         type: 'list',
@@ -445,7 +445,7 @@ export const blogPosts: BlogPost[] = [
     content: [
       {
         type: 'paragraph',
-        text: 'Als klein bedrijf concurreer je in Google met grote spelers die duizenden euro\'s per maand aan SEO besteden. Toch kun je met de juiste aanpak verrassend goed scoren, zeker op lokale zoekopdrachten. In dit artikel deel ik 10 praktische tips die je direct kunt toepassen.',
+        text: 'Als klein bedrijf concurreer je in Google met grote spelers die duizenden euro\'s per maand aan SEO besteden. Toch kun je met de juiste aanpak verrassend goed scoren, zeker op lokale zoekopdrachten. Heb je al een <a href="/website-laten-maken-amsterdam">professionele website</a>? Dan kun je met deze 10 praktische tips direct aan de slag.',
       },
       {
         type: 'heading',
@@ -474,7 +474,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: 'paragraph',
-        text: 'Maak voor elke dienst of product een aparte pagina aan. Niet alles op een pagina proppen, maar elke pagina optimaliseren voor een specifiek zoekwoord. Een schilder in Amsterdam maakt bijvoorbeeld aparte pagina\'s voor "binnenschilderwerk Amsterdam", "buitenschilderwerk Amsterdam" en "behangen Amsterdam".',
+        text: 'Maak voor elke dienst of product een aparte pagina aan. Niet alles op een pagina proppen, maar elke pagina optimaliseren voor een specifiek zoekwoord. Een schilder in Amsterdam maakt bijvoorbeeld aparte pagina\'s voor "binnenschilderwerk Amsterdam", "buitenschilderwerk Amsterdam" en "behangen Amsterdam". Heb je ook een webshop nodig? Overweeg dan een <a href="/webshop-laten-maken-amsterdam">aparte webshop-pagina</a>.',
       },
       {
         type: 'heading',

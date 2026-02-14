@@ -47,21 +47,34 @@ const BlogPost: React.FC = () => {
   const jsonLd = useMemo(() => {
     if (!post) return undefined;
     return {
-      '@type': 'Article',
-      headline: post.title,
-      description: post.metaDescription,
-      datePublished: '2026-02-13',
-      author: {
-        '@type': 'Person',
-        name: 'Dennis Wamelink',
-        jobTitle: 'Digital Designer & Developer',
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: 'Wamelink Webdesign',
-        url: 'https://wamelinkwebdesign.nl',
-      },
-      mainEntityOfPage: `https://wamelinkwebdesign.nl/blog/${post.slug}`,
+      '@graph': [
+        {
+          '@type': 'Article',
+          headline: post.title,
+          description: post.metaDescription,
+          datePublished: '2026-02-13',
+          dateModified: '2026-02-13',
+          author: {
+            '@type': 'Person',
+            name: 'Dennis Wamelink',
+            jobTitle: 'Digital Designer & Developer',
+          },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Wamelink Webdesign',
+            url: 'https://wamelinkwebdesign.nl',
+          },
+          mainEntityOfPage: `https://wamelinkwebdesign.nl/blog/${post.slug}`,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://wamelinkwebdesign.nl' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://wamelinkwebdesign.nl/blog' },
+            { '@type': 'ListItem', position: 3, name: post.title, item: `https://wamelinkwebdesign.nl/blog/${post.slug}` },
+          ],
+        },
+      ],
     };
   }, [post]);
 
@@ -146,7 +159,7 @@ const BlogPost: React.FC = () => {
                 <span className="text-sm font-black text-[#FFD700] mt-1.5 min-w-[24px] tracking-tighter select-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                {item}
+                <span dangerouslySetInnerHTML={{ __html: item }} />
               </motion.li>
             ))}
           </motion.ul>
