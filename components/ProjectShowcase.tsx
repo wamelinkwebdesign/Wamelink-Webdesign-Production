@@ -737,26 +737,34 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
               <div className="h-[1px] flex-1 bg-white/10" />
             </motion.div>
 
-            {/* Desktop Gallery — Browser Frames */}
-            <div className="hidden md:flex flex-col gap-20 lg:gap-28">
-              {project.gallery.desktop.map((src, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 80, scale: 0.96 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <BrowserFrame
-                    src={src}
-                    url={project.url}
-                    title={project.title}
-                    index={i}
-                    total={project.gallery!.desktop.length}
-                    headingStyle={headingStyle}
-                  />
-                </motion.div>
-              ))}
+            {/* Desktop Gallery — Stacking Browser Frames */}
+            <div className="hidden md:block pb-[40vh]">
+              {project.gallery.desktop.map((src, i) => {
+                const total = project.gallery!.desktop.length;
+                return (
+                  <div
+                    key={i}
+                    className="sticky top-8"
+                    style={{ zIndex: i + 1, paddingTop: i === 0 ? 0 : '4rem' }}
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, y: 60 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <BrowserFrame
+                        src={src}
+                        url={project.url}
+                        title={project.title}
+                        index={i}
+                        total={total}
+                        headingStyle={headingStyle}
+                      />
+                    </motion.div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Mobile Gallery — Clean Cards */}
@@ -940,17 +948,17 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
       </section>
 
       {/* 5. Footer / Next Case */}
-      <section className="bg-white py-0 border-t border-black">
+      <section className="bg-black py-0 border-t border-white/10">
          <div className="container mx-auto px-4 sm:px-8">
-            <button 
+            <button
               onClick={onClose}
               className="group block w-full text-left py-24 md:py-32 relative overflow-hidden cursor-hover"
             >
-               <span className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4 block group-hover:text-black transition-colors" style={headingStyle}>Sluit Project</span>
-               
+               <span className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4 block group-hover:text-white transition-colors" style={headingStyle}>Sluit Project</span>
+
                {/* Hover Effect: Solid to Transparent with Stroke */}
-               <h2 
-                 className="text-[8vw] font-black uppercase tracking-tighter leading-none transition-all duration-300 group-hover:text-transparent group-hover:text-stroke-black"
+               <h2
+                 className="text-white text-[8vw] font-black uppercase tracking-tighter leading-none transition-all duration-300 group-hover:text-transparent group-hover:text-stroke-white"
                  style={headingStyle}
                >
                  Terug
@@ -958,8 +966,8 @@ const DetailView: React.FC<{ project: ProjectData; onClose: () => void }> = ({ p
             </button>
          </div>
          <style>{`
-          .group:hover .group-hover\\:text-stroke-black {
-             -webkit-text-stroke: 2px black;
+          .group:hover .group-hover\\:text-stroke-white {
+             -webkit-text-stroke: 2px white;
           }
          `}</style>
       </section>
